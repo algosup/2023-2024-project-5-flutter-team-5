@@ -9,6 +9,9 @@
       <excludeFolder url="file://$MODULE_DIR$/tastytest/tastest/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/tastytest/tastest/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/tastytest/tastest/build" />
+      <excludeFolder url="file://$MODULE_DIR$/App/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/App/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/App/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
