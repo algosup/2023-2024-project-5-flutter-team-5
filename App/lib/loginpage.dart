@@ -26,7 +26,7 @@ class LoginPage extends MaterialPageRoute {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextFormFieldLogin(),
+                    const TextFormFieldLogin(),
                     const SizedBox(height: 24.0),
                     ButtonLogin(),
                   ],
