@@ -83,6 +83,15 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 
 ### 1.5 Risks and Assumptions
 
+| Risk| Impact| Mitigation|
+|------|------|------|
+|Team don't understand the requirements |High|PRD was already send to the client and it was been validated|
+|Poorly structured source code|High|The team have decided to use the convention of the [official dart website](https://dart.dev/effective-dart/style) to write and structured the source code |
+| The team is not familiar with the technology used | High | The team have decided to use the [flutter documentation](https://flutter.dev/docs) to learn the technology |
+|The prodcut isn't deliver at time|High|Each part of the project has deadline|
+|OS compatibility|Medium| Flutter is design to build cross-platform application|
+|Communication between team members|High|Team has private slack server to communicate, share information even remotly|
+
 ### 1.6 Deliverables and Milestones
 |Date And Time | Deliverable |
 |-------------|-------------|
