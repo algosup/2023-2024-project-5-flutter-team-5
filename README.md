@@ -47,8 +47,8 @@ The key points of the Adopte Un Candidat concept are as follows:
 ## Installation 🛠️
 
 ### Prerequisites
-- [Flutter](https://flutter.dev/) >= 2.0.0
-- [Dart](https://dart.dev/) >= 2.12.0
+- [Flutter](https://flutter.dev/) >= 3.22.0
+- [Dart](https://dart.dev/) >= 3.4.0
 
 ### Steps
 1. Clone the repository:
