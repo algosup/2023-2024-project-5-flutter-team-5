@@ -36,6 +36,7 @@
       - [For IOS :](#for-ios-)
       - [For PC :](#for-pc-)
     - [Front-End](#front-end)
+- [Glossary](#glossary)
 
 </details>
 
@@ -91,7 +92,7 @@ all folders and files should be named in *UpperCamelCase*.
 
 - Images should be in an ./*Image* subfolder from where they are called.
 - Technical, Functional and Management documents should be in their folder in a ./*Documents* folder.
-- The code should be in an ./Src folder from the root.
+- The code should be in an ./*Src* folder from the root.
 - Folders and Files of the folder ./*Src* need to be in *lowercase_with_underscores* to be sensitive with the language Dart.
 
 ## GitHub
@@ -158,6 +159,8 @@ Here's the technology stack and our IDE:
 - SDK Android **version** : 34.0.0.
 - Dart **version** : 3.4.0.
 
+You can see your current version of Dart and Flutter with the command "flutter doctor -v" in your terminal.
+
 To download a specific version of Flutter or Dart you can use this website: [Flutter Version Management with FVM](https://blog.flutter.wtf/flutter-version-management/).
 
 ### Real Device Used
@@ -204,7 +207,7 @@ While you can debug and test your code on a virtual device, it is often better t
 
 To debug and run your flutter code on PC is more easier than on phones, your OS is already a device.
 
-![DestopDevice](./Image/DestopDevice.png)
+![DesktopDevice](./Image/DestopDevice.png)
 
 You can directly run and debug your code, you don't need to setup something else.
 
@@ -212,3 +215,53 @@ You can use virtual devices on your PC, whether it is IOS or Android-based. Some
 
 ### Front-End
 
+Firstly, all the front-end of the product should follow the design of the mock-up, available [here](https://www.figma.com/design/8HiEyUrys3luBBCaAXs9Rb/Flutter-project-5?node-id=0%3A1&t=Xz6hPo1pe5oYciEz-1).
+You can see 2 old versions and the version we have selected for the project.
+
+# Glossary
+
+- In software engineering, the terms **frontend** and **backend** (sometimes written as **back end** or **back-end**) refer to the separation of concerns between the presentation layer (frontend), and the data access layer (backend) of a piece of software, or the physical infrastructure or hardware. In the client–server model, the client is usually considered the frontend and the server is usually considered the backend, even when some presentation work is actually done on the server itself.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Frontend_and_backend)
+
+- **Dart** is a programming language designed by Lars Bak and Kasper Lund and developed by Google. It can be used to develop web and mobile apps as well as server and desktop applications.
+
+  Dart is an object-oriented, class-based, garbage-collected language with C-style syntax. It can compile to machine code, JavaScript, or WebAssembly. It supports interfaces, mixins, abstract classes, reified generics and type inference.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Dart_(programming_language))
+
+- **Flutter** is an open-source UI software development kit created by Google. It can be used to develop cross platform applications from a single codebase for the web, Fuchsia, Android, iOS, Linux, macOS, and Windows.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Flutter_(software))
+
+- A **software development kit (SDK)** is a collection of software development tools in one installable package. They facilitate the creation of applications by having a compiler, debugger and sometimes a software framework. They are normally specific to a hardware platform and operating system combination. To create applications with advanced functionalities such as advertisements, push notifications, etc; most application software developers use specific software development kits.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Software_development_kit)
+
+- The **Android SDK** is a software development kit for the Android software ecosystem that includes a comprehensive set of development tools. These include a debugger, libraries, a handset emulator based on QEMU, documentation, sample code, and tutorials. The SDK is part of the official Android Studio IDE but its various tools and resources can be used independently.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Android_SDK)
+
+- **Android Studio** is the official integrated development environment (IDE) for Google's Android operating system, built on JetBrains' IntelliJ IDEA software and designed specifically for Android development. It is available for download on Windows, macOS and Linux based operating systems.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Android_Studio)
+
+- An **integrated development environment (IDE)** is a software application that provides comprehensive facilities for software development. An IDE normally consists of at least a source-code editor, build automation tools, and a debugger. Some IDEs, such as IntelliJ IDEA, Eclipse and Lazarus contain the necessary compiler, interpreter or both; others, such as SharpDevelop and NetBeans, do not.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Integrated_development_environment)
+
+- **GitHub** is a developer platform that allows developers to create, store, manage and share their code. It uses Git software, providing the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project. Headquartered in California, it has been a subsidiary of Microsoft since 2018.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/GitHub)
+
+- **Monkey tie** is an orientation assistance start-up that is revolutionizing affinity recruitment. Based on recognized psychometric tests, its use is made easier thanks to the “Pôle emploi Connect” system.
+
+  [France Travail](https://francetravail.io/blog/sorienter-mieux-si-affinites-monkey-tie)
+
+- **Soft skills**, also known as **power skills**, **common skills**, **essential skills**, or **core skills**, are psychosocial skills generally applicable to all professions. These include critical thinking, problem solving, public speaking, professional writing, teamwork, digital literacy, leadership, professional attitude, work ethic, career management and intercultural fluency. This is in contrast to hard skills, which are specific to individual professions.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Soft_skills)
+
+- In manufacturing and design, a **mockup**, or **mock-up**, is a scale or full-size model of a design or device, used for teaching, demonstration, design evaluation, promotion, and other purposes. A mockup may be a prototype if it provides at least part of the functionality of a system and enables testing of a design.
+
+  [Wikipedia](https://en.wikipedia.org/wiki/Mockup)
