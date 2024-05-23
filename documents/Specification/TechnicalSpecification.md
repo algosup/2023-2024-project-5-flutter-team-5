@@ -35,7 +35,14 @@
       - [For Android :](#for-android-)
       - [For IOS :](#for-ios-)
       - [For PC :](#for-pc-)
-    - [Front-End](#front-end)
+- [Front-End](#front-end)
+  - [Pages](#pages)
+    - [**Login, Sign up**](#login-sign-up)
+    - [**Profile**](#profile)
+    - [**Main**](#main)
+    - [**Direct Message (DM) list**](#direct-message-dm-list)
+    - [**Direct message**](#direct-message)
+    - [**Filter**](#filter)
 - [Glossary](#glossary)
 
 </details>
@@ -213,10 +220,154 @@ You can directly run and debug your code, you don't need to setup something else
 
 You can use virtual devices on your PC, whether it is IOS or Android-based. Some of these emulators are already integrated to Android-Studio which you downloaded previously with the "flutter doctor" command on your CMD.
 
-### Front-End
+# Front-End
 
 Firstly, all the front-end of the product should follow the design of the mock-up, available [here](https://www.figma.com/design/8HiEyUrys3luBBCaAXs9Rb/Flutter-project-5?node-id=0%3A1&t=Xz6hPo1pe5oYciEz-1).
 You can see 2 old versions and the version we have selected for the project.
+
+## Pages
+
+### **Login, Sign up**
+
+**Description** : This page is dedicated to sign in, after, they are redirected to the home page if they already have an account, or start the creation of their profile if they don't have an account.
+
+**The login page allows users to** :
+
+- Login, Sign up.
+- Recover a forgotten password.
+- Recover a forgotten e-mail, name account.
+
+**The login page contains the following elements** :
+
+| Field/Element      | Description                         | Type           | Rights      | Behavior                                                       |
+| ------------------ | ----------------------------------- | -------------- | ----------- | -------------------------------------------------------------- |
+| Sign up            | Button to create account.           | Button         | Clickable   | Validate email and password, redirect user to their profile.   |
+| Login              | Button to go to login page.         | Button         | Clickable   | Redirect user to login page.                                   |
+| Email              | The user's email.                   | Text field     | Editable    |                                                                |
+| Password           | The user's password.                | Text field     | Editable    |                                                                |
+| Confirm password   | Confirmation of user's password.    | Text field     | Editable    |                                                                |
+| Job seeker/company | Button to choose user type.         | Switch button  | Clickable   | Switch between job seeker and company user types.              |
+| Forgotten Password | Button to change the password.      | Button         | Clickable   | Receive an email to change the password.                       |
+| Forgotten Email    | Button to change the Email.         | Button         | Clickable   | Give your phone number to change your email.                   |
+
+**Flow chart** :
+
+![Flow chart of the login page](/Documents/Specification/Image/FlowChartLoginPage.png)
+
+### **Profile**
+
+**Description** : This page is dedicated to watch your profile and see what is visible by job-seekers or companies, you can modify your profile if you need or have access to the settings of the app.
+
+**The profile page allows users to** :
+
+- Edit your Profile.
+- Modify your soft skills.
+- Watch your profile.
+- Access app's settings.
+- Access direct messages list page.
+- Access notification.
+- Access main page.
+
+**The profile page contains the following elements** :
+
+| Field/Element      | Description                         | Type           | Rights      | Behavior                                                       |
+| ------------------ | ----------------------------------- | -------------- | ----------- | -------------------------------------------------------------- |
+| Edit profile       | Button to edit your profile.        | Button         | Clickable   | Inside you can edit your soft skills, research, ect ...        |
+| Settings           | Button to go to settings app.       | Button         | Clickable   | Redirect user to settings app.                                 |
+| Watch your profile | See what is visible.                | The page       |             |                                                                |
+| DM list page       | The list of direct message.         | Button         | Clickable   |                                                                |
+| Notification       | Watch your notifications.           | Button         | Clickable   | Inside you can see your new matches, new messages, ect ...     |
+| Main page          | The page to swipe.                  | Button         | Clickable   |                                                                |
+
+**Flow chart** :
+
+![Flow chart profile page]()
+
+### **Main**
+
+**Description** : This page is dedicated to swipe companies or job-seekers. You can like and dislike their and go back in your last proposition to change your choice if it was a mistake. You can filter your choices, to have proposition more precise in what you search. You can go to the profile page and DM list page.
+
+**The main page allows users to** :
+
+- Access filter.
+- Access notification.
+- Access direct messages list page.
+- Access profile page.
+- Like and dislike.
+- Go back to the last profile proposed.
+
+**The profile page contains the following elements** :
+
+| Field/Element      | Description                         | Type           | Rights      | Behavior                                                                 |
+| ------------------ | ----------------------------------- | -------------- | ----------- | ------------------------------------------------------------------------ |
+| Filter             | Button to apply search filters.     | Button         | Clickable   | Opens a filter menu to refine search criteria.                           |
+| Notification       | Button to view notifications.       | Button         | Clickable   | Opens a page displaying new matches, messages, etc.                      |
+| DM list page       | Button to view the DM list.         | Button         | Clickable   | Redirects to the direct messages list page.                              |
+| Like               | Button to like a profile.           | Button         | Clickable   | Indicates interest in the current profile and shows the next profile.    |
+| Dislike            | Button to dislike a profile.        | Button         | Clickable   | Indicates disinterest in the current profile and shows the next profile. |
+| Go back            | Button to back to the last profile. | Button         | Clickable   | Reverts the action on the last swiped profile.                           |
+| Profile page       | Button to access your profile.      | Button         | Clickable   | Redirects to the user's profile page.                                    |
+
+**Flow chart** :
+
+![Flow chart main page]()
+
+### **Direct Message (DM) list**
+
+**Description** : This page is dedicated to read your different messages with companies or job-seekers, you can click on someone to send a message, if you slide in the right two buttons appear, you can mute a conversation to don't receive notification about this one and archive the conversation. You can also see your latest match with companies or job-seekers.
+
+**The DM list page allows users to** :
+
+- Access main page.
+- Access profile page.
+- Access Direct Message.
+- See your latest matches.
+
+**The DM list page contains the following elements** :
+
+| Field/Element      | Description                               | Type           | Rights      | Behavior                                                   |
+| ------------------ | ----------------------------------------- | -------------- | ----------- | ---------------------------------------------------------- |
+| Main page          | Button to access the main page.           | Button         | Clickable   | Redirects to the main page for swiping.                    |
+| Profile page       | Button to access your profile.            | Button         | Clickable   | Redirects to the user's profile page.                      |
+| Direct Message     | DM with companies or job-seekers.         | List           | Clickable   | Opens the selected conversation to read and send messages. |
+| Mute               | Button to mute a conversation.            | Button         | Clickable   | Mutes notifications for the selected conversation.         |
+| Archive            | Button to archive a conversation.         | Button         | Clickable   | Archives the selected conversation.                        |
+| Latest matches     | Section showing the latest matches.       | Section        | View only   | Displays the most recent matches for quick access.         |
+
+**Flow chart** :
+
+![Flow chart DM list page]()
+
+### **Direct message**
+
+**Description** : This page is dedicated to read your message and send them. You can back in the precedent page with a button in the top right of the screen.
+
+**The DM page allows users to** :
+
+- Button to back to the precedent page.
+- Send messages.
+- Read messages.
+
+**The DM page contains the following elements** :
+
+| Field/Element  | Description                            | Type   | Rights    | Behavior                                                 |
+| -------------- | -------------------------------------- | ------ | --------- | -------------------------------------------------------- |
+| Back button    | Button to return to the previous page. | Button | Clickable | Redirects back to the DM list page.                      |
+| Message input  | Text input field to compose messages.  | Input  | Editable  | Allows user to type and send a new message.              |
+| Send button    | Button to send the composed message.   | Button | Clickable | Sends the typed message to the selected conversation.    |
+| Message list   | List of messages in the conversation.  | List   | View only | Displays all messages in the current conversation.       |
+
+**Flow chart** :
+
+![Flow chart DM page]()
+
+### **Filter**
+
+**Description** : In this page you can change your settings of what you search to see more profile with what you want and need. You have also a button to apply your new filter in the top right of the screen and back in the main page.
+
+**The filter page allows users to** :
+
+- 
 
 # Glossary
 
