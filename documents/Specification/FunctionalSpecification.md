@@ -31,17 +31,17 @@
 ## 1. Introduction
 
 ### 1.1 Purpose
-Adopte 1 candidat is an application that allows companies to recruit candidates for their job offers requested by the client We are evolution. The application is based on the principle of the dating application Tinder. The company can create a job offer and the candidates can apply for the job offer. The company can then accept or refuse the candidate. The candidate has anonymous profile and can also accept or refuse the job offer. If both the company and the candidate accept each other, they can chat together. The application is available on Android and Windows.
+**Adopte 1 Candidat** is an application designed to help companies recruit candidates for their job openings. Inspired by the dating app Tinder, it allows companies to create job listings and candidates to apply for them. The company can then accept or reject applicants, who have anonymous profiles. Similarly, candidates can accept or reject job offers. If both the company and the candidate accept each other, they can start a conversation. The application is available on Android and Windows platforms.
 
 ### 1.2 Goals
 
--  2 type of users: company and candidate
+- Two type of users: company and candidate
 - Candidates have an anonymous profile
 - Each user can Like, Pass or Cancel other users
-- If their have match, they can chat together, company alway send the first message 
+- If their have a match, they can chat together, the company alway send the first message 
 
 - Available on Android and Windows
-- Set area of job offer
+- Only display job offer in a radius around you
 - Candidates share their hard skills and soft skills.
 - Companies share their job offer, salary, schedule and perks 
 
@@ -70,13 +70,13 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 
 - Use flutter to create the application
 - Front End
-- Search by location
+- Filter by location
 - Chat
-- Like, pass and cancel button
-- Cancel profile in a case of unexpected like
-- Anonymization of candidates profile
+- Like, pass and cancel buttons
+- Anonymization of candidates profiles
 - Create account
-
+- Login
+- Setting
 
 #### 1.4.2 Out of Scope
 - Back End
@@ -87,12 +87,12 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 
 | Risk| Impact| Mitigation|
 |------|------|------|
-|Team don't understand the requirements |High|PRD was already send to the client and it was been validated|
-|Poorly structured source code|High|The team have decided to use the convention of the [official dart website](https://dart.dev/effective-dart/style) to write and structured the source code |
-| The team is not familiar with the technology used | High | The team have decided to use the [flutter documentation](https://flutter.dev/docs) to learn the technology |
-|The prodcut isn't deliver at time|High|Every part of the project has deadline|
-|OS compatibility|Medium| Flutter is design to build cross-platform application|
-|Communication between team members|High|Team has private slack server to communicate, share information even remotly|
+|The team doesn't understand the requirements |High|PRD was already send to the client and it was been validated|
+|Poorly structured source code|Low|The team have decided to use the convention of the [official dart website](https://dart.dev/effective-dart/style) to write and structured the source code |
+| The team is not familiar with the technology used | Medium | The team have decided to use the [flutter documentation](https://flutter.dev/docs) to learn the technology |
+|The product isn't deliver in time|High|Every part of the project has deadline|
+|OS compatibility|Low| Flutter is natively cross-platform |
+|Communication between team members|High|Team has a private slack server to communicate and share information remotely|
 
 ### 1.6 Deliverables and Milestones
 |Date And Time | Deliverable |
@@ -112,40 +112,54 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 To respond to the client's request, we have decided to create a flutter application. The main functionality is the "Swipe" profile feature. The user can like, pass or cancel another user. If the user like another user and the other user like back, they can chat together. The company user can send the first message after the match. The user can also access to the profile of another user, the search page, the notification log, the message page, the setting page, the filter page and the match history page. The user can also edit his profile, set his location, logout and delete his account.
 
 
+## 3. Functional Requirements
 
-## 3. Functional Specification
+<!-- Add a part defining the different pages and their functions before doing the use cases as they are currently referring to pages that are not defined-->
+<!-- Define what should go in the user profile-->
+<!-- Define what should be in the filters-->
+
 
 ### 3.1 Personas
 
 ![Candidate](Image/CandidatePersona.png)
 
+<!-- CEO persona seem to be a really poor fit for the use case. As he is seemingly looking more for hard than soft skills -->
+
 ![CEO](Image/CeoPersona.png)
 
 ### 3.2 Use cases
 
+<!-- A lot of these would be better described with a flow chart-->
+<!-- Add indications of what to do in Alternate flow or Exception flow-->
+<!-- history page doesn't exist What is it referring to?-->
+<!-- Indicate the current pages when pressing button as navigation is hard to follow -->
+
 |Name|Description|Actors|Basic flow|Alternate flow|Exception flow|Pre condition|Post condition|
 |----|-----------|------|----------|----------------|--------------|--------------|----------|
-|Create account|The user create an account|Candidate, Company|The user clicks on the sign up button, fill the form and click on the submit button|The user click on the sign in button|The user click on the submit button without fill every aspect of the form|None|The user is redirect to the home page|
-|Login|The user login|Candidate, Company|The user clicks on sign in button, enter this mail address or user name and password|The user click on sign up button|None|Already have account|The user is redirect to the home page|
-|Like|The user like another user|Candidate, Company|The user clicks on the like button|The user click on the pass button|The user click on the cancel button|None|The user is redirect to the next profile|
-|Pass|The user pass another user|Candidate, Company|The user clicks on the pass button|The user click on the like button|None|None|The user is redirect to the next profile|
-|Cancel|The user undo like|Candidate, Company|The user clicks on the cancel button|None|None|Have already like profile|The user is redirect to the history page|
-|First message|Company send the first message after match |Company|Company user clicks on chat|None|None|Have already a match|The user is redirect to the chat room|
-|Chat|The user chat with another user|Candidate, Company|The user clicks on the chat button|None|None|Company has send the first message|The user is redirect to the chat page|
-|Search|The user search another user|Candidate, Company|The user clicks on the search button, fill the form and click on validate|The user click on the go back button|None|None|The user is redirect to the search page|
-|Logout|The user logout|Candidate, Company|The user clicks on the logout button|None|None|The user has aleardy login in and go to the setting page|The user is redirect to the login page|
-|Setting|The user access to setting page|Candidate, Company|The user clicks on the setting button|None|None|None|User is redirect to the setting page|
-|Filter|The user access to the filter page|Candidate, Company|The user clicks on filter button|None|None|None|user is redirect to Filter page|
-|Edit profile|The user access to the edit profile|Candidate, Company|The user clicks on the edit profile button|None|None|None|The user is redirect to the edit profile page|
-|Set location|The user set location|Candidate, Company|the user click on location and set one|None|The user can don't fill the option|The user is on filter page|Set a location|
-|Match history|The user access all match |Candidate, Company|None|None||The user has already match and go to chat|The user has access to the match history|
-|Delete account|The user delete his account|Candidate, Company|The user click on delete account button|None|None|The user is on setting page|The user is redirect to the login page|
-|Notification|The user see the notification|Candidate, Company|The user receive a notification|None|None|None|The user is redirect to the notification log|
-|Home|The user access to the home page|Candidate, Company|The user click on the home button and access to the "Swipe" profile feature|None|None|None|The user is redirect to the home page|	
-|Profile access|The user access to the profile of other user|Candidate, Company|The user click on the profile button on home page|None|None|None|The user is redirect to the profile user page|
+|Create account|The user create an account|Candidate, Company|The user clicks on the sign up button, fill the form and click on the submit button|The user click on the sign in button|The user click on the submit button without finishing the form|None|The user is redirected to the home page|
+|Login|The user login|Candidate, Company|The user clicks on sign in button, enter their email address or user name and password|The user click on sign up button|None|Already have account|The user is redirected to the home page|
+|Like|The user like an other user|Candidate, Company|The user clicks on the like button|The user click on the pass button|The user click on the cancel button|None|The user is redirected to the next profile|
+|Pass|The user pass an other user|Candidate, Company|The user clicks on the pass button|The user click on the like button|None|None|The user is redirected to the next profile|
+|Cancel|The user undo like|Candidate, Company|The user clicks on the cancel button|None|None|Has already liked a profile|The user is redirected to the history page|
+|First message|Company send the first message after a match |Company|Company user clicks on chat|None|None|Have already a match|The user is redirected to the chat room|
+|Chat|The user chat with another user|Candidate, Company|The user clicks on the chat button|None|None|Company has send the first message|The user is redirected to the chat page|
+|Search|The user search another user|Candidate, Company|The user clicks on the search button, fill the form and click on validate|The user click on the go back button|None|None|The user is redirected to the search page|
+|Logout|The user logout|Candidate, Company|The user clicks on the logout button|None|None|The user has already login in and go to the setting page|The user is redirected to the login page|
+|Setting|The user access to setting page|Candidate, Company|The user clicks on the setting button|None|None|None|User is redirected to the setting page|
+|Filter|The user access to the filter page|Candidate, Company|The user clicks on filter button|None|None|None|user is redirected to Filter page|
+|Edit profile|The user edit their profile|Candidate, Company|The user clicks on the edit profile button|None|None|None|The user is redirected to the edit profile page|
+|Set location|The user set his location|Candidate, Company|the user click on location and set one|None|The user can don't fill the option|The user is on filter page|Set a location|
+|Match history|The user access all matches |Candidate, Company|None|None||The user has already match and go to chat|The user has access to the match history|
+|Delete account|The user delete his account|Candidate, Company|The user click on delete account button|None|None|The user is on setting page|The user is redirected to the login page|
+|Notification|The user see the notification|Candidate, Company|The user receive a notification|None|None|None|The user is redirected to the notification log|
+|Home|The user access the home page|Candidate, Company|The user click on the home button and access to the "Swipe" profile feature|None|None|None|The user is redirected to the home page|	
+|Profile access|The user access to the profile of other user|Candidate, Company|The user click on the profile button on home page|None|None|None|The user is redirected to the profile user page|
 
 
 ### 3.3 Mock-up
+
+<!-- Add names to the pages so that reader can understand which pages is which in the above use cases section-->
+<!-- mockup sometime conflict with information given in use case. which is correct? eg. Location seem to be a filter in the mockup but a profile setting in the use cases-->
 
 <img src="Image/FilterLightMode.png" width="200" height="444">
 <img src="Image/FilterDarkMode.png" width="200" height="444">
@@ -161,43 +175,23 @@ To respond to the client's request, we have decided to create a flutter applicat
 <img src="Image/SettingDarkMode.png" width="200" height="444">
 
 
-### 3.4 Functional Requirements
+## 4 Non-Functional Requirements
 
-#### 3.4.1 User Management
+<!-- Be more specific eg. any android phone from the last 5 years and windows 10-->
 
-- The user can create an account
-- The user can login
-- The user can logout
-- The user can delete his account
-- The user can edit his profile
-- The user can set his location
-- The user can access to the setting page
-- The user can access to the filter page
-- The user can access to the match history
-
-#### 3.4.2 Matching
-- The user can like another user
-- The user can pass another user
-- The user can cancel a like
-- The user can access to the chat page
-- The company user can send the first message after match
-- The user can access to the profile of another user
-- The user can access to the search page
-- The user can access to the notification log
-- The user can access to the message page
-
-
-
-
-
-
-### 3.5 Non-Functional Requirements
 
 - The application has French and English language
 - The application has light and dark mode
 - The application is adapted to all screen sizes
+- Application work on Windows and Android
 
-## 4. System Configuration
+
+
+
+
+## 5. System Configuration
+
+## 6. Integration Requirements
 
 ### 4.1 Development Environment
 
@@ -216,9 +210,7 @@ To respond to the client's request, we have decided to create a flutter applicat
 - The user can access to tthe setting page to edit his profile, logout and delete his account
 
 
-## 5. Integration Requirements
-
-### 5.1 Error Reporting
+### 6.1 Error Reporting
 
 - The application must display an error message if the user try to login with a wrong mail address or password
 - The application must display an error message if the user try to create an account with a mail address already used
@@ -228,7 +220,7 @@ To respond to the client's request, we have decided to create a flutter applicat
 
 
 
-## 6. Glossary
+## 7. Glossary
 
 - **Match**: When two users like each other
 - **Fliutter**: An open-source UI software development kit created by Google

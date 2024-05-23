@@ -64,22 +64,23 @@ The team is tasked with making the front end of a recruitment application to fac
 
 ## Details
 
-The name of the application is "Adopte Un Candidat", is a "Tinder style" recruitment application that matches companies and job-seekers in a different way. The app will need to be available on phone, tablet and computer.
+The name of the application is "Adopte Un Candidat", it is recruitment application uses "Tinder style" matches to pair companies and job-seekers in an innovative way. The app will need to be available on phone, tablet and computer.
 
 ## Requirements
 
 - Has to be programmed in Flutter.
 - Anonymization of candidates.
-- Valuing soft skills.
+- Emphasize on soft skills.
 - Priority given to the human aspect.
 - Matching between candidates and companies.
+- Have the application in French.
 
 ## Nice to have
 
 - Release on the play store.
 - Add a functionality to put your Monkey TIE's score.
 - Add responsive application for computer.
-- Some back-end to store data.
+- Back-end.
 - Have the application in French and English.
 
 ## Priorities
