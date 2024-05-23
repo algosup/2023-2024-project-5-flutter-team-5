@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:adopte_un_candidat/welcomepage.dart';
-import 'package:adopte_un_candidat/matchingpage.dart';
+import 'package:adopte_un_candidat/profileview.dart';
+import 'package:adopte_un_candidat/matchpage.dart';
 
 
 class HomePage extends MaterialPageRoute {
@@ -41,7 +42,7 @@ class NavDrawerHome extends StatelessWidget {
         drawerHeader,
         ListTile(
           title: const Text('Mon compte'),
-            onTap: () => Navigator.of(context).push(NewPage(0)),
+            onTap: () => Navigator.of(context).push(ProfileView(0)),
         ),
         ListTile(
           title: const Text('Mon profile'),
@@ -49,7 +50,7 @@ class NavDrawerHome extends StatelessWidget {
         ),
         ListTile(
           title: const Text('Paramètres'),
-          onTap: () {},
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MatchPage(0))),
         ),
       ],
     );

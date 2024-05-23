@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   hidable: ^1.0.6
   fluttertoast: ^8.2.5
+  flutter_card_swiper: ^7.0.1
+  appinio_swiper: ^2.1.1
 
 dev_dependencies:
   flutter_test:

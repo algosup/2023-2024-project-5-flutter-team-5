@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart'; 
 
-class NewPage extends MaterialPageRoute {
-  NewPage(int id)
+class ProfileView extends MaterialPageRoute {
+  ProfileView(int id)
       : super(
           builder: (BuildContext context) {
             return Scaffold(
@@ -24,7 +24,7 @@ class NewPage extends MaterialPageRoute {
                       ),
                     ),
                   ),
-                  BottomAppBar(),
+                  BotAppBar(),
                 ],
               ),
             );
@@ -140,7 +140,7 @@ class ViewProfile extends StatelessWidget {
   }
 }
 
-class BottomAppBar extends StatelessWidget {
+class BotAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
