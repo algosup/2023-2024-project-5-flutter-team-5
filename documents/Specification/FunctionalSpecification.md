@@ -1,5 +1,7 @@
 # Adopte un candidat functional specification 
 
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/algosup/2023-2024-project-5-flutter-team-5) [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/) [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
+
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
@@ -100,7 +102,7 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 |	  06/07/2024 5PM       |    Test Plan             |
 |	  06/14/2024 5PM       |    Code            |
 |	  06/14/2024 5PM       |    User Manual            |
-|	  06/21/2024 5PM       |    Oral Presentation            |
+|	  06/21/2024 9AM       |    Oral Presentation            |
 
 
 ## 2. Solution Overview
@@ -114,13 +116,58 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 
 ### 3.1 Personas
 
+![Candidate](Image/CandidatePersona.png)
+
+![CEO](Image/CeoPersona.png)
+
 ### 3.2 Use cases
+
+|Name|Description|Actors|Basic flow|Alternative flow|Exception flow|Post condition|
+|----|-----------|------|----------|----------------|--------------|--------------|
+|Create account|The user create an account|Candidate, Company|The user click on the create account button, fill the form and click on the submit button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the home page|
+|Login|The user login|Candidate, Company|The user click on the login button, fill the form and click on the submit button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the home page|
+|Like|The user like another user|Candidate, Company|The user click on the like button|The user click on the pass button|The user click on the cancel button|The user is redirect to the home page|
+|Pass|The user pass another user|Candidate, Company|The user click on the pass button|The user click on the like button|The user click on the cancel button|The user is redirect to the home page|
+|Cancel|The user cancel another user|Candidate, Company|The user click on the cancel button|The user click on the like button|The user click on the pass button|The user is redirect to the home page|
+|Chat|The user chat with another user|Candidate, Company|The user click on the chat button|The user click on the cancel button|The user click on the like button|The user is redirect to the chat page|
+|Search|The user search another user|Candidate, Company|The user click on the search button, fill the form and click on the submit button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the search page|
+|Logout|The user logout|Candidate, Company|The user click on the logout button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the home page|
+|Setting||Candidate, Company||||||
+|Filter||Candidate, Company||||||
+| Edit profile||Candidate, Company||||||
+|Set location||Candidate, Company||||||
+|Match history||Candidate, Company||||||
+
+
 
 ### 3.3 Mock-up
 
+<img src="Image/FilterLightMode.png" width="200" height="444">
+<img src="Image/FilterDarkMode.png" width="200" height="444">
+<img src="Image/MessageLightMode.png" width="200" height="444">
+<img src="Image/MessageDarkMode.png" width="200" height="444">
+<img src="Image/ProfileLightMode.png" width="200" height="444">
+<img src="Image/ProfileDarkMode.png" width="200" height="444">
+<img src="Image/SwipeLightMode.png" width="200" height="444">
+<img src="Image/SwipeDarkMode.png" width="200" height="444">
+<img src="Image/MessageLightMode.png" width="200" height="444">
+<img src="Image/MessageDarkMode.png" width="200" height="444">
+<img src="Image/SettingLightMode.png" width="200" height="444">
+<img src="Image/SettingDarkMode.png" width="200" height="444">
+
+
 ### 3.4 Functional Requirements
 
+
+
 ### 3.5 Non-Functional Requirements
+
+- The application has French and English language
+- The application has light and dark mode
+- The application is adapted to all screen sizes
+
+
+
 
 
 
