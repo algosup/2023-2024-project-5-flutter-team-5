@@ -90,7 +90,7 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 |Team don't understand the requirements |High|PRD was already send to the client and it was been validated|
 |Poorly structured source code|High|The team have decided to use the convention of the [official dart website](https://dart.dev/effective-dart/style) to write and structured the source code |
 | The team is not familiar with the technology used | High | The team have decided to use the [flutter documentation](https://flutter.dev/docs) to learn the technology |
-|The prodcut isn't deliver at time|High|Each part of the project has deadline|
+|The prodcut isn't deliver at time|High|Every part of the project has deadline|
 |OS compatibility|Medium| Flutter is design to build cross-platform application|
 |Communication between team members|High|Team has private slack server to communicate, share information even remotly|
 
@@ -122,22 +122,26 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 
 ### 3.2 Use cases
 
-|Name|Description|Actors|Basic flow|Alternative flow|Exception flow|Post condition|
-|----|-----------|------|----------|----------------|--------------|--------------|
-|Create account|The user create an account|Candidate, Company|The user click on the create account button, fill the form and click on the submit button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the home page|
-|Login|The user login|Candidate, Company|The user click on the login button, fill the form and click on the submit button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the home page|
-|Like|The user like another user|Candidate, Company|The user click on the like button|The user click on the pass button|The user click on the cancel button|The user is redirect to the home page|
-|Pass|The user pass another user|Candidate, Company|The user click on the pass button|The user click on the like button|The user click on the cancel button|The user is redirect to the home page|
-|Cancel|The user cancel another user|Candidate, Company|The user click on the cancel button|The user click on the like button|The user click on the pass button|The user is redirect to the home page|
-|Chat|The user chat with another user|Candidate, Company|The user click on the chat button|The user click on the cancel button|The user click on the like button|The user is redirect to the chat page|
-|Search|The user search another user|Candidate, Company|The user click on the search button, fill the form and click on the submit button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the search page|
-|Logout|The user logout|Candidate, Company|The user click on the logout button|The user click on the cancel button|The user click on the submit button without fill the form|The user is redirect to the home page|
-|Setting||Candidate, Company||||||
-|Filter||Candidate, Company||||||
-| Edit profile||Candidate, Company||||||
-|Set location||Candidate, Company||||||
-|Match history||Candidate, Company||||||
-
+|Name|Description|Actors|Basic flow|Alternate flow|Exception flow|Pre condition|Post condition|
+|----|-----------|------|----------|----------------|--------------|--------------|----------|
+|Create account|The user create an account|Candidate, Company|The user clicks on the sign up button, fill the form and click on the submit button|The user click on the sign in button|The user click on the submit button without fill every aspect of the form|None|The user is redirect to the home page|
+|Login|The user login|Candidate, Company|The user clicks on sign in button, enter this mail address or user name and password|The user click on sign up button|None|Already have account|The user is redirect to the home page|
+|Like|The user like another user|Candidate, Company|The user clicks on the like button|The user click on the pass button|The user click on the cancel button|None|The user is redirect to the next profile|
+|Pass|The user pass another user|Candidate, Company|The user clicks on the pass button|The user click on the like button|None|None|The user is redirect to the next profile|
+|Cancel|The user undo like|Candidate, Company|The user clicks on the cancel button|None|None|Have already like profile|The user is redirect to the history page|
+|First message|Company send the first message after match |Company|Company user clicks on chat|None|None|Have already a match|The user is redirect to the chat room|
+|Chat|The user chat with another user|Candidate, Company|The user clicks on the chat button|None|None|Company has send the first message|The user is redirect to the chat page|
+|Search|The user search another user|Candidate, Company|The user clicks on the search button, fill the form and click on validate|The user click on the go back button|None|None|The user is redirect to the search page|
+|Logout|The user logout|Candidate, Company|The user clicks on the logout button|None|None|The user has aleardy login in and go to the setting page|The user is redirect to the login page|
+|Setting|The user access to setting page|Candidate, Company|The user clicks on the setting button|None|None|None|User is redirect to the setting page|
+|Filter|The user access to the filter page|Candidate, Company|The user clicks on filter button|None|None|None|user is redirect to Filter page|
+|Edit profile|The user access to the edit profile|Candidate, Company|The user clicks on the edit profile button|None|None|None|The user is redirect to the edit profile page|
+|Set location|The user set location|Candidate, Company|the user click on location and set one|None|The user can don't fill the option|None|Set a location|
+|Match history|The user access all match |Candidate, Company|None|None||The user has already match and go to chat|The user has access to the match history|
+|Delete account|The user delete his account|Candidate, Company|The user click on delete account button|None|None|The user is on setting page|The user is redirect to the login page|
+|Notification|The user see the notification|Candidate, Company|The user receive a notification|None|None|None|The user is redirect to the notification log|
+|Home|The user access to the home page|Candidate, Company|The user click on the home button and access to the "Swipe" profile feature|None|None|None|The user is redirect to the home page|	
+|Profile access|The user access to the profile of other user|Candidate, Company|The user click on the profile button on home page|None|None|None|The user is redirect to the profile user page|
 
 
 ### 3.3 Mock-up
