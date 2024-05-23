@@ -105,10 +105,11 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 |	  06/21/2024 9AM       |    Oral Presentation            |
 
 
-## 2. Solution Overview
+## 2. Solution 
 
 ### 2.1 Product Overview
 
+To respond to the client's request, we have decided to create a flutter application. The main functionality is the "Swipe" profile feature. The user can like, pass or cancel another user. If the user like another user and the other user like back, they can chat together. The company user can send the first message after the match. The user can also access to the profile of another user, the search page, the notification log, the message page, the setting page, the filter page and the match history page. The user can also edit his profile, set his location, logout and delete his account.
 
 
 
@@ -136,7 +137,7 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 |Setting|The user access to setting page|Candidate, Company|The user clicks on the setting button|None|None|None|User is redirect to the setting page|
 |Filter|The user access to the filter page|Candidate, Company|The user clicks on filter button|None|None|None|user is redirect to Filter page|
 |Edit profile|The user access to the edit profile|Candidate, Company|The user clicks on the edit profile button|None|None|None|The user is redirect to the edit profile page|
-|Set location|The user set location|Candidate, Company|the user click on location and set one|None|The user can don't fill the option|None|Set a location|
+|Set location|The user set location|Candidate, Company|the user click on location and set one|None|The user can don't fill the option|The user is on filter page|Set a location|
 |Match history|The user access all match |Candidate, Company|None|None||The user has already match and go to chat|The user has access to the match history|
 |Delete account|The user delete his account|Candidate, Company|The user click on delete account button|None|None|The user is on setting page|The user is redirect to the login page|
 |Notification|The user see the notification|Candidate, Company|The user receive a notification|None|None|None|The user is redirect to the notification log|
@@ -162,6 +163,32 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 
 ### 3.4 Functional Requirements
 
+#### 3.4.1 User Management
+
+- The user can create an account
+- The user can login
+- The user can logout
+- The user can delete his account
+- The user can edit his profile
+- The user can set his location
+- The user can access to the setting page
+- The user can access to the filter page
+- The user can access to the match history
+
+#### 3.4.2 Matching
+- The user can like another user
+- The user can pass another user
+- The user can cancel a like
+- The user can access to the chat page
+- The company user can send the first message after match
+- The user can access to the profile of another user
+- The user can access to the search page
+- The user can access to the notification log
+- The user can access to the message page
+
+
+
+
 
 
 ### 3.5 Non-Functional Requirements
@@ -170,20 +197,44 @@ Adopte 1 candidat is an application that allows companies to recruit candidates 
 - The application has light and dark mode
 - The application is adapted to all screen sizes
 
-
-
-
-
-
 ## 4. System Configuration
+
+### 4.1 Development Environment
+
+- Flutter 2.10.0
+- Dart 2.16.0
+- Android Studio 2021.1.1
+- Windows 11
+- Viual Studio Code 1.64.2
+- MacOs 12.3
+
+### 4.2 Application Configuration
+
+- The application is available on Android and Windows
+- The login is required to access to the application
+- To create an account, the user must fill the form contain the mail address, the user name, the password, and can start to edit his profile(not mandatory at this point)
+- The user can access to tthe setting page to edit his profile, logout and delete his account
+
 
 ## 5. Integration Requirements
 
 ### 5.1 Error Reporting
 
+- The application must display an error message if the user try to login with a wrong mail address or password
+- The application must display an error message if the user try to create an account with a mail address already used
+- The application must display an error message if the user try to create an account with a user name already used
+- The application must display an error message if the user try to create an account with a password too short
+- The application display an error message if the user try access to deleted profile
+
 
 
 ## 6. Glossary
+
+- **Match**: When two users like each other
+- **Fliutter**: An open-source UI software development kit created by Google
+- **Dart**: A programming language optimized for building mobile, desktop, server, and web applications
+- **PRD** : Product Requirement Document
+
 
 
 
