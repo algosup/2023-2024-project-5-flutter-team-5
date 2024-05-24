@@ -134,6 +134,87 @@ The page where the user can access the "Swipe" profile feature
 #### 2.2.2 Profile page
 The page with the user's profile and the option to modify it.
 
+there is a list of soft skills the candidate can rate himself on with stars. from 1 to 5 stars.
+
+The list of softskill is as follow:
+    1. Communication Skills
+        - Verbal Communication
+        - Written Communication
+        - Listening Skills
+        - Presentation Skills
+
+    2. Teamwork and Collaboration
+        - Cooperation
+        - Conflict Resolution
+        - Relationship Building
+        - Networking
+
+    3. Problem-Solving Skills
+        - Critical Thinking
+        - Analytical Skills
+        - Creativity
+        - Decision Making
+
+    4. Adaptability and Flexibility
+        - Open-Mindedness
+        - Learning Agility
+        - Stress Management
+        - Time Management
+
+    5. Leadership and Management
+        - Delegation
+        - Motivating Others
+        - Strategic Thinking
+        - Project Management
+
+    6. Work Ethic
+        - Responsibility
+        - Dependability
+        - Initiative
+        - Attention to Detail
+
+    7. Interpersonal Skills
+        - Empathy
+        - Emotional Intelligence
+        - Negotiation
+        - Diplomacy
+
+    8. Customer Service Orientation
+        - Patience
+        - Active Listening
+        - Conflict Resolution
+        - Relationship Management
+
+    9. Creativity and Innovation
+        - Idea Generation
+        - Open to New Ideas
+        - Risk-Taking
+        - Problem Solving
+
+    10. Cultural Awareness and Sensitivity
+        - Diversity and Inclusion
+        - Global Awareness
+        - Respect for Others
+        - Cross-Cultural Communication
+
+    11. Professionalism
+        - Accountability
+        - Reliability
+        - Punctuality
+        - Appearance and Demeanor
+
+    12. Conflict Resolution
+        - Mediation
+        - Negotiation
+        - Active Listening
+        - Patience
+
+    13. Time Management
+        - Prioritization
+        - Planning
+        - Goal Setting
+        - Scheduling
+
 #### 2.2.3 Filter page
 The page contain button to filter the type of job offer, the type of contract, the city and the radius. among other.
 
