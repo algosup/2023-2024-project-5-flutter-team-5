@@ -269,7 +269,7 @@ These mock correspond to this following pages:
 ## 7. Glossary
 
 - **Match**: When two users like each other
-- **Fliutter**: An open-source UI software development kit created by Google
+- **Flutter**: An open-source UI software development kit created by Google
 - **Dart**: A programming language optimized for building mobile, desktop, server, and web applications
 - **PRD** : Product Requirement Document
 
