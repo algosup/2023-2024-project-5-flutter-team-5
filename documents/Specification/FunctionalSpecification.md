@@ -17,14 +17,13 @@
 	  - [1.5 Risks and Assumptions](#15-risks-and-assumptions)
   - [1.6 Deliverables and Milestones](#16-deliverables-and-milestones)
 - [2. Solution](#2-solution)
-  - [2.1 Product Overview](#21-product-overview)
-  - [2.2 Pages](#22-pages)
-	- [2.2.1 Home page](#221-home-page)
-	- [2.2.2 Profile page](#222-profile-page)
-	- [2.2.3 Filter page](#223-filter-page)
-	- [2.2.4 Message page](#224-message-page)
-	- [2.2.5 Chat page](#225-chat-page)
-	- [2.2.6 Setting page](#226-setting-page)
+  - [2.1 Pages](#22-pages)
+	- [2.1.1 Home page](#221-home-page)
+	- [2.1.2 Profile page](#222-profile-page)
+	- [2.1.3 Filter page](#223-filter-page)
+	- [2.1.4 Message page](#224-message-page)
+	- [2.1.5 Chat page](#225-chat-page)
+	- [2.1.6 Setting page](#226-setting-page)
 - [3. Functional Requirements](#3-functional-requirements)
 	- [3.1 Personas](#31-personas)
 	- [3.2 Use cases](#32-use-cases)
@@ -119,26 +118,22 @@
 
 ## 2. Solution 
 
-### 2.1 Product Overview
+### 2.1 Pages
 
-To respond to the client's request, we have decided to create a flutter application. The main functionality is the "Swipe" profile feature. The user can like, pass or cancel another user. If the user like another user and the other user like back, they can chat together. The company user can send the first message after the match. The user can also access to the profile of another user, the search page, the notification log, the message page, the setting page and the filter page. The user can also edit his profile, set his location, logout and delete his account.
-
-### 2.2 Pages
-
-#### 2.2.1 Home page
+#### 2.1.1 Home page
 The page where the user can access to the "Swipe" profile feature
-#### 2.2.2 Profile page
+#### 2.1.2 Profile page
 The page with the profile of the user and has the ability to edit it
-#### 2.2.3 Filter page
+#### 2.1.3 Filter page
 The page contain button to check the type of job offer, the contract type, the city and the radius.
 
-#### 2.2.4 Message page
+#### 2.1.4 Message page
 The page caintain the log of all the message sent and received with also the log of matches.
 
-#### 2.2.5 Chat page
+#### 2.1.5 Chat page
 The page where the user can chat with another user after chose match user on the message page.
 
-#### 2.2.6 Setting page
+#### 2.1.6 Setting page
 This page containe the account setting include email, phone number, linked account,  logout and delete his account. The page contain also the rule of the community, the privacy policy, legal mention and the contact. 
 
 
