@@ -2,30 +2,42 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/algosup/2023-2024-project-5-flutter-team-5) [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev/) [![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
 
-## Table of Contents
+<details>
+<summary>Table of Contents</summary>
 
-1. [Introduction](#1-introduction)
-   1. [Purpose](#11-purpose)
-   2. [Goals](#12-goals)
-   3. [Stakeholders](#12-stakeholders)
-   4. [Project Scope](#12-project-scope)
-	    1. [In Scope](#141-in-scope)
-	    2. [Out of Scope](#142-out-of-scope)
-   5. [Risks and Assumptions](#14-risks-and-assumptions)
-   6. [Deliverables and Milestones](#15-deliverables-and-milestones)
-2. [Solution Overview](#2-solution-overview)
-   1. [Product Overview](#21-product-overview)
-3. [Functional Specification](#3-functional-specification)
-   1. [Personas](#31-personas)
-   2. [Use cases](#31-use-cases)
-   3. [Mock-up](#32-mock-up)
-   4. [Functional Requirements](#33-functional-requirements)
-   5. [Non-Functional Requirements](#34-non-functional-requirements)
-4. [System Configuration](#5-system-configuration)
-   
-5. [Integration Requirements](#6-integration-requirements)
-   1. [Error Reporting](#61-error-reporting)
-6. [Glossary](#7-glossary)
+- [1. Introduction](#1-introduction)
+  - [1.1 Purpose](#11-purpose)
+  - [1.2 Goals](#12-goals)
+  - [1.3 Stakeholders](#13-stakeholders)
+	- [1.3.1 Project Team Members](#131-project-team-members)
+	- [1.3.2 Other Stakeholders](#132-other-stakeholders)
+  - [1.4 Project Scope](#14-project-scope)
+	- [1.4.1 In Scope](#141-in-scope)
+	- [1.4.2 Out of Scope](#142-out-of-scope)
+	  - [1.5 Risks and Assumptions](#15-risks-and-assumptions)
+  - [1.6 Deliverables and Milestones](#16-deliverables-and-milestones)
+- [2. Solution](#2-solution)
+  - [2.1 Product Overview](#21-product-overview)
+  - [2.2 Pages](#22-pages)
+	- [2.2.1 Home page](#221-home-page)
+	- [2.2.2 Profile page](#222-profile-page)
+	- [2.2.3 Filter page](#223-filter-page)
+	- [2.2.4 Message page](#224-message-page)
+	- [2.2.5 Chat page](#225-chat-page)
+	- [2.2.6 Setting page](#226-setting-page)
+- [3. Functional Requirements](#3-functional-requirements)
+	- [3.1 Personas](#31-personas)
+	- [3.2 Use cases](#32-use-cases)
+	- [3.3 Mock-up](#33-mock-up)
+- [4 Non-Functional Requirements](#4-non-functional-requirements)
+- [5. System Configuration](#5-system-configuration)
+  - [5.1 Application Configuration](#51-application-configuration)
+- [6. Integration Requirements](#6-integration-requirements)
+  - [6.1 Development Environment](#61-development-environment)
+  - [6.2 Error Reporting](#62-error-reporting)
+- [7. Glossary](#7-glossary)
+</details>
+
 
 
 ## 1. Introduction
@@ -109,7 +121,25 @@
 
 ### 2.1 Product Overview
 
-To respond to the client's request, we have decided to create a flutter application. The main functionality is the "Swipe" profile feature. The user can like, pass or cancel another user. If the user like another user and the other user like back, they can chat together. The company user can send the first message after the match. The user can also access to the profile of another user, the search page, the notification log, the message page, the setting page, the filter page and the match history page. The user can also edit his profile, set his location, logout and delete his account.
+To respond to the client's request, we have decided to create a flutter application. The main functionality is the "Swipe" profile feature. The user can like, pass or cancel another user. If the user like another user and the other user like back, they can chat together. The company user can send the first message after the match. The user can also access to the profile of another user, the search page, the notification log, the message page, the setting page and the filter page. The user can also edit his profile, set his location, logout and delete his account.
+
+### 2.2 Pages
+
+#### 2.2.1 Home page
+The page where the user can access to the "Swipe" profile feature
+#### 2.2.2 Profile page
+The page with the profile of the user and has the ability to edit it
+#### 2.2.3 Filter page
+The page contain button to check the type of job offer, the contract type, the city and the radius.
+
+#### 2.2.4 Message page
+The page caintain the log of all the message sent and received with also the log of matches.
+
+#### 2.2.5 Chat page
+The page where the user can chat with another user after chose match user on the message page.
+
+#### 2.2.6 Setting page
+This page containe the account setting include email, phone number, linked account,  logout and delete his account. The page contain also the rule of the community, the privacy policy, legal mention and the contact. 
 
 
 ## 3. Functional Requirements
@@ -129,6 +159,11 @@ To respond to the client's request, we have decided to create a flutter applicat
 
 ### 3.2 Use cases
 
+#### 3.2.1 Flow chart
+
+![Flow chart](Image/FlowChart.png)
+
+#### 3.2.2 Use cases table
 <!-- A lot of these would be better described with a flow chart-->
 <!-- Add indications of what to do in Alternate flow or Exception flow-->
 <!-- history page doesn't exist What is it referring to?-->
@@ -140,16 +175,16 @@ To respond to the client's request, we have decided to create a flutter applicat
 |Login|The user login|Candidate, Company|The user clicks on sign in button, enter their email address or user name and password|The user click on sign up button|None|Already have account|The user is redirected to the home page|
 |Like|The user like an other user|Candidate, Company|The user clicks on the like button|The user click on the pass button|The user click on the cancel button|None|The user is redirected to the next profile|
 |Pass|The user pass an other user|Candidate, Company|The user clicks on the pass button|The user click on the like button|None|None|The user is redirected to the next profile|
-|Cancel|The user undo like|Candidate, Company|The user clicks on the cancel button|None|None|Has already liked a profile|The user is redirected to the history page|
+|Cancel|The user undo like|Candidate, Company|The user clicks on the cancel button|None|None|Has already liked a profile|The user stay on the home page|
 |First message|Company send the first message after a match |Company|Company user clicks on chat|None|None|Have already a match|The user is redirected to the chat room|
-|Chat|The user chat with another user|Candidate, Company|The user clicks on the chat button|None|None|Company has send the first message|The user is redirected to the chat page|
+|Chat|The user chat with another user|Candidate, Company|The user clicks on the matched user on match log or on the message log |Click on message log or match log|None|Company has send the first message|The user is redirected to the chat page|
 |Search|The user search another user|Candidate, Company|The user clicks on the search button, fill the form and click on validate|The user click on the go back button|None|None|The user is redirected to the search page|
 |Logout|The user logout|Candidate, Company|The user clicks on the logout button|None|None|The user has already login in and go to the setting page|The user is redirected to the login page|
 |Setting|The user access to setting page|Candidate, Company|The user clicks on the setting button|None|None|None|User is redirected to the setting page|
 |Filter|The user access to the filter page|Candidate, Company|The user clicks on filter button|None|None|None|user is redirected to Filter page|
 |Edit profile|The user edit their profile|Candidate, Company|The user clicks on the edit profile button|None|None|None|The user is redirected to the edit profile page|
 |Set location|The user set his location|Candidate, Company|the user click on location and set one|None|The user can don't fill the option|The user is on filter page|Set a location|
-|Match history|The user access all matches |Candidate, Company|None|None||The user has already match and go to chat|The user has access to the match history|
+|Match log|The user access all matches |Candidate, Company|None|None|None|The user has already match and go to message page|The user has access to the match log|
 |Delete account|The user delete his account|Candidate, Company|The user click on delete account button|None|None|The user is on setting page|The user is redirected to the login page|
 |Notification|The user see the notification|Candidate, Company|The user receive a notification|None|None|None|The user is redirected to the notification log|
 |Home|The user access the home page|Candidate, Company|The user click on the home button and access to the "Swipe" profile feature|None|None|None|The user is redirected to the home page|	
@@ -160,17 +195,25 @@ To respond to the client's request, we have decided to create a flutter applicat
 
 <!-- Add names to the pages so that reader can understand which pages is which in the above use cases section-->
 <!-- mockup sometime conflict with information given in use case. which is correct? eg. Location seem to be a filter in the mockup but a profile setting in the use cases-->
+These mock correspond to this following pages:
 
+- **Filter page**
 <img src="Image/FilterLightMode.png" width="200" height="444">
 <img src="Image/FilterDarkMode.png" width="200" height="444">
+
+- **Message page**
 <img src="Image/MessageLightMode.png" width="200" height="444">
 <img src="Image/MessageDarkMode.png" width="200" height="444">
+
+- **Profile page**
 <img src="Image/ProfileLightMode.png" width="200" height="444">
 <img src="Image/ProfileDarkMode.png" width="200" height="444">
+
+- **Home page**
 <img src="Image/SwipeLightMode.png" width="200" height="444">
 <img src="Image/SwipeDarkMode.png" width="200" height="444">
-<img src="Image/MessageLightMode.png" width="200" height="444">
-<img src="Image/MessageDarkMode.png" width="200" height="444">
+
+- **Setting page**
 <img src="Image/SettingLightMode.png" width="200" height="444">
 <img src="Image/SettingDarkMode.png" width="200" height="444">
 
@@ -191,9 +234,18 @@ To respond to the client's request, we have decided to create a flutter applicat
 
 ## 5. System Configuration
 
+### 5.1 Application Configuration
+
+- The application is available on Android and Windows
+- The login is required to access to the application
+- To create an account, the user must fill the form contain the mail address, the user name, the password, and can start to edit his profile(not mandatory at this point)
+- The user can access to tthe setting page to edit his profile, logout and delete his account
+
+
+
 ## 6. Integration Requirements
 
-### 4.1 Development Environment
+### 6.1 Development Environment
 
 - Flutter 2.10.0
 - Dart 2.16.0
@@ -202,15 +254,9 @@ To respond to the client's request, we have decided to create a flutter applicat
 - Viual Studio Code 1.64.2
 - MacOs 12.3
 
-### 4.2 Application Configuration
-
-- The application is available on Android and Windows
-- The login is required to access to the application
-- To create an account, the user must fill the form contain the mail address, the user name, the password, and can start to edit his profile(not mandatory at this point)
-- The user can access to tthe setting page to edit his profile, logout and delete his account
 
 
-### 6.1 Error Reporting
+### 6.2 Error Reporting
 
 - The application must display an error message if the user try to login with a wrong mail address or password
 - The application must display an error message if the user try to create an account with a mail address already used
