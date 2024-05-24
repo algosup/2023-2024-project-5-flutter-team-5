@@ -5,36 +5,40 @@
 <details>
 <summary>Table of Contents</summary>
 
-- [1. Introduction](#1-introduction)
-  - [1.1 Purpose](#11-purpose)
-  - [1.2 Goals](#12-goals)
-  - [1.3 Stakeholders](#13-stakeholders)
-	- [1.3.1 Project Team Members](#131-project-team-members)
-	- [1.3.2 Other Stakeholders](#132-other-stakeholders)
-  - [1.4 Project Scope](#14-project-scope)
-	- [1.4.1 In Scope](#141-in-scope)
-	- [1.4.2 Out of Scope](#142-out-of-scope)
-	  - [1.5 Risks and Assumptions](#15-risks-and-assumptions)
-  - [1.6 Deliverables and Milestones](#16-deliverables-and-milestones)
-- [2. Solution](#2-solution)
-  - [2.1 Pages](#22-pages)
-	- [2.1.1 Home page](#221-home-page)
-	- [2.1.2 Profile page](#222-profile-page)
-	- [2.1.3 Filter page](#223-filter-page)
-	- [2.1.4 Message page](#224-message-page)
-	- [2.1.5 Chat page](#225-chat-page)
-	- [2.1.6 Setting page](#226-setting-page)
-- [3. Functional Requirements](#3-functional-requirements)
-	- [3.1 Personas](#31-personas)
-	- [3.2 Use cases](#32-use-cases)
-	- [3.3 Mock-up](#33-mock-up)
-- [4 Non-Functional Requirements](#4-non-functional-requirements)
-- [5. System Configuration](#5-system-configuration)
-  - [5.1 Application Configuration](#51-application-configuration)
-- [6. Integration Requirements](#6-integration-requirements)
-  - [6.1 Development Environment](#61-development-environment)
-  - [6.2 Error Reporting](#62-error-reporting)
-- [7. Glossary](#7-glossary)
+- [Adopte un candidat functional specification](#adopte-un-candidat-functional-specification)
+  - [1. Introduction](#1-introduction)
+    - [1.1 Purpose](#11-purpose)
+    - [1.2 Goals](#12-goals)
+    - [1.3 Stakeholders](#13-stakeholders)
+      - [1.3.1 Project Team Members](#131-project-team-members)
+      - [1.3.2 Other Stakeholders](#132-other-stakeholders)
+    - [1.4 Project Scope](#14-project-scope)
+      - [1.4.1 In Scope](#141-in-scope)
+      - [1.4.2 Out of Scope](#142-out-of-scope)
+    - [1.5 Risks and Assumptions](#15-risks-and-assumptions)
+    - [1.6 Deliverables and Milestones](#16-deliverables-and-milestones)
+  - [2. Solution](#2-solution)
+    - [2.1 Pages](#21-pages)
+    - [2.2 Pages](#22-pages)
+      - [2.2.1 Home page](#221-home-page)
+      - [2.2.2 Profile page](#222-profile-page)
+      - [2.2.3 Filter page](#223-filter-page)
+      - [2.1.4 Message page](#214-message-page)
+      - [2.1.5 Chat page](#215-chat-page)
+      - [2.1.6 Setting page](#216-setting-page)
+  - [3. Functional Requirements](#3-functional-requirements)
+    - [3.1 Personas](#31-personas)
+    - [3.2 Use cases](#32-use-cases)
+      - [3.2.1 Flow chart](#321-flow-chart)
+      - [3.2.2 Use cases table](#322-use-cases-table)
+    - [3.3 Mock-up](#33-mock-up)
+  - [4 Non-Functional Requirements](#4-non-functional-requirements)
+  - [5. System Configuration](#5-system-configuration)
+    - [5.1 Application Configuration](#51-application-configuration)
+  - [6. Integration Requirements](#6-integration-requirements)
+    - [6.1 Development Environment](#61-development-environment)
+    - [6.2 Error Reporting](#62-error-reporting)
+  - [7. Glossary](#7-glossary)
 </details>
 
 
@@ -120,21 +124,27 @@
 
 ### 2.1 Pages
 
-#### 2.1.1 Home page
-The page where the user can access to the "Swipe" profile feature
-#### 2.1.2 Profile page
-The page with the profile of the user and has the ability to edit it
-#### 2.1.3 Filter page
-The page contain button to check the type of job offer, the contract type, the city and the radius.
+To meet the client's request, we have decided to create a Flutter application. The main feature is the "Swipe" profile function, where users can like, pass, or cancel another user. If two users like each other, they can start a chat. Company users can send the first message after a match. Additionally, users can access other profiles, the search page, notification log, message page, settings page, and filter page. Users can also edit their profiles, set their location, log out, and delete their accounts.
+
+### 2.2 Pages
+
+#### 2.2.1 Home page
+The page where the user can access the "Swipe" profile feature
+
+#### 2.2.2 Profile page
+The page with the user's profile and the option to modify it.
+
+#### 2.2.3 Filter page
+The page contain button to filter the type of job offer, the type of contract, the city and the radius. among other.
 
 #### 2.1.4 Message page
-The page caintain the log of all the message sent and received with also the log of matches.
+The page containing the logs of all the messages sent and received a long with an history of your matches.
 
 #### 2.1.5 Chat page
 The page where the user can chat with another user after chose match user on the message page.
 
 #### 2.1.6 Setting page
-This page containe the account setting include email, phone number, linked account,  logout and delete his account. The page contain also the rule of the community, the privacy policy, legal mention and the contact. 
+This page contains the account setting including email, phone numbers, linked accounts, logout and delete option. The page also contain the community rule, the privacy policy, legal mention and support contact. 
 
 
 ## 3. Functional Requirements
@@ -234,7 +244,7 @@ These mock correspond to this following pages:
 - The application is available on Android and Windows
 - The login is required to access to the application
 - To create an account, the user must fill the form contain the mail address, the user name, the password, and can start to edit his profile(not mandatory at this point)
-- The user can access to tthe setting page to edit his profile, logout and delete his account
+- The user can access to the setting page to edit his profile, logout and delete his account
 
 
 
