@@ -122,7 +122,7 @@
 
 ## 2. Solution 
 
-### 2.1 Pages
+### 2.1 Overview
 
 To meet the client's request, we have decided to create a Flutter application. The main feature is the "Swipe" profile function, where users can like, pass, or cancel another user. If two users like each other, they can start a chat. Company users can send the first message after a match. Additionally, users can access other profiles, the search page, notification log, message page, settings page, and filter page. Users can also edit their profiles, set their location, log out, and delete their accounts.
 
@@ -130,13 +130,22 @@ To meet the client's request, we have decided to create a Flutter application. T
 
 #### 2.2.1 Home page
 The page where the user can access the "Swipe" profile feature
+The candidate has access to the company profile and company has access to the candidate profile. The user has 4 possibilities:
+- Like
+- Pass
+- Cancel
+- Look the profile of the user displayed 
+
+The user can tap "Like" button or swipe this finger of the left and the user can tap "Pass" button or swipe this finger of the right. The user can press "Cancel" button to undo the like. The profile of the other user is displayed in the middle of the screen, to access to the profile, the user need to tap the window on the middle of the screen to access to the profile details.
+
 
 #### 2.2.2 Profile page
 The page with the user's profile and the option to modify it.
 
 there is a list of soft skills the candidate can rate himself on with stars. from 1 to 5 stars.
 
-The list of softskill is as follow:
+The list of **softskill** is as follow:
+
     1. Communication Skills
         - Verbal Communication
         - Written Communication
@@ -215,18 +224,80 @@ The list of softskill is as follow:
         - Goal Setting
         - Scheduling
 
+
+The candidate can also add other data in this profile as follow.
+
+	1. Hobby 
+	2. Ambition
+	3. Personality
+	4. Experience
+	5. Education
+	6. Language
+	7. Available Area
+	8. Available Time
+
+
+Company at the other hand can has also has a list of **characteristics of the job offer** they are offering is as follow. 
+
+	1. Job Title
+	2. Scale of Salary
+	3. Schedule
+	4. Perks
+	5. Type of contract
+	6. Type of job offer
+	7. Type of company
+	8. Diploma required
+	9. City
+	10. Radius
+
+
 #### 2.2.3 Filter page
-The page contain button to filter the type of job offer, the type of contract, the city and the radius. among other.
+The page contain button to filter the type of job offer, the type of contract, the city and the radius. among other. This page is accessible from every page at the top right corner of the screen (except on the setting page and filter).
+According to the type of the user, the filter has this following options:
+
+    1. Candidate filter
+	- Type of job offer
+	- Type of contract
+	- City
+	- Radius
+	- Diploma required
+	- Type of company
+	- Scale of salary
+	- Schedule
+	- Available area
+	- Available time
+	- Language
+	
+    2. Company filter
+    - Diploma
+	- Available area
+	- Available time
+	- Language
+	- Soft skills
+	- Hard skills
+
+To select the option, the user needs to tick the box.
+For the city, the user needs to tap on the text field and for the radius, a slider is available. 
+
+
 
 #### 2.1.4 Message page
-The page containing the logs of all the messages sent and received a long with an history of your matches.
+The page containing the logs of all the messages sent and received a long with an history of your matches. To access to the message page, the user need to tap on the button on the bottom center of the screen, available at every page.
+
+
 
 #### 2.1.5 Chat page
 The page where the user can chat with another user after chose match user on the message page.
+The user has 2 possibilities to access to the chat page:
+- Tap on the matched user on match log (only if the user is a company)
+- Tap on the message log 
+
+Each message log has the name of the user and the last message sent. The match log at the other hand has only the name of the user.
+
+In the chat page, the user can tap on the text field, write a message with a keyboard and tap on the send button to send the message. The user can also tap on the back button to go back to the message page. The possiblility to delete or edit a message is available.
 
 #### 2.1.6 Setting page
 This page contains the account setting including email, phone numbers, linked accounts, logout and delete option. The page also contain the community rule, the privacy policy, legal mention and support contact. 
-
 
 ## 3. Functional Requirements
 
