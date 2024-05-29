@@ -137,7 +137,7 @@ The candidate has access to the company profile and company has access to the ca
 - Look the profile of the user displayed 
 
 The user can tap "Like" button or swipe this finger of the left and the user can tap "Pass" button or swipe this finger of the right. The user can press "Cancel" button to undo the like. The profile of the other user is displayed in the middle of the screen, to access to the profile, the user need to tap the window on the middle of the screen to access to the profile details.
-
+To access to the home page, the user need to tap on the home button on the bottom right of the screen, available at every page.
 
 #### 2.2.2 Profile page
 The page with the user's profile and the option to modify it.
@@ -250,6 +250,8 @@ Company at the other hand can has also has a list of **characteristics of the jo
 	9. City
 	10. Radius
 
+To access to the profile page, the user need to tap on the profile button on the bottom left of the screen, available at every page. 
+
 
 #### 2.2.3 Filter page
 The page contain button to filter the type of job offer, the type of contract, the city and the radius. among other. This page is accessible from every page at the top right corner of the screen (except on the setting page and filter).
@@ -277,7 +279,7 @@ According to the type of the user, the filter has this following options:
 	- Hard skills
 
 To select the option, the user needs to tick the box.
-For the city, the user needs to tap on the text field and for the radius, a slider is available. 
+For the city, the user needs to tap on the text field and for the radius, a slider is available (slide the cursor on the left, the radius is shorter, on the right, it's higher). 
 
 
 
@@ -294,11 +296,34 @@ The user has 2 possibilities to access to the chat page:
 
 Each message log has the name of the user and the last message sent. The match log at the other hand has only the name of the user.
 
-In the chat page, the user can tap on the text field, write a message with a keyboard and tap on the send button to send the message. The user can also tap on the back button to go back to the message page. The possiblility to delete or edit a message is available.
+In the chat page, the user can tap on the text field, write a message with a keyboard and tap on the send button to send the message. The possiblility to delete or edit a message is available.
 
 #### 2.1.6 Setting page
 This page contains the account setting including email, phone numbers, linked accounts, logout and delete option. The page also contain the community rule, the privacy policy, legal mention and support contact. 
+The option available are the following list:
 
+    1. Setting
+		a. phone numbers
+		b. linked accounts
+		c. email address
+	2. Contact us
+		a. help & assistance
+	3. Community
+		a. community rule
+		b. security 
+	4. Policy
+		a. cookie policy
+		b. privacy policy
+		c. privacy setting
+	5.Legal mention
+		a. license
+		b. terms of use
+	6. Logout
+
+	7. Delete account
+
+Except for the logout and delete account, the user can tap on the option to access to the page dedicated. On the page of privacy setting, the user can tick the optional cookies. for phone numbers, a keyboard is available to write the phone number when the user taps the button. For the linked account, the user can tap on the button to link the account and add account. The email address is already written and can't be modified.
+The setting page is accessible from every page at the top left corner of the screen (except on the setting page and filter).
 ## 3. Functional Requirements
 
 <!-- Add a part defining the different pages and their functions before doing the use cases as they are currently referring to pages that are not defined-->
