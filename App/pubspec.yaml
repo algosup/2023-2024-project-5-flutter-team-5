@@ -34,11 +34,9 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.6
-  hidable: ^1.0.6
+  cupertino_icons: ^1.0.8
   fluttertoast: ^8.2.5
   flutter_card_swiper: ^7.0.1
-  appinio_swiper: ^2.1.1
 
 dev_dependencies:
   flutter_test:
@@ -64,17 +62,24 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - assets/icon_user.png
-  - assets/settings.png
-  - assets/message.png
-  - assets/handshake.png
-  - assets/handshake_white.png
+  - assets/user_dark.png
+  - assets/user_light.png
+  - assets/settings_dark.png
+  - assets/settings_light.png
+  - assets/message_dark.png
+  - assets/message_light.png
+  - assets/handshake_dark.png
+  - assets/handshake_light.png
   - assets/edit_pen.png
-  - assets/filter.png
-  - assets/bell.png
-  - assets/bell_white.png
-  - assets/home.png
-  - assets/home_white.png
+  - assets/filter_dark.png
+  - assets/filter_light.png
+  - assets/bell_dark.png
+  - assets/bell_light.png
+  - assets/home_dark.png
+  - assets/home_light.png
+  - assets/heart.png
+  - assets/cross.png
+  - assets/backarrow.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:adopte_un_candidat/loginpage.dart';
-import 'package:adopte_un_candidat/signinpage.dart';
-import 'package:adopte_un_candidat/homepage.dart';
+import './loginpage.dart';
+import './signinpage.dart';
+import '../matchpage.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key});
@@ -55,7 +55,7 @@ class WelcomePage extends StatelessWidget {
                       SizedBox(
                         width: 200.0,
                         child: ElevatedButton(
-                            onPressed: () => Navigator.of(context).push(HomePage(0)),
+                            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage())),
                           child: const Text('Passer(dev)'),
                         ),
                       ), // end dev button

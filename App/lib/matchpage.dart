@@ -1,204 +1,333 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
+import 'package:adopte_un_candidat/profileview.dart';
+import 'package:adopte_un_candidat/useful.dart';
+import 'package:adopte_un_candidat/main.dart';
+
+
 class Profile {
-  const Profile({
-    required this.id,
-    required this.name,
-    required this.age,
-    required this.location,
-  });
-  final int id;
   final String name;
-  final int age;
   final String location;
+
+  Profile({required this.name, required this.location});
 }
 
-List<Profile> profiles = <Profile>[
-  Profile(id: 1, name: 'Jean', age: 25, location: 'Paris'),
-  Profile(id: 2, name: 'Marie', age: 30, location: 'Lyon'),
-  Profile(id: 3, name: 'Pierre', age: 35, location: 'Marseille'),
-  Profile(id: 4, name: 'Sophie', age: 40, location: 'Toulouse'),
-  Profile(id: 5, name: 'Paul', age: 45, location: 'Bordeaux'),
-];
+class ExampleCard extends StatelessWidget {
+  final Profile profile;
+  final int cardIndex;
+  final Themes themes = Themes();
 
-class MatchPage extends StatefulWidget {
-  MatchPage(int id) : super();
+  ExampleCard({
+    Key? key,
+    required this.profile,
+    required this.cardIndex,
+  }) : super(key: key);
 
-  @override
-  _MatchPageState createState() => _MatchPageState();
-}
-class _MatchPageState extends State<MatchPage> {
-  int currentIndex = 0;
+  // colors cards
+  static final List<LinearGradient> cardGradients = [
+    LinearGradient(colors: [Colors.pink, Colors.redAccent]),
+    LinearGradient(colors: [Colors.blue, Colors.blueAccent]),
+    LinearGradient(colors: [Colors.orange, Colors.deepOrange]),
+    LinearGradient(colors: [Colors.purple, Colors.deepPurple]),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: TopAppBar1(),
-      ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: ShapeDecoration(
-          color: const Color(0xFF161C23),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(0),
+    final gradient = cardGradients[cardIndex % cardGradients.length];
+
+    return Container(
+      width: MediaQuery.of(context).size.width, 
+      height: MediaQuery.of(context).size.height - 330, 
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        gradient: gradient, 
+        boxShadow: [
+          BoxShadow(
+            color: themes.currentTheme.colorScheme.primary.withOpacity(1),
+            spreadRadius: 10,
+            blurRadius: 15,
+            offset: const Offset(0, 3),
           ),
+        ],
+      ),
+      child: Container( // text on card
+        margin: const EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50),
+          color: Colors.white.withOpacity(0.8),
         ),
-        child: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: PageView.builder(
-                  itemCount: profiles.length,
-                  itemBuilder: (context, index) {
-                    Profile profile = profiles[index];
-                    return Card(
-                      color: const Color(0xFF252D40),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(25.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const SizedBox.shrink(),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  profile.name,
-                                  style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  profile.location,
-                                  style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                  onPageChanged: (index) {
-                    setState(() {
-                      currentIndex = index;
-                    });
-                  },
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              ListTile(
+                title: Text(
+                  profile.name,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  'Ville : ${profile.location}',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
                 ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    if (currentIndex < profiles.length - 1) {
-                      setState(() {
-                        currentIndex++;
-                      });
-                    }
-                  },
-                  icon: const Icon(Icons.close),
-                  iconSize: 50,
-                  color: const Color.fromARGB(255, 190, 8, 8),
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                ),
-                IconButton(
-                  onPressed: () {
-                    if (currentIndex > 0) {
-                      setState(() {
-                        currentIndex--;
-                      });
-                    }
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                  iconSize: 50,
-                  color: const Color.fromARGB(255, 118, 40, 125),
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                ),
-                IconButton(
-                  onPressed: () {
-                    if (currentIndex < profiles.length - 1) {
-                      setState(() {
-                        currentIndex++;
-                      });
-                    }
-                  },
-                  icon: const Icon(Icons.favorite),
-                  iconSize: 50,
-                  color: const Color.fromARGB(255, 45, 3, 184),
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-      bottomNavigationBar: BotAppBar1(),
     );
   }
 }
 
+class MPage extends StatefulWidget {
+  const MPage({
+    super.key,
+  });
+
+  @override
+  State<MPage> createState() => MatchingPage();
+}
+
+class MatchingPage extends State<MPage> { // example of profile
+  final CardSwiperController controller = CardSwiperController();
+  final List<Profile> candidates = [
+    Profile(name: 'Mac-Donald', location: 'Vierzon'),
+    Profile(name: 'Skill-Issue®', location: 'Paris'),
+    Profile(name: 'Rick-Roller', location: 'Never-Gonna'),
+    Profile(name: 'Ledger', location: 'Moscow'),
+  ];
+
+  late final List<Widget> cards;
+  final Themes themes = Themes();
+
+  @override
+  void initState() {
+    super.initState();
+    cards = candidates
+        .asMap()
+        .entries
+        .map((entry) => ExampleCard(profile: entry.value, cardIndex: entry.key))
+        .toList();
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( // background
+      backgroundColor: themes.currentTheme.colorScheme.primary,
+      appBar: PreferredSize( // top app bar
+        preferredSize: const Size.fromHeight(100),
+        child: TopAppBar1(),
+      ),
+      body: Column(
+        children: [
+          Flexible(
+            child: Stack(
+              children: [
+                CardSwiper( // card swiper parameters
+                  allowedSwipeDirection: const AllowedSwipeDirection.only(right: true, left: true),
+                  controller: controller,
+                  cardsCount: cards.length,
+                  onSwipe: _onSwipe,
+                  onUndo: _onUndo,
+                  numberOfCardsDisplayed: 2,
+                  backCardOffset: const Offset(00, 45),
+                  padding: const EdgeInsets.all(0.0),
+                  cardBuilder: (
+                    context,
+                    index,
+                    horizontalThresholdPercentage,
+                    verticalThresholdPercentage,
+                  ) =>
+                      cards[index],
+                ),
+                Positioned( // Buttons swiper
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(45.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 90,
+                          height: 90,
+                          decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: themes.currentTheme.colorScheme.surface,
+                          boxShadow: [
+                            BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 5),
+                            ),
+                          ],
+                          ),
+                          child: IconButton(
+                          icon: Image.asset('assets/cross.png', width: 75, height: 75),
+                          onPressed: () => controller.swipe(CardSwiperDirection.left),
+                          iconSize: 50,
+                          ),
+                        ),
+                        Container(
+                          width: 90,
+                          height: 90,
+                          decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: themes.currentTheme.colorScheme.surface,
+                          boxShadow: [
+                            BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 5),
+                            ),
+                          ],
+                          ),
+                          child: IconButton(
+                          onPressed: () => controller.undo,
+                          icon: Image.asset('assets/backarrow.png', width: 70, height: 70),
+                          iconSize: 50, 
+                          ),
+                        ),
+                        Container(
+                          width: 90,
+                          height: 90,
+                          decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: themes.currentTheme.colorScheme.surface,
+                          boxShadow: [
+                            BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 5),
+                            ),
+                          ],
+                          ),
+                          child: IconButton(
+                          icon: Image.asset('assets/heart.png', width: 50, height: 50),
+                          onPressed: () => controller.swipe(CardSwiperDirection.right),
+                          iconSize: 50,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          BotAppBar1(), // Bottom app bar
+        ],
+      ),
+    );
+  }
+ // Swipe and undo functions
+  bool _onSwipe(
+    int previousIndex,
+    int? currentIndex,
+    CardSwiperDirection direction,
+  ) {
+    return true;
+  }
+
+  bool _onUndo(
+    int? previousIndex,
+    int currentIndex,
+    CardSwiperDirection direction,
+  ) {
+    return true;
+  }
+}
+
+
+
+// ------------------------------------------------------------------
 class BotAppBar1 extends StatelessWidget {
+  final Themes themes = Themes();
+  BotAppBar1({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color(0xFF161C23),
+        color: themes.currentTheme.colorScheme.primary,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
-            onTap: () {
-              // Handle button 1 tap
-            },
-            child: Image.asset(
-              'assets/icon_user.png',
-              width: 45,
-              height: 45,
-              fit: BoxFit.cover,
+            onTap: () => Navigator.of(context).push(ProfileView(0)),
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.user,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           GestureDetector(
             onTap: () {
               // Handle button 2 tap
             },
-            child: Image.asset(
-              'assets/message.png',
-              width: 45,
-              height: 45,
-              fit: BoxFit.cover,
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.message,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           GestureDetector(
             onTap: () {
               // Handle button 3 tap
             },
-            child: Image.asset(
-              'assets/home_white.png',
-              width: 45,
-              height: 45,
-              fit: BoxFit.cover,
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: themes.currentTheme.colorScheme.onSurface,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.home,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
         ],
@@ -208,13 +337,15 @@ class BotAppBar1 extends StatelessWidget {
 }
 
 class TopAppBar1 extends StatelessWidget {
+  final Themes themes = Themes();
+  TopAppBar1({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color(0xFF161C23),
+        color: themes.currentTheme.colorScheme.primary,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,9 +355,9 @@ class TopAppBar1 extends StatelessWidget {
               // Handle left button tap
             },
             child: Padding(
-              padding: EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
-                'assets/handshake_white.png',
+                themes.currentTheme.handshake,
                 width: 80,
                 height: 80,
               ),
@@ -239,9 +370,9 @@ class TopAppBar1 extends StatelessWidget {
                   // Handle right button 1 tap
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(right: 40),
+                  padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                    'assets/bell_white.png',
+                    themes.currentTheme.bell,
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,
@@ -253,11 +384,11 @@ class TopAppBar1 extends StatelessWidget {
                   // Handle right button 2 tap
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(right: 40),
+                  padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                    'assets/settings.png',
-                    width: 45,
-                    height: 45,
+                    themes.currentTheme.filter,
+                    width: 55,
+                    height: 55,
                     fit: BoxFit.cover,
                   ),
                 ),

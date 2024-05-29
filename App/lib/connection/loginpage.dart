@@ -1,23 +1,25 @@
+import 'package:adopte_un_candidat/matchpage.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'homepage.dart';
-import 'useful.dart';
+import '../useful.dart';
+import '../matchpage.dart';
 
-class SigninPage extends MaterialPageRoute {
-  SigninPage(int id)
+
+class LoginPage extends MaterialPageRoute {
+  LoginPage(int id)
       : super(
           builder: (BuildContext context) {
             return Scaffold(
               extendBodyBehindAppBar: true,
               appBar: AppBar(
-                title: const Text('Inscription'),
+                title: const Text('Connexion'),
                 backgroundColor: Color.fromARGB(0, 73, 7, 255)
               ),
               body: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Color.fromARGB(255, 252, 255, 46), Color.fromARGB(255, 216, 59, 255)],
+                    colors: [Color.fromARGB(255, 243, 33, 236), Color.fromARGB(255, 2, 187, 255)],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
@@ -25,9 +27,9 @@ class SigninPage extends MaterialPageRoute {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextFormFieldSignin(),
+                    const TextFormFieldLogin(),
                     const SizedBox(height: 24.0),
-                    Buttonsignin(),
+                    ButtonLogin(),
                   ],
                 ),
               ),
@@ -36,15 +38,15 @@ class SigninPage extends MaterialPageRoute {
         );
 }
 
-// TextFormFieldSignin State          
-class TextFormFieldSignin extends StatefulWidget {
-  const TextFormFieldSignin({Key? key});
+// TextFormFieldLogin State          
+class TextFormFieldLogin extends StatefulWidget {
+  const TextFormFieldLogin({Key? key});
 
   @override
-  State<StatefulWidget> createState() => _TextFormFieldSigninState();
+  State<StatefulWidget> createState() => _TextFormFieldLogin();
 }
 
-class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
+class _TextFormFieldLogin extends State<TextFormFieldLogin> {
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
       GlobalKey<FormFieldState<String>>();
 
@@ -63,7 +65,7 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
     return null;
   }
 
-  // Sign In Form
+  // Login In Form
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -82,7 +84,7 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
               ), 
               filled: true,
               icon: Icon(Icons.person),
-              labelText: 'Nom d\'utilisateur *',
+              labelText: 'Nom d\'utilisateur',
             ),
             onSaved: (String? value) {
               this._username = value;
@@ -91,47 +93,15 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
             validator: _validateName,
           ),
           const SizedBox(height: 24.0),
-          // "Email" form.
-          TextFormField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(25.0)),
-              ), 
-              filled: true,
-              icon: Icon(Icons.email),
-              hintText: 'Votre adresse e-mail',
-              labelText: 'E-mail *',
-            ),
-            keyboardType: TextInputType.emailAddress,
-            onSaved: (String? value) {
-              this._email = value;
-              print('email=$_email');
-            },
-          ),
-          const SizedBox(height: 24.0),
           // "Password" form.
           PasswordField(
             fieldKey: _passwordFieldKey,
-            helperText: 'Plus de 8 caractères.\nDoit contenir des lettres et des chiffres.',
-            labelText: 'Mot de passe *',
+            labelText: 'Mot de passe',
             onFieldSubmitted: (String value) {
               setState(() {
                 this._password = value;
               });
             },
-          ),
-          const SizedBox(height: 24.0),
-          // "Re-type password" form.
-          TextFormField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(25.0)),
-              ), 
-              filled: true,
-                icon: Icon(Icons.check_box_outline_blank, color: Colors.transparent),
-              labelText: 'Confirmer le mot de passe *',
-            ),
-            obscureText: true,
           ),
         ],
       ),
@@ -139,9 +109,8 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
   }
 }
 
-// Sign In Button (with verification)
-class Buttonsignin extends StatelessWidget {
-  Buttonsignin({Key? key});
+class ButtonLogin extends StatelessWidget {
+  ButtonLogin({Key? key});
     String? _username;
     String? _email;
     String? _password;
@@ -149,7 +118,7 @@ class Buttonsignin extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (_username != null && _email != null && _password != null) {
+        if (_username != null && _password != null) {
           Fluttertoast.showToast(
             msg: 'Connexion en cours...',
             toastLength: Toast.LENGTH_SHORT,
@@ -159,7 +128,7 @@ class Buttonsignin extends StatelessWidget {
             textColor: Colors.white,
             fontSize: 16.0,
           );
-          Navigator.of(context).push(HomePage(0));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage()));
         } else {
           Fluttertoast.showToast(
             msg: 'Veuillez remplir tous les champs correctement.',
@@ -172,7 +141,7 @@ class Buttonsignin extends StatelessWidget {
           );
         }
       },
-      child: const Text('S\'inscrire'),
+      child: const Text('Se connecter'),
     );
   }
 }

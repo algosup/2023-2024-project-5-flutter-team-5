@@ -1,13 +1,18 @@
+import 'package:adopte_un_candidat/matchpage.dart';
 import 'package:flutter/material.dart'; 
 
+import 'package:adopte_un_candidat/useful.dart';
+
 class ProfileView extends MaterialPageRoute {
+  final Themes themes = Themes();
   ProfileView(int id)
       : super(
           builder: (BuildContext context) {
+            final themes = Themes();
             return Scaffold(
               extendBodyBehindAppBar: true,
               appBar: PreferredSize(
-                preferredSize: Size.fromHeight(100),
+                preferredSize: const Size.fromHeight(100),
                 child: TopAppBar(),
               ),
               body: Column(
@@ -18,7 +23,7 @@ class ProfileView extends MaterialPageRoute {
                   ),
                   Expanded(
                     child: Container(
-                      color: Color(0xFF044082),
+                      color: themes.currentTheme.colorScheme.primaryContainer,
                       child: Center(
                         child: ScrollableBoxWidget(),
                       ),
@@ -35,10 +40,11 @@ class ProfileView extends MaterialPageRoute {
 class ViewProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container( // Background (black)
+    final themes = Themes();
+    return Container( // Background (black/white)
       width: MediaQuery.of(context).size.width,
       decoration: ShapeDecoration(
-        color: Color(0xFF161C23),
+        color: themes.currentTheme.colorScheme.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
         ),
@@ -52,13 +58,13 @@ class ViewProfile extends StatelessWidget {
           width: 1059,
           height: 814,
           decoration: ShapeDecoration(
-            color: Color(0xFF044082),
+            color: themes.currentTheme.colorScheme.primaryContainer,
             shape: OvalBorder(),
             shadows: [
           BoxShadow(
-            color: Color.fromARGB(255, 3, 50, 100),
+            color: themes.currentTheme.colorScheme.error,
             blurRadius: 1,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
             spreadRadius: 10,
           )
             ],
@@ -72,9 +78,9 @@ class ViewProfile extends StatelessWidget {
               width: 149,
               height: 149,
               decoration: ShapeDecoration(
-                color: Color(0xFF272D39),
-                shape: OvalBorder(),
-                shadows: [
+                color: themes.currentTheme.colorScheme.onSurface,
+                shape: const OvalBorder(),
+                shadows: const [
                   BoxShadow(
                     color: Color(0x3F000000),
                     blurRadius: 4,
@@ -95,7 +101,7 @@ class ViewProfile extends StatelessWidget {
                 'Pierre MARTIN, 33',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFFAEAEAE),
+                  color: themes.currentTheme.colorScheme.onPrimaryContainer,
                   fontSize: 26,
                   fontFamily: 'Inter',
                   fontWeight: FontWeight.w700,
@@ -114,7 +120,7 @@ class ViewProfile extends StatelessWidget {
               child: Container(
                 width: 35,
                 height: 35,
-                decoration: ShapeDecoration(
+                decoration: const ShapeDecoration(
                 color: Color.fromARGB(255, 204, 204, 204),
                 shape: OvalBorder(),
                 shadows: [
@@ -141,48 +147,75 @@ class ViewProfile extends StatelessWidget {
 }
 
 class BotAppBar extends StatelessWidget {
+  final Themes themes = Themes();
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 35, 22, 22),
+        color: themes.currentTheme.colorScheme.primary,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
-            onTap: () {
-                              // Handle button 1 tap
-            },
-            child: Image.asset(
-              'assets/icon_user.png',
-              width: 45,
-              height: 45,
-              fit: BoxFit.cover,
+            onTap: () => Navigator.of(context).push(ProfileView(0)),
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: themes.currentTheme.colorScheme.onSurface,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.user,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           GestureDetector(
             onTap: () {
-                              // Handle button 2 tap
+              // Handle button 2 tap
             },
-            child: Image.asset(
-              'assets/message.png',
-              width: 45,
-              height: 45,
-              fit: BoxFit.cover,
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.message,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           GestureDetector(
-            onTap: () {
-                              // Handle button 3 tap
-            },
-            child: Image.asset(
-              'assets/home_white.png',
-              width: 45,
-              height: 45,
-              fit: BoxFit.cover,
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage())),
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.home,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
         ],
@@ -192,13 +225,14 @@ class BotAppBar extends StatelessWidget {
 }
 
 class TopAppBar extends StatelessWidget {
+  final Themes themes = Themes();
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 150,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Color(0xFF161C23),
+        color: themes.currentTheme.colorScheme.primary,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -208,9 +242,9 @@ class TopAppBar extends StatelessWidget {
                                 // Handle left button tap
             },
             child: Padding(
-              padding: EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
-                'assets/handshake_white.png',
+                themes.currentTheme.handshake,
                 width: 80,
                 height: 80,
               ),
@@ -223,9 +257,9 @@ class TopAppBar extends StatelessWidget {
                                 // Handle right button 1 tap
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(right: 40),
+                  padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                    'assets/bell_white.png',
+                    themes.currentTheme.bell,
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,
@@ -237,9 +271,9 @@ class TopAppBar extends StatelessWidget {
                                 // Handle right button 2 tap
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(right: 40),
+                  padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                    'assets/settings.png',
+                    themes.currentTheme.settings,
                     width: 45,
                     height: 45,
                     fit: BoxFit.cover,
@@ -262,31 +296,31 @@ class ScrollableBoxWidget extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: BoxWidget(
               text: 'BlaBla',
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: BoxWidget(
               text: 'BlouBlou',
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: BoxWidget(
               text: 'BliBli',
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: BoxWidget(
               text: 'BluBlu',
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15),
             child: BoxWidget(
               text: 'Never gonna give you up, \nNever gonna let you down, \nNever gonna run around and desert you, \nNever gonna make you cry, \nNever gonna say goodbye, \nNever gonna tell a lie and hurt you',
             ),
@@ -300,6 +334,7 @@ class ScrollableBoxWidget extends StatelessWidget {
 
 class BoxWidget extends StatelessWidget {
   final String text;
+  final Themes themes = Themes();
 
   BoxWidget({required this.text});
 
@@ -311,12 +346,12 @@ class BoxWidget extends StatelessWidget {
           width: 294,
           height: 221,
           decoration: ShapeDecoration(
-            color: Color(0xFF363B44),
+            color: themes.currentTheme.colorScheme.secondary,
             shape: RoundedRectangleBorder(
-              side: BorderSide(width: 1, color: Color(0xD2191D24)),
+              side: const BorderSide(width: 1, color: Color(0xD2191D24)),
               borderRadius: BorderRadius.circular(10),
             ),
-            shadows: [
+            shadows: const [
               BoxShadow(
                 color: Color(0x3F000000),
                 blurRadius: 4,
@@ -329,7 +364,7 @@ class BoxWidget extends StatelessWidget {
             child: Text(
               text,
               style: TextStyle(
-                color: Colors.white,
+                color: themes.currentTheme.colorScheme.onSecondary,
                 fontSize: 13,
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w400,
