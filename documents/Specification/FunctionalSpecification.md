@@ -404,11 +404,10 @@ These mock correspond to this following pages:
 
 <!-- Be more specific eg. any android phone from the last 5 years and windows 10-->
 
-
 - The application has French and English language
 - The application has light and dark mode
 - The application is adapted to all screen sizes
-- Application work on Windows and Android
+- Application work on Windows and Android older version (Windows 10, Android 5.0)
 
 
 
@@ -429,12 +428,19 @@ These mock correspond to this following pages:
 
 ### 6.1 Development Environment
 
+Framwork & Language:
 - Flutter 2.10.0
 - Dart 2.16.0
+
+IDE:
 - Android Studio 2021.1.1
-- Windows 11
 - Viual Studio Code 1.64.2
+
+OS:
+- Windows 11 Pro
 - MacOs 12.3
+
+Android studio has an Android emulator to test the application on Android.
 
 
 
@@ -454,6 +460,15 @@ These mock correspond to this following pages:
 - **Flutter**: An open-source UI software development kit created by Google
 - **Dart**: A programming language optimized for building mobile, desktop, server, and web applications
 - **PRD** : Product Requirement Document
+- **Soft skills**: Personal attributes that enable someone to interact effectively and harmoniously with other people
+- **Hard skills**: Specific, teachable abilities or knowledge that is easily quantifiable
+- **Radius**: The distance around a particular point
+- **Cookie**: A small piece of data stored on the user's computer by the web browser while browsing a website
+- **Community rule**: A set of guidelines that users must follow to participate in a community
+- **Privacy policy**: A statement that discloses some or all of the ways a website collects, uses, discloses, and manages a user's data
+- **Legal mention**: A legal statement that discloses some or all of the ways a website collects, uses, discloses, and manages a user's data
+- **Support contact**: A way to contact the support team for help and assistance
+
 
 
 
