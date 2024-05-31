@@ -19,7 +19,6 @@ class _MessagePageState extends State<MessagePage> {
   final GlobalKey scrollhorizontal_lastmatches_message = GlobalKey();
   final GlobalKey button_profile_message = GlobalKey();
   final GlobalKey button_message_message = GlobalKey();
-  final GlobalKey button_home_message = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
