@@ -95,7 +95,7 @@ class ThemeWithImages {
 class Themes {
   bool isLight;
 
-  Themes({this.isLight = true});
+  Themes({this.isLight = false});
 
 // color scheme
 // light mode
@@ -107,7 +107,7 @@ class Themes {
     primaryContainer: Color(0xFF1FBAF7), // container color (ex.profile view)
     onPrimaryContainer: Colors.black, // container text color
     secondary: Colors.white, // other elements color
-    onSecondary: Colors.black, // other elements text color
+    onSecondary: Color(0xFFC4C4C4), // box color
     error: Color.fromARGB(70, 31, 186, 247), // shadow color
     onError: Color.fromARGB(255, 230, 230, 230), // profile picture
     surface: Colors.white,
@@ -131,7 +131,7 @@ class Themes {
     primaryContainer: Color(0xFF044082), // container color (ex.profile view)
     onPrimaryContainer: Color(0xFFAEAEAE), // container text color
     secondary: Color(0xFF363B44), // other elements color
-    onSecondary: Colors.white, // other elements text color
+    onSecondary: Color(0xFF363B44), // box color 
     error: Color.fromARGB(255, 3, 50, 100), // shadow color
     onError: Color(0x3F000000), // profile picture
     surface: Color(0xFF21262F),

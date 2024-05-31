@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
+// Pages
 import 'package:adopte_un_candidat/profileview.dart';
 import 'package:adopte_un_candidat/useful.dart';
-import 'package:adopte_un_candidat/main.dart';
+import 'package:adopte_un_candidat/message.dart';
+
 
 
 class Profile {
@@ -88,15 +90,24 @@ class ExampleCard extends StatelessWidget {
 }
 
 class MPage extends StatefulWidget {
-  const MPage({
-    super.key,
-  });
+  
+  MPage({Key? key}) : super(key: key);
 
   @override
   State<MPage> createState() => MatchingPage();
 }
 
 class MatchingPage extends State<MPage> { // example of profile
+  final GlobalKey cardswiper_home = GlobalKey();
+  final GlobalKey button_cross_home = GlobalKey();
+  final GlobalKey button_undo_home = GlobalKey();
+  final GlobalKey button_heart_home = GlobalKey();
+  final GlobalKey button_profile_home = GlobalKey();
+  final GlobalKey button_message_home = GlobalKey();
+  final GlobalKey button_home_home = GlobalKey();
+  final GlobalKey button_notification_home = GlobalKey();
+  final GlobalKey button_filter_home = GlobalKey();
+
   final CardSwiperController controller = CardSwiperController();
   final List<Profile> candidates = [
     Profile(name: 'Mac-Donald', location: 'Vierzon'),
@@ -134,6 +145,7 @@ class MatchingPage extends State<MPage> { // example of profile
             child: Stack(
               children: [
                 CardSwiper( // card swiper parameters
+                  key: cardswiper_home,
                   allowedSwipeDirection: const AllowedSwipeDirection.only(right: true, left: true),
                   controller: controller,
                   cardsCount: cards.length,
@@ -175,6 +187,7 @@ class MatchingPage extends State<MPage> { // example of profile
                           ],
                           ),
                           child: IconButton(
+                            key: button_cross_home,
                           icon: Image.asset('assets/cross.png', width: 75, height: 75),
                           onPressed: () => controller.swipe(CardSwiperDirection.left),
                           iconSize: 50,
@@ -196,7 +209,8 @@ class MatchingPage extends State<MPage> { // example of profile
                           ],
                           ),
                           child: IconButton(
-                          onPressed: () => controller.undo,
+                            key: button_undo_home,
+                          onPressed: () => controller.undo(),
                           icon: Image.asset('assets/backarrow.png', width: 70, height: 70),
                           iconSize: 50, 
                           ),
@@ -217,6 +231,7 @@ class MatchingPage extends State<MPage> { // example of profile
                           ],
                           ),
                           child: IconButton(
+                            key: button_heart_home,
                           icon: Image.asset('assets/heart.png', width: 50, height: 50),
                           onPressed: () => controller.swipe(CardSwiperDirection.right),
                           iconSize: 50,
@@ -257,6 +272,9 @@ class MatchingPage extends State<MPage> { // example of profile
 // ------------------------------------------------------------------
 class BotAppBar1 extends StatelessWidget {
   final Themes themes = Themes();
+  final GlobalKey button_profile_home = GlobalKey();
+  final GlobalKey button_message_home = GlobalKey();
+  final GlobalKey button_home_home = GlobalKey();
   BotAppBar1({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -270,6 +288,7 @@ class BotAppBar1 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
+            key: button_profile_home, 
             onTap: () => Navigator.of(context).push(ProfileView(0)),
             child: Container(
               width: 80,
@@ -289,9 +308,8 @@ class BotAppBar1 extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              // Handle button 2 tap
-            },
+            key: button_message_home,
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MessagePage())),
             child: Container(
               width: 80,
               height: 80, 
@@ -310,6 +328,7 @@ class BotAppBar1 extends StatelessWidget {
             ),
           ),
           GestureDetector(
+            key: button_home_home,
             onTap: () {
               // Handle button 3 tap
             },
@@ -338,6 +357,8 @@ class BotAppBar1 extends StatelessWidget {
 
 class TopAppBar1 extends StatelessWidget {
   final Themes themes = Themes();
+  final GlobalKey button_notification_home = GlobalKey();
+  final GlobalKey button_filter_home = GlobalKey();
   TopAppBar1({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -350,11 +371,7 @@ class TopAppBar1 extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onTap: () {
-              // Handle left button tap
-            },
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
                 themes.currentTheme.handshake,
@@ -362,10 +379,10 @@ class TopAppBar1 extends StatelessWidget {
                 height: 80,
               ),
             ),
-          ),
           Row(
             children: [
               GestureDetector(
+                key: button_notification_home,
                 onTap: () {
                   // Handle right button 1 tap
                 },
@@ -380,6 +397,7 @@ class TopAppBar1 extends StatelessWidget {
                 ),
               ),
               GestureDetector(
+                key: button_filter_home,
                 onTap: () {
                   // Handle right button 2 tap
                 },

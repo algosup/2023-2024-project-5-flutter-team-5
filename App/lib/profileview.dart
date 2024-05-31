@@ -1,7 +1,9 @@
-import 'package:adopte_un_candidat/matchpage.dart';
+import 'package:adopte_un_candidat/message.dart';
 import 'package:flutter/material.dart'; 
-
+// Pages
 import 'package:adopte_un_candidat/useful.dart';
+import 'package:adopte_un_candidat/matchpage.dart';
+import 'package:adopte_un_candidat/message.dart';
 
 class ProfileView extends MaterialPageRoute {
   final Themes themes = Themes();
@@ -38,6 +40,7 @@ class ProfileView extends MaterialPageRoute {
 }
 
 class ViewProfile extends StatelessWidget {
+  final button_editprofile_profile = GlobalKey();
   @override
   Widget build(BuildContext context) {
     final themes = Themes();
@@ -114,6 +117,7 @@ class ViewProfile extends StatelessWidget {
               left: 260,
               top: 152,
               child: GestureDetector(
+                key: button_editprofile_profile,
               onTap: () {
                               // Handle button tap
               },
@@ -148,6 +152,9 @@ class ViewProfile extends StatelessWidget {
 
 class BotAppBar extends StatelessWidget {
   final Themes themes = Themes();
+  final button_message_profile = GlobalKey();
+  final button_home_profile = GlobalKey();
+  final button_profile_profile = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -160,6 +167,7 @@ class BotAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(
+            key: button_profile_profile,
             onTap: () => Navigator.of(context).push(ProfileView(0)),
             child: Container(
               width: 80,
@@ -179,9 +187,8 @@ class BotAppBar extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              // Handle button 2 tap
-            },
+            key: button_message_profile,
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MessagePage())),
             child: Container(
               width: 80,
               height: 80, 
@@ -200,6 +207,7 @@ class BotAppBar extends StatelessWidget {
             ),
           ),
           GestureDetector(
+            key: button_home_profile,
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage())),
             child: Container(
               width: 80,
@@ -226,6 +234,8 @@ class BotAppBar extends StatelessWidget {
 
 class TopAppBar extends StatelessWidget {
   final Themes themes = Themes();
+  final button_notification_profile = GlobalKey();
+  final button_settings_profile = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -237,11 +247,7 @@ class TopAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onTap: () {
-                                // Handle left button tap
-            },
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
                 themes.currentTheme.handshake,
@@ -249,10 +255,10 @@ class TopAppBar extends StatelessWidget {
                 height: 80,
               ),
             ),
-          ),
           Row(
             children: [
               GestureDetector(
+                key: button_notification_profile,
                 onTap: () {
                                 // Handle right button 1 tap
                 },
@@ -267,6 +273,7 @@ class TopAppBar extends StatelessWidget {
                 ),
               ),
               GestureDetector(
+                key: button_settings_profile,
                 onTap: () {
                                 // Handle right button 2 tap
                 },
@@ -289,9 +296,11 @@ class TopAppBar extends StatelessWidget {
 }
 
 class ScrollableBoxWidget extends StatelessWidget {
+  final scrollablebox_profile = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      key: scrollablebox_profile,
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
