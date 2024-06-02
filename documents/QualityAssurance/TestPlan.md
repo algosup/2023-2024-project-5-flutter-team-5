@@ -66,6 +66,8 @@ Component used in the project, which can not be influenced by the team outside o
 - hidable
 - fluttertoast
 - flutter_card_swiper
+- flutter_test
+- integration_test
 
 
 # /!\ not complete  
@@ -119,9 +121,38 @@ Error messages should be displayed and clearly indicate which field is invalid a
 
 A component should run on Android 11 or newer, on Windows 10 or newer and iOS 15 or newer. There should only be one version of a component for all the OS to simplify maintainability.
 
+### Code Quality
+
+- Name should be explicit and use full word. Naming convention as defined in the Technical Specification should be respected.
+- The Code should be commented so that functions which use isn't obvious are commented.
+- All interactive element and should have a key to simplify integration test
+- 
+
 ## Resources
 
-***benchmark android :*** 2019 Samsung Galaxy A50
+### Test team role and reasonability
+
+
+
+### Testing tools
+
+#### Automated testing
+
+We will use both the ``integration_test`` and ``flutter_test`` test package from flutter to automatize testing. Test for new component are to be added as the component get developed. This should not be unit testing.
+
+The packages are meant to partially automatize integration testing. The test program use ``find.byKey()`` to check if every component is present as expected, then use ``tester.tap()`` on those component to make sure the component behave as expected. If a new element or page was expected to appear, then the program continue to test the new elements, until the entire application has been tested.
+
+Unit testing will be done with ``flutter_test`` package 
+
+### Environments
+
+The user interface and compatibility of the phone application will be tested in Android Studio using the latest SDK for android 14 with the v34 API.
+
+Test for the Windows application responsiveness will be done on a computer equivalent to the *benchmark PC* with an up to date version of Windows 11.
+
+To test the speed and readability of the application in real life condition we will use the following devices :
+
+***benchmark Android :*** 2019 Samsung Galaxy A50
 - CPU : Exynos 9610 
 - RAM : 4Gb
 - GPU : Mali-G72 MP3
