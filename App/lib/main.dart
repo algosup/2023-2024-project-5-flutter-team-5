@@ -32,12 +32,13 @@ class _MyAppState extends State<MyApp> {
         body: IndexedStack(
           index: currentPage,
           children: [
-            ProfileView(),
-            MessagePage(),
+            WelcomePage(),
             MPage(),
+            MessagePage(),
+            ProfileView(),            
           ],
         ),
-        bottomNavigationBar: BotAppBar(
+        bottomNavigationBar: currentPage == 0 ? null : BotAppBar(
           currentPage: currentPage,
         ),
       ),
