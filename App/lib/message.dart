@@ -41,6 +41,7 @@ class _MessagePageState extends State<MessagePage> {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                             themes.currentTheme.handshake,
                             width: 80,
                             height: 80,
@@ -159,6 +160,7 @@ class BotAppBar2 extends StatelessWidget {
               ),
               child: Center(
                 child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                   themes.currentTheme.user,
                   width: 45,
                   height: 45,
@@ -181,6 +183,7 @@ class BotAppBar2 extends StatelessWidget {
               ),
               child: Center(
                 child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                   themes.currentTheme.message,
                   width: 45,
                   height: 45,
@@ -201,6 +204,7 @@ class BotAppBar2 extends StatelessWidget {
               ),
               child: Center(
                 child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                   themes.currentTheme.home,
                   width: 45,
                   height: 45,
