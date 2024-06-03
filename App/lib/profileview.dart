@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 // Pages
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/matchpage.dart';
-import 'package:adopte_un_candidat/message.dart';
 
 class ProfileViewRoute extends MaterialPageRoute {
   ProfileViewRoute()
@@ -145,6 +144,7 @@ class ViewProfile extends StatelessWidget {
                 ],
                 ),
                 child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                 'assets/edit_pen.png',
                 width: 15,
                 height: 15,
@@ -176,6 +176,7 @@ class TopAppBar extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                 themes.currentTheme.handshake,
                 width: 80,
                 height: 80,
@@ -191,6 +192,7 @@ class TopAppBar extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                     themes.currentTheme.bell,
                     width: 40,
                     height: 40,
@@ -206,6 +208,7 @@ class TopAppBar extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                     themes.currentTheme.settings,
                     width: 45,
                     height: 45,

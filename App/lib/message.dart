@@ -41,6 +41,7 @@ class _MessagePageState extends State<MessagePage> {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Image.asset(
+                  filterQuality: FilterQuality.medium,
                             themes.currentTheme.handshake,
                             width: 80,
                             height: 80,
