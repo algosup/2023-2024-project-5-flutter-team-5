@@ -6,7 +6,7 @@ import 'package:adopte_un_candidat/matchpage.dart';
 import 'package:adopte_un_candidat/profileview.dart';
 
 class MessagePage extends StatefulWidget {
-  const MessagePage({super.key});
+  const MessagePage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _MessagePageState();
@@ -14,11 +14,11 @@ class MessagePage extends StatefulWidget {
 
 class _MessagePageState extends State<MessagePage> {
   final Themes themes = Themes();
-  final GlobalKey hidablebar_lastmatches_message = GlobalKey();
-  final GlobalKey list_messages_messages = GlobalKey();
-  final GlobalKey scrollhorizontal_lastmatches_message = GlobalKey();
-  final GlobalKey button_profile_message = GlobalKey();
-  final GlobalKey button_message_message = GlobalKey();
+  final GlobalKey hidableBarLastMatches_Message = GlobalKey();
+  final GlobalKey listMessages_Messages = GlobalKey();
+  final GlobalKey scrollHorizontalLastMatches_Message = GlobalKey();
+  final GlobalKey buttonProfile_Message = GlobalKey();
+  final GlobalKey buttonMessage_Message = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _MessagePageState extends State<MessagePage> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            key: hidablebar_lastmatches_message,
+            key: hidableBarLastMatches_Message,
             backgroundColor: themes.currentTheme.colorScheme.primary,
             automaticallyImplyLeading: false,
             expandedHeight: 350.0,
@@ -81,7 +81,7 @@ class _MessagePageState extends State<MessagePage> {
             ),
             ),
           SliverList(
-            key: list_messages_messages,
+            key: listMessages_Messages,
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return Column(
@@ -124,103 +124,19 @@ class _MessagePageState extends State<MessagePage> {
           ),
         ],
       ),
-      bottomNavigationBar: BotAppBar2(),
-    );
-  }
-}
-
-class BotAppBar2 extends StatelessWidget {
-  final Themes themes = Themes();
-  final GlobalKey button_profile_message = GlobalKey();
-  final GlobalKey button_message_message = GlobalKey();
-  final GlobalKey button_home_message = GlobalKey();
-
-  BotAppBar2({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: themes.currentTheme.colorScheme.primary,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            key: button_profile_message,
-            onTap: () => Navigator.of(context).push(ProfileView(0)),
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: const BoxDecoration(
-                color: Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.user,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            key: button_message_message,
-            onTap: () {
-              // Handle button 2 tap
-            },
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: BoxDecoration(
-                color: themes.currentTheme.colorScheme.onSurface,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.message,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            key: button_home_message,
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage())),
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: const BoxDecoration(
-                color: Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.home,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ],
+      bottomNavigationBar: BotAppBar(
+        currentPage: 1,
       ),
     );
   }
 }
 
 class ScrollableBoxWidget1 extends StatelessWidget {
-  final GlobalKey scrollhorizontal_lastmatches_message = GlobalKey();
+  final GlobalKey scrollHorizontalLastMatches_Message = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      key: scrollhorizontal_lastmatches_message,
+      key: scrollHorizontalLastMatches_Message,
       scrollDirection: Axis.horizontal,
       child: Padding(
         padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0, top: 16.0),
@@ -273,7 +189,6 @@ class ScrollableBoxWidget1 extends StatelessWidget {
     );
   }
 }
-
 
 class BoxWidget extends StatelessWidget {
   final String text;

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:adopte_un_candidat/profileview.dart';
+import 'package:adopte_un_candidat/message.dart';
+import 'package:adopte_un_candidat/matchpage.dart';
 
 
 // Password Field
@@ -70,7 +73,8 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 }
 
-class ThemeWithImages {
+// Theme parameters
+class _ThemeWithImages {
   final ColorScheme colorScheme;
   final String user;
   final String settings;
@@ -80,7 +84,7 @@ class ThemeWithImages {
   final String bell;
   final String home;
 
-  ThemeWithImages({
+  _ThemeWithImages({
     required this.colorScheme, 
     required this.user,
     required this.settings,
@@ -99,7 +103,7 @@ class Themes {
 
 // color scheme
 // light mode
-  static final light = ThemeWithImages(
+  static final light = _ThemeWithImages(
     colorScheme:  const ColorScheme(
     brightness: Brightness.light,
     primary: Colors.white, // background color
@@ -116,14 +120,14 @@ class Themes {
     user: 'assets/user_light.png',
     settings: 'assets/settings_light.png',
     message: 'assets/message_light.png',
-    handshake: 'assets/handshake_light.png',
+    handshake: 'assets/handshake_light.svg',
     filter: 'assets/filter_light.png',
     bell: 'assets/bell_light.png',
     home: 'assets/home_light.png',
   );
 
 // dark mode
-  static final dark = ThemeWithImages(
+  static final dark = _ThemeWithImages(
     colorScheme: const ColorScheme(
     brightness: Brightness.dark,
     primary: Color(0xFF161C23), // background color
@@ -140,18 +144,107 @@ class Themes {
     user: 'assets/user_dark.png',
     settings: 'assets/settings_dark.png',
     message: 'assets/message_dark.png',
-    handshake: 'assets/handshake_dark.png',
+    handshake: 'assets/handshake_dark.svg',
     filter: 'assets/filter_dark.png',
     bell: 'assets/bell_dark.png',
     home: 'assets/home_dark.png',
   );
 
-  ThemeWithImages get currentTheme => isLight ? light : dark;
+  _ThemeWithImages get currentTheme => isLight ? light : dark;
 
-void toggleTheme() {
+void toggleTheme() { // to toggle between light and dark mode
   isLight = !isLight;
 }
 }
 
-// themes.currentTheme.user,
-// themes.currentTheme.colorScheme.primary,
+// App Bar
+class BotAppBar extends StatelessWidget {
+  final Themes themes = Themes();
+  final int currentPage;
+  final GlobalKey button_profile_home = GlobalKey();
+  final GlobalKey button_message_home = GlobalKey();
+  final GlobalKey button_home_home = GlobalKey();
+  BotAppBar({Key? key, required this.currentPage}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        color: themes.currentTheme.colorScheme.primary,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          GestureDetector(  // profile button
+            key: button_profile_home, 
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileView()));
+            },
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: currentPage == 2 ? themes.currentTheme.colorScheme.onSurface : Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.user,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(  // message button
+            key: button_message_home,
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MessagePage()));
+            },
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: currentPage == 1 ? themes.currentTheme.colorScheme.onSurface : Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.message,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+          GestureDetector(  // home button
+            key: button_home_home,
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage()));
+            },
+            child: Container(
+              width: 80,
+              height: 80, 
+              decoration: BoxDecoration(
+                color: currentPage == 0 ? themes.currentTheme.colorScheme.onSurface : Colors.transparent,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Image.asset(
+                  themes.currentTheme.home,
+                  width: 45,
+                  height: 45,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

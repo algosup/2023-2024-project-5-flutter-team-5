@@ -5,42 +5,50 @@ import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/matchpage.dart';
 import 'package:adopte_un_candidat/message.dart';
 
-class ProfileView extends MaterialPageRoute {
-  final Themes themes = Themes();
-  ProfileView(int id)
+class ProfileViewRoute extends MaterialPageRoute {
+  ProfileViewRoute()
       : super(
-          builder: (BuildContext context) {
-            final themes = Themes();
-            return Scaffold(
-              extendBodyBehindAppBar: true,
-              appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(100),
-                child: TopAppBar(),
-              ),
-              body: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: ViewProfile(),
-                  ),
-                  Expanded(
-                    child: Container(
-                      color: themes.currentTheme.colorScheme.primaryContainer,
-                      child: Center(
-                        child: ScrollableBoxWidget(),
-                      ),
-                    ),
-                  ),
-                  BotAppBar(),
-                ],
-              ),
-            );
-          },
+          builder: (BuildContext context) => ProfileView(),
         );
 }
 
+class ProfileView extends StatelessWidget {
+  final Themes themes = Themes();
+
+  @override
+  Widget build(BuildContext context) {
+    final themes = Themes();
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: TopAppBar(),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: ViewProfile(),
+          ),
+          Expanded(
+            child: Container(
+              color: themes.currentTheme.colorScheme.primaryContainer,
+              child: Center(
+                child: ScrollableBoxWidget(),
+              ),
+            ),
+          ),
+          BotAppBar(
+            currentPage: 2,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class ViewProfile extends StatelessWidget {
-  final button_editprofile_profile = GlobalKey();
+  final buttonEditProfile_Profile = GlobalKey();
   @override
   Widget build(BuildContext context) {
     final themes = Themes();
@@ -117,7 +125,7 @@ class ViewProfile extends StatelessWidget {
               left: 260,
               top: 152,
               child: GestureDetector(
-                key: button_editprofile_profile,
+                key: buttonEditProfile_Profile,
               onTap: () {
                               // Handle button tap
               },
@@ -144,88 +152,6 @@ class ViewProfile extends StatelessWidget {
               ),
               ),
             ),
-        ],
-      ),
-    );
-  }
-}
-
-class BotAppBar extends StatelessWidget {
-  final Themes themes = Themes();
-  final button_message_profile = GlobalKey();
-  final button_home_profile = GlobalKey();
-  final button_profile_profile = GlobalKey();
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: themes.currentTheme.colorScheme.primary,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(
-            key: button_profile_profile,
-            onTap: () => Navigator.of(context).push(ProfileView(0)),
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: BoxDecoration(
-                color: themes.currentTheme.colorScheme.onSurface,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.user,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            key: button_message_profile,
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MessagePage())),
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.message,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(
-            key: button_home_profile,
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage())),
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.home,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );

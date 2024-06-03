@@ -35,7 +35,7 @@ class WelcomePage extends StatelessWidget {
                           children: [ // Buttons
                             SizedBox(
                               width: 200.0,
-                              child: ElevatedButton(
+                              child: ElevatedButton( // to login
                                 onPressed: () => Navigator.of(context).push(LoginPage(0)),
                                 child: const Text('Se connecter'),
                               ),
@@ -43,7 +43,7 @@ class WelcomePage extends StatelessWidget {
                             const SizedBox(height: 40.0),
                             SizedBox(
                               width: 200.0,
-                              child: ElevatedButton(
+                              child: ElevatedButton( // to sign in
                                 onPressed: () => Navigator.of(context).push(SigninPage(0)),
                                 child: const Text('S\'inscrire'),
                               ),
