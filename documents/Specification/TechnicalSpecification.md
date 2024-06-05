@@ -43,8 +43,29 @@
     - [**Direct message**](#direct-message)
     - [**Filter**](#filter)
     - [**Settings**](#settings)
+- [Graphical Convention](#graphical-convention)
+  - [Font \& Colors](#font--colors)
+    - [Font](#font)
+    - [Colors](#colors)
   - [Light \& Dark mode](#light--dark-mode)
   - [Testing](#testing)
+- [Widget](#widget)
+  - [Fields](#fields)
+    - [Text field](#text-field)
+    - [Localization field](#localization-field)
+    - [Tag field](#tag-field)
+    - [Select field](#select-field)
+  - [Buttons](#buttons)
+    - [Text buttons](#text-buttons)
+    - [Icon buttons](#icon-buttons)
+    - [Big buttons](#big-buttons)
+    - [Multiple-choice radio buttons](#multiple-choice-radio-buttons)
+    - [Navbar](#navbar)
+  - [Cards](#cards)
+    - [Swipe card](#swipe-card)
+    - [Chat card](#chat-card)
+  - [Lists](#lists)
+    - [Clickable list](#clickable-list)
 - [Glossary](#glossary)
 
 </details>
@@ -443,6 +464,22 @@ You can see 2 old versions and the version we have selected for the project.
 
 ![Flow chart settings page]()
 
+# Graphical Convention
+
+## Font & Colors
+
+### Font
+
+The font we have decided to use is Inter
+
+Normal text size is 12, (if we have only one word and is important like Settings in the topbar he need to be in bold.),
+(only one things in Black is the name fo a company in the DM list.)
+Title 1 size is 40
+Title 2 size is 32
+Title 3 is 20
+
+### Colors
+
 ## Light & Dark mode
 
 We decided to add the possibility to switch between a light and a dark mode to improve the readability of the app.
@@ -555,6 +592,123 @@ class MatchingPage extends State<MPage> {
 ...
   }
 ```
+
+# Widget
+
+## Fields
+
+### Text field
+
+**Description** : A text field is a user interface element that allows users to input and edit text.
+It is commonly used in forms, applications, and websites for tasks such as entering names, addresses, passwords, or any other textual data.
+
+**Example visual** :
+
+### Localization field
+
+**Description** : A localization text field is a user interface element that allows users to input geographical location data, such as addresses, coordinates, or place names.
+
+**Example visual** :
+
+<img alt="Example of localization field" src="Image/LocalizationField.png" width="400px"></img>
+
+### Tag field
+
+**Description** : A tag field is a user interface element that allows users to input and manage tags or keywords.
+These tags help categorize and organize content, making it easier to search and filter information.
+
+### Select field
+
+**Description** : A select field is a user interface element that allows users to choose one or more options from a predefined list.
+It is commonly used in forms and applications for tasks such as selecting a country, category, or other standardized options.
+This element often appears as a dropdown menu or a list of checkboxes.
+
+**Example of visual** :
+
+<img alt="Example of select field" src="Image/SelectField1.png" width="400px"></img>
+
+<img alt="Example of select field 2" src="Image/SelectField2.png" width="400px"></img>
+
+## Buttons
+
+### Text buttons
+
+<img alt="Example of text field" src="Image/TextButtons.png" width="400px"></img>
+
+**Description** : Text buttons are user interface elements that display text to indicate an action or command. When clicked, they perform a specific function, such as submitting a form, saving changes, or navigating to another page.
+
+**Example of visual** :
+
+### Icon buttons
+
+**Description** : Icon buttons are user interface elements that use icons instead of text to indicate an action or command.
+When clicked, they perform specific functions, such as refreshing a page, deleting an item, or sharing content.
+Icon buttons are commonly used in applications and websites to provide a visually intuitive way for users to interact with the interface.
+
+**Example of visual** :
+
+<img alt="Example of icon buttons" src="Image/IconButtons.png" width="400px"></img>
+
+### Big buttons
+
+**Description** : Big buttons are user interface elements that are larger in size compared to standard buttons.
+They are designed to be easily noticeable and clickable, often used to emphasize important actions or commands such as "Submit," "Buy Now," or "Sign Up."
+Big buttons enhance accessibility and user experience, especially on touchscreens and mobile devices.
+
+**Example of visual** :
+
+<img alt="Example of big buttons" src="Image/BigButtons.png" width="400px"></img>
+
+### Multiple-choice radio buttons
+
+**Description** : Multiple-choice radio buttons are user interface elements that allow users to select multiple options from a set of choices, but each option is presented as a radio button.
+Unlike traditional radio buttons that only allow single selection, multiple-choice radio buttons permit multiple selections, meaning that several buttons can be activated simultaneously.
+
+**Example of visual** :
+
+<img alt="Example of a multiple-choice radio buttons" src="Image/RadioButtons.png" width="400px"></img>
+
+### Navbar
+
+**Description** : A navbar, short for navigation bar, is a user interface element typically located at the top of a webpage or application screen.
+It contains links or buttons that allow users to navigate to different sections or pages within the website or application.
+The navbar often includes elements such as a logo, menu items, search bar, and other navigation controls, providing users with easy access to essential features and content.
+
+**Example of visual** :
+
+<img alt="Example of navbar" src="Image/Navbar.png" width="400px"></img>
+
+## Cards
+
+### Swipe card
+
+**Description** : A swipe card, also known as a swipeable card or card stack, is a user interface component commonly used in mobile applications.
+It presents information or content in a card-like format that users can swipe horizontally or vertically to navigate through a series of cards.
+Each card typically contains a distinct piece of information, such as an image, text, or interactive elements.
+Swipe cards are popular for presenting content in a visually appealing and interactive manner, often used in features like image galleries, news feeds, or product showcases.
+
+**Example of visual** :
+
+<img alt="Example of swipe card" src="Image/SwipeCard.png" width="400px"></img>
+
+### Chat card
+
+**Description** : A "chat card" typically refers to a user interface element in messaging applications.
+It represents a single message within a conversation thread.
+Chat cards commonly include details such as the sender's name or avatar, the message content, and a timestamp.
+They may also feature additional options for actions like replying, forwarding, or deleting messages.
+
+**Example of visual** :
+
+<img alt="example of chat card" src="Image/ChatBox.png" width="400px"></img>
+
+## Lists
+
+### Clickable list
+
+**Description** : A clickable list is a user interface component presenting a collection of items, each of which can be interacted with through clicks.
+It serves to exhibit a selection of items that users can choose from.
+Additionally, this list widget enables users to delete items and should possess scroll functionality to accommodate displaying all items within a confined space.
 
 # Glossary
 
