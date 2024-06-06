@@ -236,3 +236,6 @@ The test case also tells when it is relevant to test a component relative to the
 
 ## VII. Process description
 
+The process for testing is the same for each flow chart. Test is executed. If it pass, the test is validated. Otherwise a bug report is created and the test case is failed.
+
+![Testing workflow](./Images/TestFlow.png)
