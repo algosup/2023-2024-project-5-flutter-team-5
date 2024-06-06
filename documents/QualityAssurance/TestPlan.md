@@ -229,10 +229,10 @@ The QA team is responsible for delivering automated integration test script. Tho
 
 ### C. Test cases
 
-A test case document should be provided so that everyone in the QA team can know what needs to be tested by who.
+A test case document should be provided so that everyone in the QA team can know what needs to be tested and by who.
 This document can be found in [Documents/QualityAssurance/TestCase.md](TestCase.md)
 
-## VI. Risk assessment
-
+The test case also tells when it is relevant to test a component relative to the advancement of the project.
 
 ## VII. Process description
+
