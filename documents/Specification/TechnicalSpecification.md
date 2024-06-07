@@ -44,9 +44,7 @@
     - [**Filter**](#filter)
     - [**Settings**](#settings)
 - [Graphical Convention](#graphical-convention)
-  - [Font \& Colors](#font--colors)
-    - [Font](#font)
-    - [Colors](#colors)
+  - [Font](#font)
   - [Light \& Dark mode](#light--dark-mode)
   - [Testing](#testing)
 - [Widget](#widget)
@@ -392,7 +390,6 @@ You can see 2 old versions and the version we have selected for the project.
 - Localization (city and radius).
 - A salary range.
 - Type of company.
-- Type of contract.
 
 **For company** :
 
@@ -402,7 +399,6 @@ You can see 2 old versions and the version we have selected for the project.
 - Button with tag to add diplomas.
 - Localization (city and radius).
 - Button to choose the type of personality.
-- Button with tag to see different hobbies.
 
 **The filter page contains the following elements (Job-seeker side)** :
 
@@ -426,13 +422,16 @@ You can see 2 old versions and the version we have selected for the project.
 | Diplomas              | Button to add different diplomas.                | Button | Clickable | Opens a menu to add diplomas.                          |
 | Localization          | Input to set city and radius.                    | Input  | Editable  | Allows user to input desired city and radius.          |
 | Personality type      | Button to choose the type of personality.        | Button | Clickable | Opens a menu to select personality type.               |
-| Hobbies               | Button to view different hobbies.                | Button | Clickable | Opens a menu to view hobbies.                          |
 | Apply filter button   | Button to apply the new filters.                 | Button | Clickable | Applies the selected filters and returns to main page. |
 | Back button           | Button to return to the main page.               | Button | Clickable | Redirects back to the main page.                       |
 
-**Flow chart** :
+**Flow chart (job-seeker side)** :
 
-![Flow chart filter page]()
+![Flow chart filter page (job-seeker side)](/Documents/Specification/Image/FlowChartFilterPageJobSeekerSide.png)
+
+**Flow chart (Company side)** :
+
+![Flow chart filter page (Company side)](/Documents/Specification/Image/FlowChartFilterPageCompanySide.png)
 
 ### **Settings**
 
@@ -441,7 +440,7 @@ You can see 2 old versions and the version we have selected for the project.
 **The settings page allows users to** :
 
 - Change the theme of the app.
-- Update account password.
+- Update account.
 - Manage privacy settings.
 - Configure notification preferences.
 - Access help and support.
@@ -452,7 +451,7 @@ You can see 2 old versions and the version we have selected for the project.
 | Field/Element               | Description                                       | Type    | Rights    | Behavior                                                      |
 | --------------------------- | ------------------------------------------------- | ------- | --------- | ------------------------------------------------------------- |
 | Light and dark mode         | Section to switch the theme.                      | Switch  | Editable  | Allows users to switch between light and dark mode.           |
-| Password                    | Section to update account password.               | Section | Editable  | Allows users to change their account password.                |
+| Update account              | Section to update the account.                    | Section | Editable  | Allows users to update their account.                         |
 | Privacy Settings            | Section to manage privacy options.                | Section | Editable  | Allows users to configure who can see their profile, etc.     |
 | Notification Preferences    | Section to configure notifications.               | Section | Editable  | Allows users to set preferences for email, SMS, app alerts.   |
 | Help and Support            | Button to access help and support.                | Button  | Clickable | Redirects to help and support page.                           |
@@ -462,23 +461,31 @@ You can see 2 old versions and the version we have selected for the project.
 
 **Flow chart** :
 
-![Flow chart settings page]()
+![Flow chart settings page](/Documents/Specification/Image/FlowChartSettingPage.png)
 
 # Graphical Convention
 
-## Font & Colors
+## Font
 
-### Font
+The font we have decided to use is Inter, we have a convention to use the good size between 12, 20, 32 and 40.
+Firstly the size 40 was used only for the name of a company in the swipe card and the font is in bold.
+Secondly the size 32 was used only for the name of the application when you want to login or sign up, same of the first one the font is in bold.
+Thirdly the size 20 is the common title the most used in the app, it's in bold too.
+To finish the size 12 it's common text when the font is in regular, when the font is in bold it's a subtitle.
 
-The font we have decided to use is Inter
+**Just below picture of the font whit our convention (40, 20 and 12)** :
 
-Normal text size is 12, (if we have only one word and is important like Settings in the topbar he need to be in bold.),
+<img alt="Screen font size 1" src="Image/FontSize1.png" width="400px"></img>
+
+**Picture of the page login / sign up with the title in size 32** :
+
+<img alt="Screen page login sign up" src="Image/LoginSignUpPage.png" width="400px"></img>
+
+<!-- Normal text size is 12, (if we have only one word and is important like Settings in the topbar he need to be in bold.),
 (only one things in Black is the name fo a company in the DM list.)
 Title 1 size is 40
 Title 2 size is 32
-Title 3 is 20
-
-### Colors
+Title 3 is 20 -->
 
 ## Light & Dark mode
 
