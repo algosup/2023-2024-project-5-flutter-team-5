@@ -27,7 +27,7 @@ Test Cases can have four status :
 |016|Home|User click on the purple arrow|The last liked or disliked card is shown|✅|
 |017|Home|User click on filter button|User is redirected to "filter" page|⬜|
 |018|Home|User click on alarm button|User is sent to "notification page"|⬜|
-|019|Filter|
+|019|Filter|User 
 
 
 

@@ -122,7 +122,7 @@ all folders and files should be named in *UpperCamelCase*.
 - Images should be in an ./*Image* subfolder from where they are called.
 - Technical, Functional and Management documents should be in their folder in a ./*Documents* folder.
 - The code should be in an ./*Src* folder from the root.
-- Folders and Files of the folder ./*Src* need to be in *lowercase_with_underscores* to be sensitive with the language Dart.
+- Folders and Files of the folder ./*Src* need to be in *lowercase_with_underscores* to be read by Flutter.
 
 ## GitHub
 
@@ -228,7 +228,7 @@ While you can debug and test your code on a virtual device, it is often better t
 
 #### For PC :
 
-To debug and run your flutter code on PC is more easier than on phones, your OS is already a device.
+To debug and run your flutter code on PC is easier than on phones, your OS is already a device.
 
 ![DesktopDevice](./Image/DestopDevice.png)
 
@@ -269,6 +269,7 @@ You can see 2 old versions and the version we have selected for the project.
 **Flow chart** :
 
 ![Flow chart of the login page](/Documents/Specification/Image/FlowChartLoginPage.png)
+
 
 ### **Profile**
 
