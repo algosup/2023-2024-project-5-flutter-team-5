@@ -302,7 +302,7 @@ You can see 2 old versions and the version we have selected for the project.
 
 ### **Main**
 
-**Description** : This page is dedicated to swipe companies or job-seekers. You can like and dislike their and go back in your last proposition to change your choice if it was a mistake. You can filter your choices, to have proposition more precise in what you search. You can go to the profile page and DM list page.
+**Description** : This page is dedicated to swipe companies or job-seekers. You can like and dislike them and go back to your last proposition to change your choice if it was a mistake. You can filter your choices, to have more precise proposition in what you search. You can go to the profile page and DM list page.
 
 **The main page allows users to** :
 
