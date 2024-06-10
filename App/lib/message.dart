@@ -140,48 +140,48 @@ class ScrollableBoxWidget1 extends StatelessWidget {
       key: scrollHorizontalLastMatches_Message,
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0, top: 16.0),
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0, top: 16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 1'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 2'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 3'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 4'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 5'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 6'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 7'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 8'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 9'),
             ),
             Padding(
-              padding: EdgeInsets.only(right: 12.0),
+              padding: const EdgeInsets.only(right: 12.0),
               child: BoxWidget(text: 'Entreprise 10'),
             ),
           ],
@@ -200,7 +200,7 @@ class BoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 160, 
+      height: 165, 
       width: 125, 
       
       decoration: BoxDecoration(

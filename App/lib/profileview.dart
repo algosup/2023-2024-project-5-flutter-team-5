@@ -1,8 +1,9 @@
-import 'package:adopte_un_candidat/message.dart';
 import 'package:flutter/material.dart'; 
 // Pages
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/matchpage.dart';
+import 'package:adopte_un_candidat/message.dart';
+import 'package:adopte_un_candidat/settings.dart';
 
 class ProfileViewRoute extends MaterialPageRoute {
   ProfileViewRoute()
@@ -202,9 +203,7 @@ class TopAppBar extends StatelessWidget {
               ),
               GestureDetector(
                 key: button_settings_profile,
-                onTap: () {
-                                // Handle right button 2 tap
-                },
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage())),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(

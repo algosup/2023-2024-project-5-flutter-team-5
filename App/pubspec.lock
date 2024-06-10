@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
+  csc_picker:
+    dependency: "direct main"
+    description:
+      name: csc_picker
+      sha256: "7e5d6023a81f53b89a7fb0369953fd4dc676f7ea20e9a0c0707973a5f0aedf14"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.7"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -152,6 +160,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
+  multi_select_flutter:
+    dependency: "direct main"
+    description:
+      name: multi_select_flutter
+      sha256: "503857b415d390d29159df8a9d92d83c6aac17aaf1c307fb7bcfc77d097d20ed"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.3"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -160,6 +184,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      sha256: "59471e0a4595e264625d3496af567ac85bdae1148ec985aff1e0555786f53ecf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.0"
+  settings_ui:
+    dependency: "direct main"
+    description:
+      name: settings_ui
+      sha256: d9838037cb554b24b4218b2d07666fbada3478882edefae375ee892b6c820ef3
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
   sky_engine:
     dependency: transitive
     description: flutter

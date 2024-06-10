@@ -1,4 +1,6 @@
+import 'package:adopte_un_candidat/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // Pages
 import 'package:adopte_un_candidat/connection/welcomepage.dart';
@@ -9,7 +11,12 @@ import 'package:adopte_un_candidat/matchpage.dart';
 
 // Main function
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Themes(),
+      child: MyApp(),
+    ),
+  );
 }
 
 // app class
@@ -35,7 +42,8 @@ class _MyAppState extends State<MyApp> {
             WelcomePage(),
             MPage(),
             MessagePage(),
-            ProfileView(),            
+            ProfileView(),  
+            SettingsPage(),          
           ],
         ),
         bottomNavigationBar: currentPage == 0 ? null : BotAppBar(

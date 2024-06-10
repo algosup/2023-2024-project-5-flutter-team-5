@@ -96,7 +96,7 @@ class _ThemeWithImages {
   });
 }
 
-class Themes {
+class Themes extends ChangeNotifier{
   bool isLight;
 
   Themes({this.isLight = false});
@@ -116,6 +116,7 @@ class Themes {
     onError: Color.fromARGB(255, 230, 230, 230), // profile picture
     surface: Colors.white,
     onSurface: Color.fromARGB(255, 200, 200, 200),
+    secondaryContainer: Color.fromARGB(255, 237, 237, 237),
     ),
     user: 'assets/user_light.png',
     settings: 'assets/settings_light.png',
@@ -140,6 +141,7 @@ class Themes {
     onError: Color(0x3F000000), // profile picture
     surface: Color(0xFF21262F),
     onSurface: Color.fromARGB(255, 55, 55, 55), // selected Page
+    secondaryContainer: Color(0xFF161C23),
     ),
     user: 'assets/user_dark.png',
     settings: 'assets/settings_dark.png',
@@ -161,9 +163,9 @@ void toggleTheme() { // to toggle between light and dark mode
 class BotAppBar extends StatelessWidget {
   final Themes themes = Themes();
   final int currentPage;
-  final GlobalKey button_profile_home = GlobalKey();
-  final GlobalKey button_message_home = GlobalKey();
-  final GlobalKey button_home_home = GlobalKey();
+  final GlobalKey buttonProfile = GlobalKey();
+  final GlobalKey buttonMessage = GlobalKey();
+  final GlobalKey buttonHome = GlobalKey();
   BotAppBar({Key? key, required this.currentPage}) : super(key: key);
 
   @override
@@ -178,7 +180,7 @@ class BotAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           GestureDetector(  // profile button
-            key: button_profile_home, 
+            key: buttonProfile, 
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileView()));
             },
@@ -200,7 +202,7 @@ class BotAppBar extends StatelessWidget {
             ),
           ),
           GestureDetector(  // message button
-            key: button_message_home,
+            key: buttonMessage,
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => MessagePage()));
             },
@@ -222,7 +224,7 @@ class BotAppBar extends StatelessWidget {
             ),
           ),
           GestureDetector(  // home button
-            key: button_home_home,
+            key: buttonHome,
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage()));
             },

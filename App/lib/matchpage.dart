@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
+
 // Pages
 import 'package:adopte_un_candidat/profileview.dart';
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/message.dart';
+import 'package:adopte_un_candidat/filterpage.dart';
 
 class _Profile {
   final String name;
@@ -37,11 +39,11 @@ class ExampleCard extends StatelessWidget {
     final gradient = cardGradients[cardIndex % cardGradients.length];
 
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height - 330,
+      width: MediaQuery.of(context).size.width, 
+      height: MediaQuery.of(context).size.height - 330, 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        gradient: gradient,
+        gradient: gradient, 
         boxShadow: [
           BoxShadow(
             color: themes.currentTheme.colorScheme.primary.withOpacity(1),
@@ -51,8 +53,7 @@ class ExampleCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Container(
-        // text on card
+      child: Container( // text on card
         margin: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
@@ -89,6 +90,7 @@ class ExampleCard extends StatelessWidget {
 }
 
 class MPage extends StatefulWidget {
+  
   MPage({Key? key}) : super(key: key);
 
   @override
@@ -129,11 +131,9 @@ class MatchingPage extends State<MPage> { // example of profile
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // background
+    return Scaffold( // background
       backgroundColor: themes.currentTheme.colorScheme.primary,
-      appBar: PreferredSize(
-        // top app bar
+      appBar: PreferredSize( // top app bar
         preferredSize: const Size.fromHeight(100),
         child: TopAppBar1(),
       ),
@@ -160,8 +160,7 @@ class MatchingPage extends State<MPage> { // example of profile
                   ) =>
                       cards[index],
                 ),
-                Positioned(
-                  // Buttons swiper
+                Positioned( // Buttons swiper
                   bottom: 0,
                   left: 0,
                   right: 0,
@@ -174,16 +173,16 @@ class MatchingPage extends State<MPage> { // example of profile
                           width: 90,
                           height: 90,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: themes.currentTheme.colorScheme.surface,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 5),
-                              ),
-                            ],
+                          shape: BoxShape.circle,
+                          color: themes.currentTheme.colorScheme.surface,
+                          boxShadow: [
+                            BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 5),
+                            ),
+                          ],
                           ),
                           child: IconButton(
                             key: buttonCross_Home,
@@ -196,16 +195,16 @@ class MatchingPage extends State<MPage> { // example of profile
                           width: 90,
                           height: 90,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: themes.currentTheme.colorScheme.surface,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 5),
-                              ),
-                            ],
+                          shape: BoxShape.circle,
+                          color: themes.currentTheme.colorScheme.surface,
+                          boxShadow: [
+                            BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 5),
+                            ),
+                          ],
                           ),
                           child: IconButton(
                             key: buttonUndo_Home,
@@ -218,16 +217,16 @@ class MatchingPage extends State<MPage> { // example of profile
                           width: 90,
                           height: 90,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: themes.currentTheme.colorScheme.surface,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 5),
-                              ),
-                            ],
+                          shape: BoxShape.circle,
+                          color: themes.currentTheme.colorScheme.surface,
+                          boxShadow: [
+                            BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 5),
+                            ),
+                          ],
                           ),
                           child: IconButton(
                             key: buttonHeart_Home,
@@ -250,8 +249,7 @@ class MatchingPage extends State<MPage> { // example of profile
       ),
     );
   }
-
-  // Swipe and undo functions
+ // Swipe and undo functions
   bool _onSwipe(
     int previousIndex,
     int? currentIndex,
@@ -305,7 +303,6 @@ class TopAppBar1 extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                  filterQuality: FilterQuality.medium,
                     themes.currentTheme.bell,
                     width: 40,
                     height: 40,
@@ -315,13 +312,14 @@ class TopAppBar1 extends StatelessWidget {
               ),
               GestureDetector(  // filter button
                 key: buttonFilter_Home,
-                onTap: () {
-                  // Handle right button 2 tap
-                },
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SkillsFilterPage(),
+                  ),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                  filterQuality: FilterQuality.medium,
                     themes.currentTheme.filter,
                     width: 55,
                     height: 55,
