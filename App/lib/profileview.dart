@@ -4,6 +4,7 @@ import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/matchpage.dart';
 import 'package:adopte_un_candidat/message.dart';
 import 'package:adopte_un_candidat/settings.dart';
+import 'package:adopte_un_candidat/edit_profil_page.dart';
 
 class ProfileViewRoute extends MaterialPageRoute {
   ProfileViewRoute()
@@ -126,9 +127,11 @@ class ViewProfile extends StatelessWidget {
               top: 152,
               child: GestureDetector(
                 key: buttonEditProfile_Profile,
-              onTap: () {
-                              // Handle button tap
-              },
+              onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => EditProfilPage(),
+                  ),
+                ),
               child: Container(
                 width: 35,
                 height: 35,
