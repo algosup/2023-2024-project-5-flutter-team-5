@@ -8,6 +8,7 @@ import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/profileview.dart';
 import 'package:adopte_un_candidat/message.dart';
 import 'package:adopte_un_candidat/matchpage.dart';
+import 'package:adopte_un_candidat/notification_page.dart';
 
 // Main function
 void main() {

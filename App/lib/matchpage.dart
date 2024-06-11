@@ -7,6 +7,7 @@ import 'package:adopte_un_candidat/profileview.dart';
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/message.dart';
 import 'package:adopte_un_candidat/filterpage.dart';
+import 'package:adopte_un_candidat/notification_page.dart';
 
 class _Profile {
   final String name;
@@ -297,9 +298,11 @@ class TopAppBar1 extends StatelessWidget {
             children: [
               GestureDetector(  // notification button
                 key: buttonNotification_Home,
-                onTap: () {
-                  // Handle right button 1 tap
-                },
+                onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => NotificationPage(),
+                    ),
+                  ),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
