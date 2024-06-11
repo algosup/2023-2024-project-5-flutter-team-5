@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:csc_picker/csc_picker.dart';
 import 'package:adopte_un_candidat/useful.dart';
 import 'skills.dart';
-import 'package:provider/provider.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class SkillsFilterPage extends StatefulWidget {
   @override
@@ -166,22 +165,27 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
   }) {
     return Container(
       margin: const EdgeInsets.only(left: 30),
-      child: ExpansionTile(
-        title: Text(
+      child: MultiSelectDialogField(
+        items: items.map((item) => MultiSelectItem<String>(item, item)).toList(),
+        title: Text(title),
+        selectedColor: Colors.blue,
+
+        buttonIcon: Icon(
+          Icons.arrow_drop_down,
+          color: themes.currentTheme.colorScheme.onPrimary,
+        ),
+        buttonText: Text(
           title,
           style: TextStyle(
             color: themes.currentTheme.colorScheme.onPrimary,
           ),
         ),
-        backgroundColor: themes.currentTheme.colorScheme.secondary,
-        children: items.map((item) {
-          bool isSelected = selectedItems.contains(item);
-          return _buildTile(
-            context: context,
-            title: item,
-            onPressed: () => onSelectItem(item),
-          );
-        }).toList(),
+        onConfirm: (values) {
+          setState(() {
+            selectedItems.clear();
+            selectedItems.addAll(values);
+          });
+        },
       ),
     );
   }
@@ -192,26 +196,21 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
       title: 'Ville',
       child: Container(
         width: 300,
-        child: CSCPicker(
-          disableCountry: false,
-          defaultCountry: CscCountry.France,
-          onCityChanged: (value) {
-            setState(() {
-              _city = value!;
-            });
-          },
-          dropdownDecoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: Colors.white,
-          ),
-          selectedItemStyle: TextStyle(
+        child: TextField(
+          style: TextStyle(
             color: themes.currentTheme.colorScheme.onPrimary,
           ),
-          dropdownHeadingStyle: TextStyle(
-            color: themes.currentTheme.colorScheme.onPrimary,
-          ),
-          dropdownItemStyle: TextStyle(
-            color: themes.currentTheme.colorScheme.onPrimary,
+          decoration: InputDecoration(
+            hintText: 'Entrez une ville',
+            hintStyle: TextStyle(
+              color: themes.currentTheme.colorScheme.onPrimary.withOpacity(0.5),
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(
+                color: themes.currentTheme.colorScheme.onPrimary.withOpacity(0.3),
+              ),
+            ),
           ),
         ),
       ),

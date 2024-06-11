@@ -1,27 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 // Skills
 class SkillCategory {
   final String categoryName;
   final List<String> skills;
+  final Color color;
 
-  SkillCategory({required this.categoryName, required this.skills});
+  SkillCategory({
+    required this.categoryName,
+    required this.skills,
+    required this.color,
+  });
 }
 
 List<SkillCategory> skillCategories = [
   SkillCategory(
     categoryName: 'Cognitive',
     skills: ['mémorisation', 'concentration', 'esprit critique', 'créativité', 'résilience', 'persévérence', 'curiosité intellectuel'],
+    color: Colors.red
   ),
   SkillCategory(
     categoryName: 'Comportementale',
     skills: ['organisation', 'adaptabilité', 'autonomie', 'responsabilité', 'gestion du stress', 'initiative', 'auto-discipline', 'gestion du temps', 'audace', 'gestion du temps'],
+    color: Colors.blue,
   ),
   SkillCategory(
     categoryName: 'Relationnelle',
     skills: ['communication', 'esprit d\'équipe', 'empathie', 'négociation', 'tolérance', 'confiance en soi', 'médiation', 'leadership', 'entretien de réseau'],
+    color: Colors.green,
   ),
 ];
+
+Map<String, Color> skillColorMap = {
+  for (var category in skillCategories)
+    for (var skill in category.skills) skill: category.color,
+};
 
 List<String> activitySectors = [
   'Activités juridiques et comptables',
