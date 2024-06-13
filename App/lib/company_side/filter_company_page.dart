@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:adopte_un_candidat/useful.dart';
-import 'skills.dart';
+import '../skills.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class SkillsFilterPage extends StatefulWidget {

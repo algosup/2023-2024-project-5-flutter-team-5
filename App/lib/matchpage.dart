@@ -6,7 +6,7 @@ import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:adopte_un_candidat/profileview.dart';
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/message.dart';
-import 'package:adopte_un_candidat/filterpage.dart';
+import 'package:adopte_un_candidat/job_seeker_side/filterpage.dart';
 import 'package:adopte_un_candidat/notification_page.dart';
 
 class _Profile {

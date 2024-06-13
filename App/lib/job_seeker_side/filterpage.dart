@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:adopte_un_candidat/useful.dart';
+import '../skills.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:adopte_un_candidat/useful.dart';
-import 'package:adopte_un_candidat/filterpage.dart';
-import 'package:adopte_un_candidat/skills.dart';
 
-class EditProfilPage extends StatefulWidget {
+class SkillsFilterPage extends StatefulWidget {
   @override
-  _EditProfilPageState createState() => _EditProfilPageState();
+  _SkillsFilterPageState createState() => _SkillsFilterPageState();
 }
 
-class _EditProfilPageState extends State<EditProfilPage> {
-  String _name = '';
-  String _email = '';
+class _SkillsFilterPageState extends State<SkillsFilterPage> {
   String _city = '';
   double _radius = 10.0;
   List<String> _selectedSkills = [];
@@ -36,7 +32,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Édition du Profil',
+                  'Filtres de matching',
                   style: TextStyle(
                     color: themes.currentTheme.colorScheme.onPrimary,
                     fontWeight: FontWeight.bold,
@@ -69,37 +65,14 @@ class _EditProfilPageState extends State<EditProfilPage> {
       body: ListView(
         children: [
           _buildSection(
-            title: 'Informations personnelles',
-            tiles: [
-              _buildTextFieldTile(
-                title: 'Nom',
-                value: _name,
-                onChanged: (value) {
-                  setState(() {
-                    _name = value;
-                  });
-                },
-              ),
-              _buildTextFieldTile(
-                title: 'Email',
-                value: _email,
-                onChanged: (value) {
-                  setState(() {
-                    _email = value;
-                  });
-                },
-              ),
-              _buildCityTile(),
-            ],
-          ),
-          _buildSection(
             title: 'Localisation',
             tiles: [
+              _buildCityTile(),
               _buildRadiusTile(),
             ],
           ),
           _buildSection(
-            title: 'Compétences et Préférences',
+            title: 'Filtres avancés',
             tiles: [
               _buildExpansionTile(
                 title: 'Compétences',
@@ -184,14 +157,43 @@ class _EditProfilPageState extends State<EditProfilPage> {
     );
   }
 
-  Widget _buildTextFieldTile({
+  Widget _buildExpansionTile({
     required String title,
-    required String value,
-    required Function(String) onChanged,
+    required List<String> items,
+    required List<String> selectedItems,
+    required Function(String) onSelectItem,
   }) {
+    return Container(
+      margin: const EdgeInsets.only(left: 30),
+      child: MultiSelectDialogField(
+        items: items.map((item) => MultiSelectItem<String>(item, item)).toList(),
+        title: Text(title),
+        selectedColor: Colors.blue,
+
+        buttonIcon: Icon(
+          Icons.arrow_drop_down,
+          color: themes.currentTheme.colorScheme.onPrimary,
+        ),
+        buttonText: Text(
+          title,
+          style: TextStyle(
+            color: themes.currentTheme.colorScheme.onPrimary,
+          ),
+        ),
+        onConfirm: (values) {
+          setState(() {
+            selectedItems.clear();
+            selectedItems.addAll(values);
+          });
+        },
+      ),
+    );
+  }
+
+  Widget _buildCityTile() {
     return _buildTile(
       context: context,
-      title: title,
+      title: 'Ville',
       child: Container(
         width: 300,
         child: TextField(
@@ -199,7 +201,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
             color: themes.currentTheme.colorScheme.onPrimary,
           ),
           decoration: InputDecoration(
-            hintText: 'Entrez $title',
+            hintText: 'Entrez une ville',
             hintStyle: TextStyle(
               color: themes.currentTheme.colorScheme.onPrimary.withOpacity(0.5),
             ),
@@ -210,21 +212,8 @@ class _EditProfilPageState extends State<EditProfilPage> {
               ),
             ),
           ),
-          onChanged: onChanged,
         ),
       ),
-    );
-  }
-
-  Widget _buildCityTile() {
-    return _buildTextFieldTile(
-      title: 'Ville',
-      value: _city,
-      onChanged: (value) {
-        setState(() {
-          _city = value;
-        });
-      },
     );
   }
 
@@ -236,7 +225,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
         children: [
           Spacer(),
           Container(
-            width: 200,
+            width: 200, 
             child: Slider(
               value: _radius,
               min: 0,
@@ -250,8 +239,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
               },
             ),
           ),
-          Text(
-            '${_radius.toStringAsFixed(1)} km',
+          Text('${_radius.toStringAsFixed(1)} km',
             style: TextStyle(
               color: themes.currentTheme.colorScheme.onPrimary,
             ),
@@ -264,7 +252,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
   Widget _buildTile({
     required BuildContext context,
     required String title,
-    IconData? icon,
+    IconData ? icon,
     VoidCallback? onPressed,
     Widget? child,
     Color? titleColor,
@@ -297,38 +285,6 @@ class _EditProfilPageState extends State<EditProfilPage> {
               ),
             ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildExpansionTile({
-    required String title,
-    required List<String> items,
-    required List<String> selectedItems,
-    required Function(String) onSelectItem,
-  }) {
-    return Container(
-      margin: const EdgeInsets.only(left: 30),
-      child: MultiSelectDialogField(
-        items: items.map((item) => MultiSelectItem<String>(item, item)).toList(),
-        title: Text(title),
-        selectedColor: Colors.blue,
-        buttonIcon: Icon(
-          Icons.arrow_drop_down,
-          color: themes.currentTheme.colorScheme.onPrimary,
-        ),
-        buttonText: Text(
-          title,
-          style: TextStyle(
-            color: themes.currentTheme.colorScheme.onPrimary,
-          ),
-        ),
-        onConfirm: (values) {
-          setState(() {
-            selectedItems.clear();
-            selectedItems.addAll(values);
-          });
-        },
       ),
     );
   }

@@ -37,6 +37,51 @@ Map<String, Color> skillColorMap = {
     for (var skill in category.skills) skill: category.color,
 };
 
+List<String> Personality = [
+ 'Architecte',
+  'Logicien',
+  'Commandant',
+  'Innovateur',
+  'Avocat',
+  'Médiateur',
+  'Protagoniste',
+  'Inspirateur',
+  'Logisticien',
+  'Défenseur',
+  'Directeur',
+  'Consul',
+  'Virtuose',
+  'Aventurier',
+  'Entrepreneur',
+  'Amuseur',
+];
+
+List<String> Diplomas = [
+  'Certificat d\'aptitude professionnelle (CAP)',
+  'Brevet d\'études professionnelles (BEP)',
+  'Mention complémentaire (MC)',
+  'Certificat de formation générale (CFG)',
+  'Baccalauréat général',
+  'Baccalauréat technologique',
+  'Baccalauréat professionnel',
+  'Brevet de technicien (BT)',
+  'Brevet des métiers d\'art (BMA)',
+  'Diplôme d\'accès aux études universitaires (DAEU)',
+  'Brevet de technicien supérieur (BTS)',
+  'Diplôme universitaire de technologie (DUT)',
+  'Diplôme d\'études universitaires scientifiques et techniques (DEUST)',
+  'Brevet professionnel de la jeunesse, de l\'éducation populaire et du sport (BPJEPS)',
+  'Licence',
+  'Licence professionnelle',
+  'Bachelor',
+  'Diplôme national des métiers d’art et du design (DN MADE)',
+  'Diplôme universitaire de technologie (BUT)',
+  'Master',
+  'Diplôme d\'ingénieur',
+  'Diplôme d’État de docteur en médecine, en pharmacie, en chirurgie dentaire, en maïeutique',
+  'Doctorat',
+];  
+
 List<String> activitySectors = [
   'Activités juridiques et comptables',
   'Agriculture et élevage',
