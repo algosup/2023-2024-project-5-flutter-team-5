@@ -49,6 +49,8 @@ class _SigninFormState extends State<SigninForm> {
   String? _email;
   String? _password;
   String? _phoneNumber;
+  bool _isCandidate = false;
+  bool _isEnterprise = false;
 
   String? _validateName(String? value) {
     if (value?.isEmpty ?? false) {
@@ -167,6 +169,26 @@ class _SigninFormState extends State<SigninForm> {
                   obscureText: true,
                 ),
                 const SizedBox(height: 24.0),
+                // Checkboxes for Candidate and Enterprise
+                CheckboxListTile(
+                  title: Text("Candidat"),
+                  value: _isCandidate,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _isCandidate = value ?? false;
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: Text("Entreprise"),
+                  value: _isEnterprise,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      _isEnterprise = value ?? false;
+                    });
+                  },
+                ),
+                const SizedBox(height: 24.0),
               ],
             ),
           ),
@@ -179,6 +201,8 @@ class _SigninFormState extends State<SigninForm> {
                 email: _email,
                 password: _password, // Ensure _password is correctly set
                 phoneNumber: _phoneNumber,
+                isCandidate: _isCandidate,
+                isEnterprise: _isEnterprise,
               );
             },
           ),
@@ -187,14 +211,25 @@ class _SigninFormState extends State<SigninForm> {
     );
   }
 }
+
 class SignInData {
   final String? username;
   final String? email;
   final String? password;
   final String? phoneNumber;
+  final bool isCandidate;
+  final bool isEnterprise;
 
-  SignInData({this.username, this.email, this.password, this.phoneNumber});
+  SignInData({
+    this.username,
+    this.email,
+    this.password,
+    this.phoneNumber,
+    this.isCandidate = false,
+    this.isEnterprise = false,
+  });
 }
+
 
 class Buttonsignin extends StatelessWidget {
   final GlobalKey<FormState> formKey;
