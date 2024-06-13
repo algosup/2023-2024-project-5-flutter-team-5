@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "Anonymization"
-    ]
+    ],
+    "cmake.ignoreCMakeListsMissing": true
 }
