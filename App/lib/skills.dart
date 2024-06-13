@@ -66,22 +66,22 @@ Map<String, Color> skillColorMap = {
 };
 
 List<String> Personality = [
-  'Architecte',
-  'Logicien',
-  'Commandant',
-  'Innovateur',
-  'Avocat',
-  'Médiateur',
-  'Protagoniste',
-  'Inspirateur',
-  'Logisticien',
-  'Défenseur',
-  'Directeur',
-  'Consul',
-  'Virtuose',
-  'Aventurier',
-  'Entrepreneur',
-  'Amuseur',
+ 'Architecte - INTJ',
+  'Logicien - INTP',
+  'Commandant - ENTJ',
+  'Innovateur - ENTP',
+  'Avocat - INFJ',
+  'Médiateur - INFP',
+  'Protagoniste - ENFJ',
+  'Inspirateur - ENFP',
+  'Logisticien - ISTJ',
+  'Défenseur - ISFJ',
+  'Directeur - ESTJ',
+  'Consul - ESFJ',
+  'Virtuose - ISTP',
+  'Aventurier - ISFP',
+  'Entrepreneur - ESTP',
+  'Amuseur - ESFP',
 ];
 
 List<String> Diplomas = [

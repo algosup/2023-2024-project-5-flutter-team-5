@@ -264,7 +264,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
         children: [
           Spacer(),
           Container(
-            width: 200,
+            width: 150,
             child: Slider(
               value: _radius,
               min: 0,
