@@ -12,6 +12,7 @@ class EditProfilPage extends StatefulWidget {
 
 class _EditProfilPageState extends State<EditProfilPage> {
   String _name = '';
+  String _job = '';
   String _email = '';
   String _city = '';
   double _radius = 10.0;
@@ -83,6 +84,15 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 },
               ),
               _buildTextFieldTile(
+                title: 'Emploi proposé',
+                value: _job,
+                onChanged: (value) {
+                  setState(() {
+                    _email = value;
+                  });
+                },
+              ),
+              _buildTextFieldTile(
                 title: 'Email',
                 value: _email,
                 onChanged: (value) {
@@ -104,7 +114,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
             title: 'Compétences et critères de recherche',
             tiles: [
               _buildExpansionTile(
-                title: 'Compétences',
+                title: 'Compétences de l\'entreprise',
                 items: _getSkillsByCategory(),
                 selectedItems: _selectedSkills,
                 onSelectItem: (String item) {

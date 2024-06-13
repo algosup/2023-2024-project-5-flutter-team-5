@@ -15,6 +15,7 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
   List<String> _selectedActivitySectors = [];
   List<String> _selectedCompanyCategories = [];
   List<String> _selectedContractTypes = [];
+  RangeValues _salaryRange = const RangeValues(0, 10000);
   Themes themes = Themes();
 
   @override
@@ -71,6 +72,7 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
               _buildRadiusTile(),
             ],
           ),
+          _buildSalaryRangeTile(),
           _buildSection(
             title: 'Filtres avancés',
             tiles: [
@@ -248,6 +250,42 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
       ),
     );
   }
+
+Widget _buildSalaryRangeTile() {
+  return _buildTile(
+    context: context,
+    title: 'Échelle de salaire',
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Text(
+            '€${_salaryRange.start.round()} - €${_salaryRange.end.round()}',
+            style: TextStyle(
+              color: themes.currentTheme.colorScheme.onPrimary,
+            ),
+          ),
+        ),
+        RangeSlider(
+          values: _salaryRange,
+          min: 0,
+          max: 10000,
+          divisions: 100,
+          labels: RangeLabels(
+            '€${_salaryRange.start.round()}',
+            '€${_salaryRange.end.round()}',
+          ),
+          onChanged: (values) {
+            setState(() {
+              _salaryRange = values;
+            });
+          },
+        ),
+      ],
+    ),
+  );
+}
 
   Widget _buildTile({
     required BuildContext context,

@@ -15,6 +15,9 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
   List<String> _selectedActivitySectors = [];
   List<String> _selectedCompanyCategories = [];
   List<String> _selectedContractTypes = [];
+  List<String> _selectedDiplomas = [];
+  List<String> _selectedPersonality = [];
+
   Themes themes = Themes();
 
   @override
@@ -87,6 +90,30 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
                 },
               ),
               _buildExpansionTile(
+                title: 'Diplomes',
+                items: Diplomas,
+                selectedItems: _selectedDiplomas,
+                onSelectItem: (String item) {
+                  setState(() {
+                    _selectedDiplomas.contains(item)
+                        ? _selectedDiplomas.remove(item)
+                        : _selectedDiplomas.add(item);
+                  });
+                },
+              ),
+              _buildExpansionTile(
+                title: 'Personnalité',
+                items: Personality,
+                selectedItems: _selectedPersonality,
+                onSelectItem: (String item) {
+                  setState(() {
+                    _selectedPersonality.contains(item)
+                        ? _selectedPersonality.remove(item)
+                        : _selectedPersonality.add(item);
+                  });
+                },
+              ),
+              _buildExpansionTile(
                 title: 'Secteur(s) d\'activité',
                 items: activitySectors,
                 selectedItems: _selectedActivitySectors,
@@ -95,18 +122,6 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
                     _selectedActivitySectors.contains(item)
                         ? _selectedActivitySectors.remove(item)
                         : _selectedActivitySectors.add(item);
-                  });
-                },
-              ),
-              _buildExpansionTile(
-                title: 'Catégorie de l\'entreprise',
-                items: companyCategories,
-                selectedItems: _selectedCompanyCategories,
-                onSelectItem: (String item) {
-                  setState(() {
-                    _selectedCompanyCategories.contains(item)
-                        ? _selectedCompanyCategories.remove(item)
-                        : _selectedCompanyCategories.add(item);
                   });
                 },
               ),

@@ -104,7 +104,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
           _buildSection(
             title: 'Compétences et préférences',
             tiles: [
-              _buildSalaryRangeTile(), // Ajoutez cette ligne
+              _buildSalaryRangeTile(), 
               _buildExpansionTile(
                 title: 'Compétences',
                 items: _getSkillsByCategory(),
