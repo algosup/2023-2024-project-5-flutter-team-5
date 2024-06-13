@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 // Pages
 import 'package:adopte_un_candidat/useful.dart';
-import 'package:adopte_un_candidat/matchpage.dart';
-import 'package:adopte_un_candidat/profileview.dart';
+import 'message_conversation_page.dart';
 
 class MessagePage extends StatefulWidget {
   const MessagePage({Key? key}) : super(key: key);
@@ -32,55 +31,57 @@ class _MessagePageState extends State<MessagePage> {
             automaticallyImplyLeading: false,
             expandedHeight: 350.0,
             flexibleSpace: FlexibleSpaceBar(
-                background: Container(
-                  color: themes.currentTheme.colorScheme.primary,
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Image.asset(
-                  filterQuality: FilterQuality.medium,
-                            themes.currentTheme.handshake,
-                            width: 80,
-                            height: 80,
+              background: Container(
+                color: themes.currentTheme.colorScheme.primary,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Image.asset(
+                          filterQuality: FilterQuality.medium,
+                          themes.currentTheme.handshake,
+                          width: 80,
+                          height: 80,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: Text(
+                          'Les dernières entreprises qui t\'ont match',
+                          style: TextStyle(
+                            color: themes.currentTheme.colorScheme.onPrimary
+                                .withOpacity(0.8),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
                           ),
                         ),
                       ),
-                          Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Text(
-                            'Les dernières entreprises qui t\'ont match',
-                            style: TextStyle(
-                              color: themes.currentTheme.colorScheme.onPrimary.withOpacity(0.8),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            ),
-                          ),
-                          ),
-                      ScrollableBoxWidget1(),
-                    ],
-                  ),
+                    ),
+                    ScrollableBoxWidget1(),
+                  ],
                 ),
+              ),
             ),
           ),
-            SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
-              'Messages',
-              style: TextStyle(
-                color: themes.currentTheme.colorScheme.onPrimary.withOpacity(0.8),
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+                'Messages',
+                style: TextStyle(
+                  color: themes.currentTheme.colorScheme.onPrimary
+                      .withOpacity(0.8),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
             ),
-            ),
+          ),
           SliverList(
             key: listMessages_Messages,
             delegate: SliverChildBuilderDelegate(
@@ -90,28 +91,43 @@ class _MessagePageState extends State<MessagePage> {
                     Container(
                       padding: const EdgeInsets.all(10.0),
                       color: themes.currentTheme.colorScheme.primary,
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: themes.currentTheme.colorScheme.onSecondary,
-                            radius: 60,
-                          ),
-                          SizedBox(width: 20), 
-                          Text(
-                            'Entreprise $index',
-                            style: TextStyle(
-                              color: themes.currentTheme.colorScheme.onPrimary,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) {
+                                return MessageConversationPage(name: 'Enterprise $index');
+                              },
                             ),
-                          ),
-                        ],
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor:
+                                  themes.currentTheme.colorScheme.onSecondary,
+                              radius: 60,
+                            ),
+                            SizedBox(width: 20),
+                            Text(
+                              'Enterprise $index',
+                              style: TextStyle(
+                                color:
+                                    themes.currentTheme.colorScheme.onPrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.3,),
+                      margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * 0.3,
+                      ),
                       height: 3,
-                      width: MediaQuery.of(context).size.width * 0.7, 
+                      width: MediaQuery.of(context).size.width * 0.7,
                       decoration: BoxDecoration(
                         color: const Color(0xFFC3C3C3),
                         borderRadius: BorderRadius.circular(10),
@@ -208,11 +224,11 @@ class BoxWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         boxShadow: const [
           BoxShadow(
-                color: Color(0x3F000000),
-                blurRadius: 4,
-                offset: Offset(0, 4),
-                spreadRadius: 0,
-              )
+            color: Color(0x3F000000),
+            blurRadius: 4,
+            offset: Offset(0, 4),
+            spreadRadius: 0,
+          )
         ],
       ),
       child: Align(

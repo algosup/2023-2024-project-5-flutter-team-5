@@ -110,7 +110,7 @@ class Themes extends ChangeNotifier{
     onPrimary: Colors.black, // text & icon color
     primaryContainer: Color(0xFF1FBAF7), // container color (ex.profile view)
     onPrimaryContainer: Colors.black, // container text color
-    secondary: Colors.white, // other elements color
+    secondary: Color.fromARGB(255, 227, 227, 227), // other elements color
     onSecondary: Color(0xFFC4C4C4), // box color
     error: Color.fromARGB(70, 31, 186, 247), // shadow color
     onError: Color.fromARGB(255, 230, 230, 230), // profile picture
