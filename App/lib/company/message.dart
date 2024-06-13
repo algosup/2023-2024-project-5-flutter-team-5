@@ -98,7 +98,7 @@ class _MessagePageState extends State<MessagePage> {
                             MaterialPageRoute(
                               builder: (BuildContext context) {
                                 return MessageConversationPage(
-                                    name: 'Enterprise $index');
+                                    name: 'Employé $index');
                               },
                             ),
                           );
@@ -112,7 +112,7 @@ class _MessagePageState extends State<MessagePage> {
                             ),
                             const SizedBox(width: 20),
                             Text(
-                              'Enterprise $index',
+                              'Employé $index',
                               style: TextStyle(
                                 color:
                                     themes.currentTheme.colorScheme.onPrimary,
@@ -167,43 +167,43 @@ class ScrollableBoxWidget1 extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 1'),
+              child: BoxWidget(text: 'Employé 1'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 2'),
+              child: BoxWidget(text: 'Employé 2'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 3'),
+              child: BoxWidget(text: 'Employé 3'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 4'),
+              child: BoxWidget(text: 'Employé 4'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 5'),
+              child: BoxWidget(text: 'Employé 5'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 6'),
+              child: BoxWidget(text: 'Employé 6'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 7'),
+              child: BoxWidget(text: 'Employé 7'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 8'),
+              child: BoxWidget(text: 'Employé 8'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 9'),
+              child: BoxWidget(text: 'Employé 9'),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: BoxWidget(text: 'Entreprise 10'),
+              child: BoxWidget(text: 'Employé 10'),
             ),
           ],
         ),
@@ -220,24 +220,33 @@ class BoxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 165,
-      width: 125,
-      decoration: BoxDecoration(
-        color: themes.currentTheme.colorScheme.onSecondary,
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 4,
-            offset: Offset(0, 4),
-            spreadRadius: 0,
-          )
-        ],
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) {
+            return MessageConversationPage(name: text);
+          },
+        ),
       ),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Text(text),
+      child: Container(
+        height: 165,
+        width: 125,
+        decoration: BoxDecoration(
+          color: themes.currentTheme.colorScheme.onSecondary,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x3F000000),
+              blurRadius: 4,
+              offset: Offset(0, 4),
+              spreadRadius: 0,
+            )
+          ],
+        ),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Text(text),
+        ),
       ),
     );
   }

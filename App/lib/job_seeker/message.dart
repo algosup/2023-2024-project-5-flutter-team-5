@@ -99,7 +99,7 @@ class _MessagePageState extends State<MessagePage> {
                             MaterialPageRoute(
                               builder: (BuildContext context) {
                                 return MessageConversationPage(
-                                    name: 'Enterprise $index');
+                                    name: 'Entreprise $index');
                               },
                             ),
                           );
@@ -113,7 +113,7 @@ class _MessagePageState extends State<MessagePage> {
                             ),
                             const SizedBox(width: 20),
                             Text(
-                              'Enterprise $index',
+                              'Entreprise $index',
                               style: TextStyle(
                                 color:
                                     themes.currentTheme.colorScheme.onPrimary,
@@ -221,24 +221,33 @@ class BoxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 165,
-      width: 125,
-      decoration: BoxDecoration(
-        color: themes.currentTheme.colorScheme.onSecondary,
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 4,
-            offset: Offset(0, 4),
-            spreadRadius: 0,
-          )
-        ],
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) {
+            return MessageConversationPage(name: text);
+          },
+        ),
       ),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Text(text),
+      child: Container(
+        height: 165,
+        width: 125,
+        decoration: BoxDecoration(
+          color: themes.currentTheme.colorScheme.onSecondary,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x3F000000),
+              blurRadius: 4,
+              offset: Offset(0, 4),
+              spreadRadius: 0,
+            )
+          ],
+        ),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Text(text),
+        ),
       ),
     );
   }

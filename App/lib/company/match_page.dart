@@ -100,10 +100,10 @@ class MatchingPage extends State<MPage> {
   final GlobalKey cardSwiperHome = GlobalKey();
   final CardSwiperController controller = CardSwiperController();
   final List<Profile> candidates = [
-    Profile(name: 'Mac-Donald', location: 'Vierzon'),
-    Profile(name: 'Skill-Issue®', location: 'Paris'),
-    Profile(name: 'Rick-Roller', location: 'Never-Gonna'),
-    Profile(name: 'Ledger', location: 'Moscow'),
+    Profile(name: 'créativité\nrésilience\naudace\n', location: 'Vierzon'),
+    Profile(name: 'leadership\nautonomie\npersévérence\n', location: 'Paris'),
+    Profile(name: 'créativité\ninitiative\nleadership\n', location: 'Le Mans'),
+    Profile(name: 'autonomie\naudace\nleadership\n', location: 'Tours'),
   ];
 
   late final List<Widget> cards;
