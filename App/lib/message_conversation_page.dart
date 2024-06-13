@@ -44,41 +44,45 @@ class _MessageConversationPageState extends State<MessageConversationPage> {
         reverse: true,
         child: messageHandler.getSentMessage(widget.name),
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: themes.currentTheme.colorScheme.primary,
-        child: Row(
-          children: [
-            Expanded(
-              child: TextField(
-                controller: _textEditingController,
-                maxLines: null,
-                keyboardType: TextInputType.multiline,
-                style: TextStyle(
-                  color: themes.currentTheme.colorScheme.onPrimary,
-                ),
-                decoration: InputDecoration(
-                  hintText: 'message',
-                  hintStyle: TextStyle(
-                    color: themes.currentTheme.colorScheme.onPrimary
-                        .withOpacity(0.7),
+      bottomNavigationBar: Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: BottomAppBar(
+          color: themes.currentTheme.colorScheme.primary,
+          child: Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _textEditingController,
+                  maxLines: null,
+                  keyboardType: TextInputType.multiline,
+                  style: TextStyle(
+                    color: themes.currentTheme.colorScheme.onPrimary,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 10.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none, // No border
+                  decoration: InputDecoration(
+                    hintText: 'message',
+                    hintStyle: TextStyle(
+                      color: themes.currentTheme.colorScheme.onPrimary
+                          .withOpacity(0.7),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 10.0),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide: BorderSide.none, // No border
+                    ),
+                    filled: true,
+                    fillColor: themes
+                        .currentTheme.colorScheme.secondary, // Background color
                   ),
-                  filled: true,
-                  fillColor: themes
-                      .currentTheme.colorScheme.secondary, // Background color
                 ),
               ),
-            ),
-            IconButton(
-                color: themes.currentTheme.colorScheme.onPrimary,
-                icon: const Icon(Icons.send),
-                onPressed: _addMessage),
-          ],
+              IconButton(
+                  color: themes.currentTheme.colorScheme.onPrimary,
+                  icon: const Icon(Icons.send),
+                  onPressed: _addMessage),
+            ],
+          ),
         ),
       ),
     );
