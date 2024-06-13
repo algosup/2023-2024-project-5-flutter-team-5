@@ -4,8 +4,7 @@ import 'useful.dart';
 class MessageConversationPage extends StatefulWidget {
   final String name;
 
-  const MessageConversationPage({Key? key, required this.name})
-      : super(key: key);
+  const MessageConversationPage({super.key, required this.name});
 
   @override
   State<MessageConversationPage> createState() =>
@@ -15,13 +14,12 @@ class MessageConversationPage extends StatefulWidget {
 class _MessageConversationPageState extends State<MessageConversationPage> {
   final Themes themes = Themes();
   MessageHandler messageHandler = MessageHandler();
-  TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _textEditingController = TextEditingController();
 
   void _addMessage() {
     setState(() {
       String trimmedText = _textEditingController.text.trimRight();
       if (trimmedText.isNotEmpty) {
-
         messageHandler.addSentMessage(trimmedText);
       }
       _textEditingController.clear();
@@ -90,7 +88,7 @@ class _MessageConversationPageState extends State<MessageConversationPage> {
 class SendMessage extends StatefulWidget {
   final String message;
 
-  const SendMessage({Key? key, required this.message}) : super(key: key);
+  const SendMessage({super.key, required this.message});
 
   @override
   State<SendMessage> createState() => _SendMessageState();
@@ -126,7 +124,7 @@ class _SendMessageState extends State<SendMessage> {
 class GetMessage extends StatefulWidget {
   final String message;
 
-  const GetMessage({Key? key, required this.message}) : super(key: key);
+  const GetMessage({super.key, required this.message});
 
   @override
   State<GetMessage> createState() => _GetMessageState();
@@ -142,7 +140,7 @@ class _GetMessageState extends State<GetMessage> {
       alignment: Alignment.centerLeft,
       padding: const EdgeInsets.fromLTRB(10, 5, 100, 5),
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: themes.currentTheme.colorScheme.primary,
@@ -160,7 +158,7 @@ class _GetMessageState extends State<GetMessage> {
 }
 
 class MessageHandler {
-  List<String> _sentMessages = [];
+  final List<String> _sentMessages = [];
 
   Column getSentMessage(String name) {
     return Column(

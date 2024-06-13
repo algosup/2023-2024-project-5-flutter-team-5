@@ -1,39 +1,38 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 // Pages
-import 'package:adopte_un_candidat/profileview.dart';
 import 'package:adopte_un_candidat/useful.dart';
-import 'package:adopte_un_candidat/message.dart';
-import 'package:adopte_un_candidat/job_seeker_side/filterpage.dart';
 import 'package:adopte_un_candidat/notification_page.dart';
 
-class _Profile {
+import 'app_bar.dart';
+import 'filter_page.dart';
+
+class Profile {
   final String name;
   final String location;
 
-  _Profile({required this.name, required this.location});
+  Profile({required this.name, required this.location});
 }
 
 class ExampleCard extends StatelessWidget {
-  final _Profile profile;
+  final Profile profile;
   final int cardIndex;
   final Themes themes = Themes();
 
   ExampleCard({
-    Key? key,
+    super.key,
     required this.profile,
     required this.cardIndex,
-  }) : super(key: key);
+  });
 
   // colors cards
   static final List<LinearGradient> cardGradients = [
-    LinearGradient(colors: [Colors.pink, Colors.redAccent]),
-    LinearGradient(colors: [Colors.blue, Colors.blueAccent]),
-    LinearGradient(colors: [Colors.orange, Colors.deepOrange]),
-    LinearGradient(colors: [Colors.purple, Colors.deepPurple]),
+    const LinearGradient(colors: [Colors.pink, Colors.redAccent]),
+    const LinearGradient(colors: [Colors.blue, Colors.blueAccent]),
+    const LinearGradient(colors: [Colors.orange, Colors.deepOrange]),
+    const LinearGradient(colors: [Colors.purple, Colors.deepPurple]),
   ];
 
   @override
@@ -92,20 +91,20 @@ class ExampleCard extends StatelessWidget {
 }
 
 class MPage extends StatefulWidget {
-  MPage({Key? key}) : super(key: key);
+  const MPage({super.key});
 
   @override
   State<MPage> createState() => MatchingPage();
 }
 
 class MatchingPage extends State<MPage> {
-  final GlobalKey cardSwiper_Home = GlobalKey();
+  final GlobalKey cardSwiperHome = GlobalKey();
   final CardSwiperController controller = CardSwiperController();
-  final List<_Profile> candidates = [
-    _Profile(name: 'Mac-Donald', location: 'Vierzon'),
-    _Profile(name: 'Skill-Issue®', location: 'Paris'),
-    _Profile(name: 'Rick-Roller', location: 'Never-Gonna'),
-    _Profile(name: 'Ledger', location: 'Moscow'),
+  final List<Profile> candidates = [
+    Profile(name: 'Mac-Donald', location: 'Vierzon'),
+    Profile(name: 'Skill-Issue®', location: 'Paris'),
+    Profile(name: 'Rick-Roller', location: 'Never-Gonna'),
+    Profile(name: 'Ledger', location: 'Moscow'),
   ];
 
   late final List<Widget> cards;
@@ -140,8 +139,9 @@ class MatchingPage extends State<MPage> {
             child: Stack(
               children: [
                 CardSwiper(
-                  key: cardSwiper_Home,
-                  allowedSwipeDirection: const AllowedSwipeDirection.only(right: true, left: true),
+                  key: cardSwiperHome,
+                  allowedSwipeDirection:
+                      const AllowedSwipeDirection.only(right: true, left: true),
                   controller: controller,
                   cardsCount: cards.length,
                   onSwipe: _onSwipe,
@@ -184,8 +184,10 @@ class MatchingPage extends State<MPage> {
                             ],
                           ),
                           child: IconButton(
-                            icon: Image.asset('assets/cross.png', width: 75, height: 75),
-                            onPressed: () => controller.swipe(CardSwiperDirection.left),
+                            icon: Image.asset('assets/cross.png',
+                                width: 75, height: 75),
+                            onPressed: () =>
+                                controller.swipe(CardSwiperDirection.left),
                             iconSize: 50,
                           ),
                         ),
@@ -206,7 +208,8 @@ class MatchingPage extends State<MPage> {
                           ),
                           child: IconButton(
                             onPressed: () => controller.undo(),
-                            icon: Image.asset('assets/backarrow.png', width: 70, height: 70),
+                            icon: Image.asset('assets/backarrow.png',
+                                width: 70, height: 70),
                             iconSize: 50,
                           ),
                         ),
@@ -226,8 +229,10 @@ class MatchingPage extends State<MPage> {
                             ],
                           ),
                           child: IconButton(
-                            icon: Image.asset('assets/heart.png', width: 50, height: 50),
-                            onPressed: () => controller.swipe(CardSwiperDirection.right),
+                            icon: Image.asset('assets/heart.png',
+                                width: 50, height: 50),
+                            onPressed: () =>
+                                controller.swipe(CardSwiperDirection.right),
                             iconSize: 50,
                           ),
                         ),
@@ -256,7 +261,7 @@ class MatchingPage extends State<MPage> {
         child: Transform.translate(
           offset: Offset(isLeftSwipe ? -700 : 700, 0),
           child: AnimatedOpacity(
-            duration: Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 700),
             opacity: opacityLevel,
             child: Container(
               width: showSwipeEffect ? 900 : 300,
@@ -266,7 +271,9 @@ class MatchingPage extends State<MPage> {
                 color: isLeftSwipe ? Colors.red : Colors.blue,
               ),
               child: Align(
-                alignment: isLeftSwipe ? Alignment(0.65,0) : Alignment(-0.65,0),
+                alignment: isLeftSwipe
+                    ? const Alignment(0.65, 0)
+                    : const Alignment(-0.65, 0),
                 child: Icon(
                   isLeftSwipe ? Icons.close : Icons.favorite,
                   size: 50,
@@ -280,7 +287,8 @@ class MatchingPage extends State<MPage> {
     );
   }
 
-  bool _onSwipe(int previousIndex, int? currentIndex, CardSwiperDirection direction) {
+  bool _onSwipe(
+      int previousIndex, int? currentIndex, CardSwiperDirection direction) {
     setState(() {
       showSwipeEffect = true;
       isLeftSwipe = direction == CardSwiperDirection.left;
@@ -289,17 +297,16 @@ class MatchingPage extends State<MPage> {
     return true;
   }
 
-  bool _onUndo(int? previousIndex, int currentIndex, CardSwiperDirection direction) {
-    setState(() {
-    });
+  bool _onUndo(
+      int? previousIndex, int currentIndex, CardSwiperDirection direction) {
+    setState(() {});
     return true;
   }
-
 
   void _changeOpacity(bool fadeIn) {
     if (fadeIn) {
       setState(() => opacityLevel = 1.0);
-      Timer(Duration(milliseconds: 400), () {
+      Timer(const Duration(milliseconds: 400), () {
         setState(() => opacityLevel = 0.0);
       });
     } else {
@@ -310,9 +317,9 @@ class MatchingPage extends State<MPage> {
 
 class TopAppBar1 extends StatelessWidget {
   final Themes themes = Themes();
-  final GlobalKey buttonNotification_Home = GlobalKey();
-  final GlobalKey buttonFilter_Home = GlobalKey();
-  TopAppBar1({Key? key}) : super(key: key);
+  final GlobalKey buttonNotificationHome = GlobalKey();
+  final GlobalKey buttonFilterHome = GlobalKey();
+  TopAppBar1({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -335,10 +342,10 @@ class TopAppBar1 extends StatelessWidget {
           Row(
             children: [
               GestureDetector(
-                key: buttonNotification_Home,
+                key: buttonNotificationHome,
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => NotificationPage(),
+                    builder: (context) => const NotificationPage(),
                   ),
                 ),
                 child: Padding(
@@ -352,10 +359,10 @@ class TopAppBar1 extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                key: buttonFilter_Home,
+                key: buttonFilterHome,
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => SkillsFilterPage(),
+                    builder: (context) => const SkillsFilterPage(),
                   ),
                 ),
                 child: Padding(

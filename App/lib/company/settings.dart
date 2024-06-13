@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:provider/provider.dart';
 
+import 'app_bar.dart';
+
 class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
   @override
-  _SettingsPageState createState() => _SettingsPageState();
+  State<SettingsPage> createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
@@ -225,15 +229,15 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
         ),
-        DividerWidget(),
+        const DividerWidget(),
         for (int i = 0; i < tiles.length; i++)
         Column(
           children: [
-            if (i != 0) HalfDividerWidget(),
+            if (i != 0) const HalfDividerWidget(),
             tiles[i],
           ],
         ),
-      DividerWidget(),
+      const DividerWidget(),
       ],
     );
   }
@@ -247,7 +251,7 @@ class _SettingsPageState extends State<SettingsPage> {
     Color ? iconColor, 
     DropdownButton<String>? dropdownButton
   }){
-    return Container(
+    return SizedBox(
       height: 50,
       child: Stack(
         children: [
@@ -280,6 +284,8 @@ class _SettingsPageState extends State<SettingsPage> {
 }
 
 class DividerWidget extends StatelessWidget {
+  const DividerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -294,6 +300,8 @@ class DividerWidget extends StatelessWidget {
 }
 
 class HalfDividerWidget extends StatelessWidget {
+  const HalfDividerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

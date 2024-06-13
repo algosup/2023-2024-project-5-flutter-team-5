@@ -1,26 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:adopte_un_candidat/useful.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:adopte_un_candidat/job_seeker_side/filterpage.dart';
+
+//page
 import 'package:adopte_un_candidat/skills.dart';
+import 'package:adopte_un_candidat/useful.dart';
+
+import 'profile_view.dart';
 
 class EditProfilPage extends StatefulWidget {
+  const EditProfilPage({super.key});
+
   @override
-  _EditProfilPageState createState() => _EditProfilPageState();
+  State<EditProfilPage> createState() => _EditProfilPageState();
 }
 
 class _EditProfilPageState extends State<EditProfilPage> {
   String _name = '';
+  final String _job = '';
   String _email = '';
   String _city = '';
   double _radius = 10.0;
-  RangeValues _salaryRange = RangeValues(0, 10000);
-  List<String> _selectedSkills = [];
-  List<String> _selectedActivitySectors = [];
-  List<String> _selectedCompanyCategories = [];
-  List<String> _selectedContractTypes = [];
-  List<String> _selectedDiplomas = [];
-  List<String> _selectedPersonality = [];
+  RangeValues _salaryRange = const RangeValues(0, 10000);
+  final List<String> _selectedSkills = [];
+  final List<String> _selectedActivitySectors = [];
+  final List<String> _selectedCompanyCategories = [];
+  final List<String> _selectedContractTypes = [];
 
   Themes themes = Themes();
 
@@ -49,7 +53,8 @@ class _EditProfilPageState extends State<EditProfilPage> {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
+                  onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => ProfileView())),
                   child: Container(
                     margin: const EdgeInsets.only(right: 25),
                     child: const Text(
@@ -72,7 +77,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
       body: ListView(
         children: [
           _buildSection(
-            title: 'Informations personnelles',
+            title: 'Informations de l\'entreprise',
             tiles: [
               _buildTextFieldTile(
                 title: 'Nom',
@@ -80,6 +85,15 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 onChanged: (value) {
                   setState(() {
                     _name = value;
+                  });
+                },
+              ),
+              _buildTextFieldTile(
+                title: 'Emploi proposé',
+                value: _job,
+                onChanged: (value) {
+                  setState(() {
+                    _email = value;
                   });
                 },
               ),
@@ -102,11 +116,10 @@ class _EditProfilPageState extends State<EditProfilPage> {
             ],
           ),
           _buildSection(
-            title: 'Compétences et préférences',
+            title: 'Compétences et critères de recherche',
             tiles: [
-              _buildSalaryRangeTile(), 
               _buildExpansionTile(
-                title: 'Compétences',
+                title: 'Compétences de l\'entreprise',
                 items: _getSkillsByCategory(),
                 selectedItems: _selectedSkills,
                 onSelectItem: (String item) {
@@ -118,31 +131,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 },
               ),
               _buildExpansionTile(
-                title: 'Diplomes',
-                items: Diplomas,
-                selectedItems: _selectedDiplomas,
-                onSelectItem: (String item) {
-                  setState(() {
-                    _selectedDiplomas.contains(item)
-                        ? _selectedDiplomas.remove(item)
-                        : _selectedDiplomas.add(item);
-                  });
-                },
-              ),
-              _buildExpansionTile(
-                title: 'Personnalité',
-                items: Personality,
-                selectedItems: _selectedPersonality,
-                onSelectItem: (String item) {
-                  setState(() {
-                    _selectedPersonality.contains(item)
-                        ? _selectedPersonality.remove(item)
-                        : _selectedPersonality.add(item);
-                  });
-                },
-              ),
-              _buildExpansionTile(
-                title: 'Secteur(s) d\'activité recherché(s)',
+                title: 'Secteur(s) d\'activité de l\'entreprise',
                 items: activitySectors,
                 selectedItems: _selectedActivitySectors,
                 onSelectItem: (String item) {
@@ -154,7 +143,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 },
               ),
               _buildExpansionTile(
-                title: 'Catégorie de l\'entreprise recherchée',
+                title: 'Catégorie de l\'entreprise',
                 items: companyCategories,
                 selectedItems: _selectedCompanyCategories,
                 onSelectItem: (String item) {
@@ -166,7 +155,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
                 },
               ),
               _buildExpansionTile(
-                title: 'Type de contrats recherchés',
+                title: 'Type de contrats proposés',
                 items: contractTypes,
                 selectedItems: _selectedContractTypes,
                 onSelectItem: (String item) {
@@ -199,15 +188,15 @@ class _EditProfilPageState extends State<EditProfilPage> {
             ),
           ),
         ),
-        DividerWidget(),
+        const DividerWidget(),
         for (int i = 0; i < tiles.length; i++)
           Column(
             children: [
-              if (i != 0) HalfDividerWidget(),
+              if (i != 0) const HalfDividerWidget(),
               tiles[i],
             ],
           ),
-        DividerWidget(),
+        const DividerWidget(),
       ],
     );
   }
@@ -220,7 +209,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
     return _buildTile(
       context: context,
       title: title,
-      child: Container(
+      child: SizedBox(
         width: 300,
         child: TextField(
           style: TextStyle(
@@ -234,7 +223,8 @@ class _EditProfilPageState extends State<EditProfilPage> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: themes.currentTheme.colorScheme.onPrimary.withOpacity(0.3),
+                color:
+                    themes.currentTheme.colorScheme.onPrimary.withOpacity(0.3),
               ),
             ),
           ),
@@ -262,9 +252,9 @@ class _EditProfilPageState extends State<EditProfilPage> {
       title: 'Dans un rayon de',
       child: Row(
         children: [
-          Spacer(),
-          Container(
-            width: 150,
+          const Spacer(),
+          SizedBox(
+            width: 200,
             child: Slider(
               value: _radius,
               min: 0,
@@ -338,7 +328,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
     Color? titleColor,
     Color? iconColor,
   }) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: Stack(
         children: [
@@ -378,7 +368,8 @@ class _EditProfilPageState extends State<EditProfilPage> {
     return Container(
       margin: const EdgeInsets.only(left: 30),
       child: MultiSelectDialogField(
-        items: items.map((item) => MultiSelectItem<String>(item, item)).toList(),
+        items:
+            items.map((item) => MultiSelectItem<String>(item, item)).toList(),
         title: Text(title),
         selectedColor: Colors.blue,
         buttonIcon: Icon(
@@ -411,6 +402,8 @@ class _EditProfilPageState extends State<EditProfilPage> {
 }
 
 class DividerWidget extends StatelessWidget {
+  const DividerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -425,6 +418,8 @@ class DividerWidget extends StatelessWidget {
 }
 
 class HalfDividerWidget extends StatelessWidget {
+  const HalfDividerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

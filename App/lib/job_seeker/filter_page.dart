@@ -4,17 +4,19 @@ import '../skills.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class SkillsFilterPage extends StatefulWidget {
+  const SkillsFilterPage({super.key});
+
   @override
-  _SkillsFilterPageState createState() => _SkillsFilterPageState();
+  State<SkillsFilterPage> createState() => _SkillsFilterPageState();
 }
 
 class _SkillsFilterPageState extends State<SkillsFilterPage> {
-  String _city = '';
+  //final String _city = '';
   double _radius = 10.0;
-  List<String> _selectedSkills = [];
-  List<String> _selectedActivitySectors = [];
-  List<String> _selectedCompanyCategories = [];
-  List<String> _selectedContractTypes = [];
+  final List<String> _selectedSkills = [];
+  final List<String> _selectedActivitySectors = [];
+  final List<String> _selectedCompanyCategories = [];
+  final List<String> _selectedContractTypes = [];
   RangeValues _salaryRange = const RangeValues(0, 10000);
   Themes themes = Themes();
 
@@ -146,15 +148,15 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
             ),
           ),
         ),
-        DividerWidget(),
+        const DividerWidget(),
         for (int i = 0; i < tiles.length; i++)
           Column(
             children: [
-              if (i != 0) HalfDividerWidget(),
+              if (i != 0) const HalfDividerWidget(),
               tiles[i],
             ],
           ),
-        DividerWidget(),
+        const DividerWidget(),
       ],
     );
   }
@@ -168,10 +170,10 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
     return Container(
       margin: const EdgeInsets.only(left: 30),
       child: MultiSelectDialogField(
-        items: items.map((item) => MultiSelectItem<String>(item, item)).toList(),
+        items:
+            items.map((item) => MultiSelectItem<String>(item, item)).toList(),
         title: Text(title),
         selectedColor: Colors.blue,
-
         buttonIcon: Icon(
           Icons.arrow_drop_down,
           color: themes.currentTheme.colorScheme.onPrimary,
@@ -196,7 +198,7 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
     return _buildTile(
       context: context,
       title: 'Ville',
-      child: Container(
+      child: SizedBox(
         width: 300,
         child: TextField(
           style: TextStyle(
@@ -210,7 +212,8 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(
-                color: themes.currentTheme.colorScheme.onPrimary.withOpacity(0.3),
+                color:
+                    themes.currentTheme.colorScheme.onPrimary.withOpacity(0.3),
               ),
             ),
           ),
@@ -225,9 +228,9 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
       title: 'Dans un rayon de',
       child: Row(
         children: [
-          Spacer(),
-          Container(
-            width: 150, 
+          const Spacer(),
+          SizedBox(
+            width: 150,
             child: Slider(
               value: _radius,
               min: 0,
@@ -241,7 +244,8 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
               },
             ),
           ),
-          Text('${_radius.toStringAsFixed(1)} km',
+          Text(
+            '${_radius.toStringAsFixed(1)} km',
             style: TextStyle(
               color: themes.currentTheme.colorScheme.onPrimary,
             ),
@@ -251,7 +255,7 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
     );
   }
 
- Widget _buildSalaryRangeTile() {
+  Widget _buildSalaryRangeTile() {
     return _buildTile(
       context: context,
       title: 'Échelle de salaire',
@@ -294,13 +298,13 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
   Widget _buildTile({
     required BuildContext context,
     required String title,
-    IconData ? icon,
+    IconData? icon,
     VoidCallback? onPressed,
     Widget? child,
     Color? titleColor,
     Color? iconColor,
   }) {
-    return Container(
+    return SizedBox(
       height: 50,
       child: Stack(
         children: [
@@ -341,6 +345,8 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
 }
 
 class DividerWidget extends StatelessWidget {
+  const DividerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -355,6 +361,8 @@ class DividerWidget extends StatelessWidget {
 }
 
 class HalfDividerWidget extends StatelessWidget {
+  const HalfDividerWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

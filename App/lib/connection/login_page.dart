@@ -1,9 +1,10 @@
-import 'package:adopte_un_candidat/matchpage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+//pages
 import '../useful.dart';
-
+import '../job_seeker/match_page.dart';
 
 class LoginPage extends MaterialPageRoute {
   LoginPage(int id)
@@ -12,22 +13,24 @@ class LoginPage extends MaterialPageRoute {
             return Scaffold(
               extendBodyBehindAppBar: true,
               appBar: AppBar(
-                title: const Text('Connexion'),
-                backgroundColor: Color.fromARGB(0, 73, 7, 255)
-              ),
+                  title: const Text('Connexion'),
+                  backgroundColor: const Color.fromARGB(0, 73, 7, 255)),
               body: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Color.fromARGB(255, 243, 33, 236), Color.fromARGB(255, 2, 187, 255)],
+                    colors: [
+                      Color.fromARGB(255, 243, 33, 236),
+                      Color.fromARGB(255, 2, 187, 255)
+                    ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const TextFormFieldLogin(),
-                    const SizedBox(height: 24.0),
+                    TextFormFieldLogin(),
+                    SizedBox(height: 24.0),
                     ButtonLogin(),
                   ],
                 ),
@@ -37,9 +40,9 @@ class LoginPage extends MaterialPageRoute {
         );
 }
 
-// TextFormFieldLogin State          
+// TextFormFieldLogin State
 class TextFormFieldLogin extends StatefulWidget {
-  const TextFormFieldLogin({Key? key});
+  const TextFormFieldLogin({super.key});
 
   @override
   State<StatefulWidget> createState() => _TextFormFieldLogin();
@@ -50,7 +53,7 @@ class _TextFormFieldLogin extends State<TextFormFieldLogin> {
       GlobalKey<FormFieldState<String>>();
 
   String? _username;
-  String? _email;
+  //String? _email;
   String? _password;
 
   String? _validateName(String? value) {
@@ -80,14 +83,16 @@ class _TextFormFieldLogin extends State<TextFormFieldLogin> {
             decoration: const InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
-              ), 
+              ),
               filled: true,
               icon: Icon(Icons.person),
               labelText: 'Nom d\'utilisateur',
             ),
             onSaved: (String? value) {
-              this._username = value;
-              print('Nom=$_username');
+              _username = value;
+              if (kDebugMode) {
+                print('Nom=$_username');
+              }
             },
             validator: _validateName,
           ),
@@ -98,7 +103,10 @@ class _TextFormFieldLogin extends State<TextFormFieldLogin> {
             labelText: 'Mot de passe',
             onFieldSubmitted: (String value) {
               setState(() {
-                this._password = value;
+                _password = value;
+                if (kDebugMode) {
+                  print('Nom=$_password');
+                }
               });
             },
           ),
@@ -108,11 +116,18 @@ class _TextFormFieldLogin extends State<TextFormFieldLogin> {
   }
 }
 
-class ButtonLogin extends StatelessWidget {
-  ButtonLogin({Key? key});
-    String? _username;
-    String? _email;
-    String? _password;
+class ButtonLogin extends StatefulWidget {
+  const ButtonLogin({super.key});
+
+  @override
+  State<ButtonLogin> createState() => _ButtonLoginState();
+}
+
+class _ButtonLoginState extends State<ButtonLogin> {
+  String? _username;
+  //String? _email;
+  String? _password;
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -127,7 +142,8 @@ class ButtonLogin extends StatelessWidget {
             textColor: Colors.white,
             fontSize: 16.0,
           );
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage()));
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => const MPage()));
         } else {
           Fluttertoast.showToast(
             msg: 'Veuillez remplir tous les champs correctement.',

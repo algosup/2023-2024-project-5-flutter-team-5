@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 // Pages
 import 'package:adopte_un_candidat/useful.dart';
-import 'message_conversation_page.dart';
+
+import '../message_conversation_page.dart';
+import 'app_bar.dart';
 
 class MessagePage extends StatefulWidget {
-  const MessagePage({Key? key}) : super(key: key);
+  const MessagePage({super.key});
 
   @override
   State<StatefulWidget> createState() => _MessagePageState();
@@ -13,11 +15,11 @@ class MessagePage extends StatefulWidget {
 
 class _MessagePageState extends State<MessagePage> {
   final Themes themes = Themes();
-  final GlobalKey hidableBarLastMatches_Message = GlobalKey();
-  final GlobalKey listMessages_Messages = GlobalKey();
-  final GlobalKey scrollHorizontalLastMatches_Message = GlobalKey();
-  final GlobalKey buttonProfile_Message = GlobalKey();
-  final GlobalKey buttonMessage_Message = GlobalKey();
+  final GlobalKey hidableBarLastMatchesMessage = GlobalKey();
+  final GlobalKey listMessagesMessages = GlobalKey();
+  final GlobalKey scrollHorizontalLastMatchesMessage = GlobalKey();
+  final GlobalKey buttonProfileMessage = GlobalKey();
+  final GlobalKey buttonMessageMessage = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _MessagePageState extends State<MessagePage> {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            key: hidableBarLastMatches_Message,
+            key: hidableBarLastMatchesMessage,
             backgroundColor: themes.currentTheme.colorScheme.primary,
             automaticallyImplyLeading: false,
             expandedHeight: 350.0,
@@ -70,7 +72,7 @@ class _MessagePageState extends State<MessagePage> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0),
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text(
                 'Messages',
                 style: TextStyle(
@@ -83,7 +85,7 @@ class _MessagePageState extends State<MessagePage> {
             ),
           ),
           SliverList(
-            key: listMessages_Messages,
+            key: listMessagesMessages,
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 return Column(
@@ -96,7 +98,8 @@ class _MessagePageState extends State<MessagePage> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (BuildContext context) {
-                                return MessageConversationPage(name: 'Enterprise $index');
+                                return MessageConversationPage(
+                                    name: 'Enterprise $index');
                               },
                             ),
                           );
@@ -108,7 +111,7 @@ class _MessagePageState extends State<MessagePage> {
                                   themes.currentTheme.colorScheme.onSecondary,
                               radius: 60,
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Text(
                               'Enterprise $index',
                               style: TextStyle(
@@ -149,14 +152,17 @@ class _MessagePageState extends State<MessagePage> {
 }
 
 class ScrollableBoxWidget1 extends StatelessWidget {
-  final GlobalKey scrollHorizontalLastMatches_Message = GlobalKey();
+  final GlobalKey scrollHorizontalLastMatchesMessage = GlobalKey();
+
+  ScrollableBoxWidget1({super.key});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      key: scrollHorizontalLastMatches_Message,
+      key: scrollHorizontalLastMatchesMessage,
       scrollDirection: Axis.horizontal,
       child: Padding(
-        padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0, top: 16.0),
+        padding: const EdgeInsets.only(
+            left: 16.0, right: 16.0, bottom: 16.0, top: 16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -211,14 +217,13 @@ class BoxWidget extends StatelessWidget {
   final String text;
   final Themes themes = Themes();
 
-  BoxWidget({required this.text});
+  BoxWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 165, 
-      width: 125, 
-      
+      height: 165,
+      width: 125,
       decoration: BoxDecoration(
         color: themes.currentTheme.colorScheme.onSecondary,
         borderRadius: BorderRadius.circular(30),

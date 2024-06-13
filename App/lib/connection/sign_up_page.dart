@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../matchpage.dart';
+import '../company/edit_profile_page.dart' as company;
+import '../job_seeker/edit_profile_page.dart' as job_seeker;
 import '../useful.dart';
 
 class SigninPage extends MaterialPageRoute {
@@ -31,7 +33,7 @@ class SigninPage extends MaterialPageRoute {
                     end: Alignment.bottomCenter,
                   ),
                 ),
-                child: SigninForm(),
+                child: const SigninForm(),
               ),
             );
           },
@@ -39,8 +41,10 @@ class SigninPage extends MaterialPageRoute {
 }
 
 class SigninForm extends StatefulWidget {
+  const SigninForm({super.key});
+
   @override
-  _SigninFormState createState() => _SigninFormState();
+  State<SigninForm> createState() => _SigninFormState();
 }
 
 class _SigninFormState extends State<SigninForm> {
@@ -101,7 +105,9 @@ class _SigninFormState extends State<SigninForm> {
                   ),
                   onSaved: (String? value) {
                     _username = value;
-                    print('Nom=$_username');
+                    if (kDebugMode) {
+                      print('Nom=$_username');
+                    }
                   },
                   validator: _validateName,
                 ),
@@ -120,7 +126,9 @@ class _SigninFormState extends State<SigninForm> {
                   keyboardType: TextInputType.emailAddress,
                   onSaved: (String? value) {
                     _email = value;
-                    print('email=$_email');
+                    if (kDebugMode) {
+                      print('email=$_email');
+                    }
                   },
                 ),
                 const SizedBox(height: 24.0),
@@ -137,7 +145,9 @@ class _SigninFormState extends State<SigninForm> {
                   keyboardType: TextInputType.phone,
                   onSaved: (String? value) {
                     _phoneNumber = value;
-                    print('Téléphone=$_phoneNumber');
+                    if (kDebugMode) {
+                      print('Téléphone=$_phoneNumber');
+                    }
                   },
                   validator: _validatePhoneNumber,
                 ),
@@ -162,8 +172,8 @@ class _SigninFormState extends State<SigninForm> {
                       borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     ),
                     filled: true,
-                    icon:
-                        Icon(Icons.check_box_outline_blank, color: Colors.transparent),
+                    icon: Icon(Icons.check_box_outline_blank,
+                        color: Colors.transparent),
                     labelText: 'Confirmer le mot de passe *',
                   ),
                   obscureText: true,
@@ -171,7 +181,7 @@ class _SigninFormState extends State<SigninForm> {
                 const SizedBox(height: 24.0),
                 // Checkboxes for Candidate and Enterprise
                 CheckboxListTile(
-                  title: Text("Candidat"),
+                  title: const Text("Candidat"),
                   value: _isCandidate,
                   onChanged: (bool? value) {
                     setState(() {
@@ -180,7 +190,7 @@ class _SigninFormState extends State<SigninForm> {
                   },
                 ),
                 CheckboxListTile(
-                  title: Text("Entreprise"),
+                  title: const Text("Entreprise"),
                   value: _isEnterprise,
                   onChanged: (bool? value) {
                     setState(() {
@@ -228,14 +238,21 @@ class SignInData {
     this.isCandidate = false,
     this.isEnterprise = false,
   });
-}
 
+  bool isCompany() {
+    if (isCandidate) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
 
 class Buttonsignin extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final SignInData Function() onSave;
 
-  const Buttonsignin({Key? key, required this.formKey, required this.onSave}) : super(key: key);
+  const Buttonsignin({super.key, required this.formKey, required this.onSave});
 
   @override
   Widget build(BuildContext context) {
@@ -255,7 +272,17 @@ class Buttonsignin extends StatelessWidget {
               textColor: Colors.white,
               fontSize: 16.0,
             );
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage()));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  if (signInData.isCompany()) {
+                    return const company.EditProfilPage();
+                  } else {
+                    return const job_seeker.EditProfilPage();
+                  }
+                },
+              ),
+            );
           }
         } else {
           Fluttertoast.showToast(

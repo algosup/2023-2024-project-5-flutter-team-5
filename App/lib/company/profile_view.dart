@@ -1,11 +1,12 @@
+import 'package:adopte_un_candidat/company/app_bar.dart';
+import 'package:adopte_un_candidat/company/edit_profile_page.dart';
 import 'package:flutter/material.dart';
+
 // Pages
 import 'package:adopte_un_candidat/useful.dart';
-import 'package:adopte_un_candidat/matchpage.dart';
-import 'package:adopte_un_candidat/message.dart';
-import 'package:adopte_un_candidat/settings.dart';
-import 'package:adopte_un_candidat/job_seeker_side/edit_profil_page.dart';
 import 'package:adopte_un_candidat/notification_page.dart';
+
+import 'settings.dart';
 
 class ProfileViewRoute extends MaterialPageRoute {
   ProfileViewRoute()
@@ -16,6 +17,8 @@ class ProfileViewRoute extends MaterialPageRoute {
 
 class ProfileView extends StatelessWidget {
   final Themes themes = Themes();
+
+  ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,9 @@ class ProfileView extends StatelessWidget {
 }
 
 class ViewProfile extends StatelessWidget {
-  final buttonEditProfile_Profile = GlobalKey();
+  final buttonEditProfileProfile = GlobalKey();
+
+  ViewProfile({super.key});
   @override
   Widget build(BuildContext context) {
     final themes = Themes();
@@ -74,7 +79,7 @@ class ViewProfile extends StatelessWidget {
               height: 814,
               decoration: ShapeDecoration(
                 color: themes.currentTheme.colorScheme.primaryContainer,
-                shape: OvalBorder(),
+                shape: const OvalBorder(),
                 shadows: [
                   BoxShadow(
                     color: themes.currentTheme.colorScheme.error,
@@ -110,12 +115,12 @@ class ViewProfile extends StatelessWidget {
           Positioned(
             //name text
             left: MediaQuery.of(context).size.width / 2 - (268 / 2),
-            top: 316,
+            top: 100,
             child: SizedBox(
               width: 268,
               height: 45,
               child: Text(
-                'Pierre MARTIN, 33',
+                'Hotel à Tours',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: themes.currentTheme.colorScheme.onPrimaryContainer,
@@ -132,10 +137,10 @@ class ViewProfile extends StatelessWidget {
             left: 260,
             top: 152,
             child: GestureDetector(
-              key: buttonEditProfile_Profile,
+              key: buttonEditProfileProfile,
               onTap: () => Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => EditProfilPage(),
+                  builder: (context) => const EditProfilPage(),
                 ),
               ),
               child: Container(
@@ -170,8 +175,10 @@ class ViewProfile extends StatelessWidget {
 
 class TopAppBar extends StatelessWidget {
   final Themes themes = Themes();
-  final button_notification_profile = GlobalKey();
-  final button_settings_profile = GlobalKey();
+  final buttonNotificationProfile = GlobalKey();
+  final buttonSettingsProfile = GlobalKey();
+
+  TopAppBar({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -195,11 +202,11 @@ class TopAppBar extends StatelessWidget {
           Row(
             children: [
               GestureDetector(
-                key: button_notification_profile,
+                key: buttonNotificationProfile,
                 onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => NotificationPage(),
-                    ),
+                  MaterialPageRoute(
+                    builder: (context) => const NotificationPage(),
+                  ),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
@@ -213,9 +220,11 @@ class TopAppBar extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                key: button_settings_profile,
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsPage())),
+                key: buttonSettingsProfile,
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsPage())),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
@@ -236,76 +245,56 @@ class TopAppBar extends StatelessWidget {
 }
 
 class ScrollableBoxWidget extends StatelessWidget {
-  final scrollablebox_profile = GlobalKey();
+  final scrollableboxProfile = GlobalKey();
+
+  ScrollableBoxWidget({super.key});
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      key: scrollablebox_profile,
+      key: scrollableboxProfile,
       scrollDirection: Axis.horizontal,
-      child: Row(
+      child: const Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 15, left: 15),
+            padding: EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              field: const ["Email", "Ville"],
-              values: const [
-                ["Pierre.Martin@mail.com"],
+              field: ["Email", "Ville"],
+              values: [
+                ["hotel.Toursn@mail.com"],
                 ["Tours"]
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15, left: 15),
+            padding: EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              field: const ["Competence", "Personalité"],
-              values: const [
-                [
-                  "esprit critique",
-                  "responsabilité",
-                  "négociation",
-                  "initiative"
-                ],
-                ["Innovateur"],
+              field: ["Emploi proposé", "Dans un rayon de"],
+              values: [
+                ["Valet de Chambre"],
+                ["20km"]
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15, left: 15),
+            padding: EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              field: const ["Diplome(s)"],
-              values: const [
-                ['Baccalauréat général', 'Licence'],
+              field: ["Secteur(s) d'activité", "Catégorie d'entreprise"],
+              values: [
+                [
+                  'Hôtellerie et restauration',
+                ],
+                ['Petite et moyenne entreprise']
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15, left: 15),
+            padding: EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              field: const [
-                "Secteur(s) d'activité recherché",
-                "Type de contrats recherchés",
+              field: [
+                "Type de contrats proposés",
               ],
-              values: const [
-                [
-                  'Énergie',
-                  'Industries',
-                  'Logistique et transport',
-                  'Automobile'
-                ],
+              values: [
                 ["CDI", "CDD"],
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 15, left: 15),
-            child: BoxWidget(
-              field: const ["Categorie d'entreprise recherchée"],
-              values: const [
-                [
-                  'Grande entreprise',
-                  'Entreprise de taille intermédiaire',
-                  'Petite et moyenne entreprise',
-                ]
               ],
             ),
           ),
@@ -315,14 +304,19 @@ class ScrollableBoxWidget extends StatelessWidget {
   }
 }
 
-class BoxWidget extends StatelessWidget {
-  List<String> field;
-  List<List<String>> values;
+class BoxWidget extends StatefulWidget {
+  final List<String> field;
+  final List<List<String>> values;
+
+  const BoxWidget({super.key, required this.field, required this.values});
+
+  @override
+  State<BoxWidget> createState() => _BoxWidgetState();
+}
+
+class _BoxWidgetState extends State<BoxWidget> {
   final Themes themes = Themes();
-
   FieldsAndValue fieldsAndValue = FieldsAndValue();
-
-  BoxWidget({required this.field, required this.values});
 
   @override
   Widget build(BuildContext context) {
@@ -350,8 +344,8 @@ class BoxWidget extends StatelessWidget {
               // Wrap the text widget with Center
               child: Column(
             children: [
-              ...values.asMap().entries.map((entry) =>
-                  fieldsAndValue.getField(field[entry.key], values[entry.key])),
+              ...widget.values.asMap().entries.map((entry) => fieldsAndValue
+                  .getField(widget.field[entry.key], widget.values[entry.key])),
             ],
           )),
         ),

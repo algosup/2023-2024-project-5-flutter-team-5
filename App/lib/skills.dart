@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 // Skills
 class SkillCategory {
@@ -65,8 +64,8 @@ Map<String, Color> skillColorMap = {
     for (var skill in category.skills) skill: category.color,
 };
 
-List<String> Personality = [
- 'Architecte - INTJ',
+List<String> personality = [
+  'Architecte - INTJ',
   'Logicien - INTP',
   'Commandant - ENTJ',
   'Innovateur - ENTP',
@@ -84,7 +83,7 @@ List<String> Personality = [
   'Amuseur - ESFP',
 ];
 
-List<String> Diplomas = [
+List<String> diplomas = [
   'Certificat d\'aptitude professionnelle (CAP)',
   'Brevet d\'études professionnelles (BEP)',
   'Mention complémentaire (MC)',
