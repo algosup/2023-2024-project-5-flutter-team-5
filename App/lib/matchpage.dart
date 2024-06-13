@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-
 
 // Pages
 import 'package:adopte_un_candidat/profileview.dart';
@@ -40,11 +41,11 @@ class ExampleCard extends StatelessWidget {
     final gradient = cardGradients[cardIndex % cardGradients.length];
 
     return Container(
-      width: MediaQuery.of(context).size.width, 
-      height: MediaQuery.of(context).size.height - 330, 
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height - 330,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        gradient: gradient, 
+        gradient: gradient,
         boxShadow: [
           BoxShadow(
             color: themes.currentTheme.colorScheme.primary.withOpacity(1),
@@ -54,7 +55,7 @@ class ExampleCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Container( // text on card
+      child: Container(
         margin: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
@@ -91,24 +92,14 @@ class ExampleCard extends StatelessWidget {
 }
 
 class MPage extends StatefulWidget {
-  
   MPage({Key? key}) : super(key: key);
 
   @override
   State<MPage> createState() => MatchingPage();
 }
 
-class MatchingPage extends State<MPage> { // example of profile
+class MatchingPage extends State<MPage> {
   final GlobalKey cardSwiper_Home = GlobalKey();
-  final GlobalKey buttonCross_Home = GlobalKey();
-  final GlobalKey buttonUndo_Home = GlobalKey();
-  final GlobalKey buttonHeart_Home = GlobalKey();
-  final GlobalKey buttonProfile_Home = GlobalKey();
-  final GlobalKey buttonMessage_Home = GlobalKey();
-  final GlobalKey buttonHome_Home = GlobalKey();
-  final GlobalKey buttonNotification_Home = GlobalKey();
-  final GlobalKey buttonFilter_Home = GlobalKey();
-
   final CardSwiperController controller = CardSwiperController();
   final List<_Profile> candidates = [
     _Profile(name: 'Mac-Donald', location: 'Vierzon'),
@@ -119,6 +110,11 @@ class MatchingPage extends State<MPage> { // example of profile
 
   late final List<Widget> cards;
   final Themes themes = Themes();
+
+  bool showSwipeEffect = false;
+  bool isLeftSwipe = false;
+  double swipeEffectOpacity = 0.0;
+  double opacityLevel = 1.0;
 
   @override
   void initState() {
@@ -132,9 +128,9 @@ class MatchingPage extends State<MPage> { // example of profile
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( // background
+    return Scaffold(
       backgroundColor: themes.currentTheme.colorScheme.primary,
-      appBar: PreferredSize( // top app bar
+      appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
         child: TopAppBar1(),
       ),
@@ -143,7 +139,7 @@ class MatchingPage extends State<MPage> { // example of profile
           Flexible(
             child: Stack(
               children: [
-                CardSwiper( // card swiper parameters
+                CardSwiper(
                   key: cardSwiper_Home,
                   allowedSwipeDirection: const AllowedSwipeDirection.only(right: true, left: true),
                   controller: controller,
@@ -151,17 +147,19 @@ class MatchingPage extends State<MPage> { // example of profile
                   onSwipe: _onSwipe,
                   onUndo: _onUndo,
                   numberOfCardsDisplayed: 2,
-                  backCardOffset: const Offset(00, 45),
+                  backCardOffset: const Offset(0, 45),
                   padding: const EdgeInsets.all(0.0),
                   cardBuilder: (
                     context,
                     index,
                     horizontalThresholdPercentage,
                     verticalThresholdPercentage,
-                  ) =>
-                      cards[index],
+                  ) {
+                    return cards[index];
+                  },
                 ),
-                Positioned( // Buttons swiper
+                if (showSwipeEffect) _buildSwipeEffect(),
+                Positioned(
                   bottom: 0,
                   left: 0,
                   right: 0,
@@ -170,70 +168,67 @@ class MatchingPage extends State<MPage> { // example of profile
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(  // cross button (left)
+                        Container(
                           width: 90,
                           height: 90,
                           decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: themes.currentTheme.colorScheme.surface,
-                          boxShadow: [
-                            BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 5),
-                            ),
-                          ],
+                            shape: BoxShape.circle,
+                            color: themes.currentTheme.colorScheme.surface,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
                           ),
                           child: IconButton(
-                            key: buttonCross_Home,
-                          icon: Image.asset('assets/cross.png', width: 75, height: 75),
-                          onPressed: () => controller.swipe(CardSwiperDirection.left),
-                          iconSize: 50,
+                            icon: Image.asset('assets/cross.png', width: 75, height: 75),
+                            onPressed: () => controller.swipe(CardSwiperDirection.left),
+                            iconSize: 50,
                           ),
                         ),
-                        Container(  // undo button (center)
+                        Container(
                           width: 90,
                           height: 90,
                           decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: themes.currentTheme.colorScheme.surface,
-                          boxShadow: [
-                            BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 5),
-                            ),
-                          ],
+                            shape: BoxShape.circle,
+                            color: themes.currentTheme.colorScheme.surface,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
                           ),
                           child: IconButton(
-                            key: buttonUndo_Home,
-                          onPressed: () => controller.undo(),
-                          icon: Image.asset('assets/backarrow.png', width: 70, height: 70),
-                          iconSize: 50, 
+                            onPressed: () => controller.undo(),
+                            icon: Image.asset('assets/backarrow.png', width: 70, height: 70),
+                            iconSize: 50,
                           ),
                         ),
-                        Container(  // heart button (right)
+                        Container(
                           width: 90,
                           height: 90,
                           decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: themes.currentTheme.colorScheme.surface,
-                          boxShadow: [
-                            BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 5),
-                            ),
-                          ],
+                            shape: BoxShape.circle,
+                            color: themes.currentTheme.colorScheme.surface,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 5),
+                              ),
+                            ],
                           ),
                           child: IconButton(
-                            key: buttonHeart_Home,
-                          icon: Image.asset('assets/heart.png', width: 50, height: 50),
-                          onPressed: () => controller.swipe(CardSwiperDirection.right),
-                          iconSize: 50,
+                            icon: Image.asset('assets/heart.png', width: 50, height: 50),
+                            onPressed: () => controller.swipe(CardSwiperDirection.right),
+                            iconSize: 50,
                           ),
                         ),
                       ],
@@ -243,33 +238,76 @@ class MatchingPage extends State<MPage> { // example of profile
               ],
             ),
           ),
-          BotAppBar( // Bottom app bar
+          BotAppBar(
             currentPage: 0,
-          ), 
+          ),
         ],
       ),
     );
   }
- // Swipe and undo functions
-  bool _onSwipe(
-    int previousIndex,
-    int? currentIndex,
-    CardSwiperDirection direction,
-  ) {
+
+  Widget _buildSwipeEffect() {
+    return Positioned(
+      left: isLeftSwipe ? 0 : null,
+      right: isLeftSwipe ? null : 0,
+      top: 0,
+      bottom: 0,
+      child: Center(
+        child: Transform.translate(
+          offset: Offset(isLeftSwipe ? -700 : 700, 0),
+          child: AnimatedOpacity(
+            duration: Duration(milliseconds: 700),
+            opacity: opacityLevel,
+            child: Container(
+              width: showSwipeEffect ? 900 : 300,
+              height: showSwipeEffect ? 1500 : 500,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: isLeftSwipe ? Colors.red : Colors.blue,
+              ),
+              child: Align(
+                alignment: isLeftSwipe ? Alignment(0.65,0) : Alignment(-0.65,0),
+                child: Icon(
+                  isLeftSwipe ? Icons.close : Icons.favorite,
+                  size: 50,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  bool _onSwipe(int previousIndex, int? currentIndex, CardSwiperDirection direction) {
+    setState(() {
+      showSwipeEffect = true;
+      isLeftSwipe = direction == CardSwiperDirection.left;
+      _changeOpacity(true);
+    });
     return true;
   }
 
-  bool _onUndo(
-    int? previousIndex,
-    int currentIndex,
-    CardSwiperDirection direction,
-  ) {
+  bool _onUndo(int? previousIndex, int currentIndex, CardSwiperDirection direction) {
+    setState(() {
+    });
     return true;
+  }
+
+
+  void _changeOpacity(bool fadeIn) {
+    if (fadeIn) {
+      setState(() => opacityLevel = 1.0);
+      Timer(Duration(milliseconds: 400), () {
+        setState(() => opacityLevel = 0.0);
+      });
+    } else {
+      setState(() => opacityLevel = 0.0);
+    }
   }
 }
 
-
-// ------------------------------------------------------------------
 class TopAppBar1 extends StatelessWidget {
   final Themes themes = Themes();
   final GlobalKey buttonNotification_Home = GlobalKey();
@@ -286,23 +324,23 @@ class TopAppBar1 extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-            Padding(  // logo
-              padding: const EdgeInsets.only(left: 16),
-              child: Image.asset(
-                themes.currentTheme.handshake,
-                width: 80,
-                height: 80,
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Image.asset(
+              themes.currentTheme.handshake,
+              width: 80,
+              height: 80,
             ),
+          ),
           Row(
             children: [
-              GestureDetector(  // notification button
+              GestureDetector(
                 key: buttonNotification_Home,
                 onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => NotificationPage(),
-                    ),
+                  MaterialPageRoute(
+                    builder: (context) => NotificationPage(),
                   ),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
@@ -313,7 +351,7 @@ class TopAppBar1 extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(  // filter button
+              GestureDetector(
                 key: buttonFilter_Home,
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(

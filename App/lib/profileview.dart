@@ -5,6 +5,7 @@ import 'package:adopte_un_candidat/matchpage.dart';
 import 'package:adopte_un_candidat/message.dart';
 import 'package:adopte_un_candidat/settings.dart';
 import 'package:adopte_un_candidat/job_seeker_side/edit_profil_page.dart';
+import 'package:adopte_un_candidat/notification_page.dart';
 
 class ProfileViewRoute extends MaterialPageRoute {
   ProfileViewRoute()
@@ -190,9 +191,11 @@ class TopAppBar extends StatelessWidget {
             children: [
               GestureDetector(
                 key: button_notification_profile,
-                onTap: () {
-                                // Handle right button 1 tap
-                },
+                onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => NotificationPage(),
+                    ),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
