@@ -16,18 +16,46 @@ class SkillCategory {
 
 List<SkillCategory> skillCategories = [
   SkillCategory(
-    categoryName: 'Cognitive',
-    skills: ['mémorisation', 'concentration', 'esprit critique', 'créativité', 'résilience', 'persévérence', 'curiosité intellectuel'],
-    color: Colors.red
-  ),
+      categoryName: 'Cognitive',
+      skills: [
+        'mémorisation',
+        'concentration',
+        'esprit critique',
+        'créativité',
+        'résilience',
+        'persévérence',
+        'curiosité intellectuel'
+      ],
+      color: Colors.red),
   SkillCategory(
     categoryName: 'Comportementale',
-    skills: ['organisation', 'adaptabilité', 'autonomie', 'responsabilité', 'gestion du stress', 'initiative', 'auto-discipline', 'gestion du temps', 'audace', 'gestion du temps'],
+    skills: [
+      'organisation',
+      'adaptabilité',
+      'autonomie',
+      'responsabilité',
+      'gestion du stress',
+      'initiative',
+      'auto-discipline',
+      'gestion du temps',
+      'audace',
+      'gestion du temps'
+    ],
     color: Colors.blue,
   ),
   SkillCategory(
     categoryName: 'Relationnelle',
-    skills: ['communication', 'esprit d\'équipe', 'empathie', 'négociation', 'tolérance', 'confiance en soi', 'médiation', 'leadership', 'entretien de réseau'],
+    skills: [
+      'communication',
+      'esprit d\'équipe',
+      'empathie',
+      'négociation',
+      'tolérance',
+      'confiance en soi',
+      'médiation',
+      'leadership',
+      'entretien de réseau'
+    ],
     color: Colors.green,
   ),
 ];
@@ -38,7 +66,7 @@ Map<String, Color> skillColorMap = {
 };
 
 List<String> Personality = [
- 'Architecte',
+  'Architecte',
   'Logicien',
   'Commandant',
   'Innovateur',
@@ -80,7 +108,7 @@ List<String> Diplomas = [
   'Diplôme d\'ingénieur',
   'Diplôme d’État de docteur en médecine, en pharmacie, en chirurgie dentaire, en maïeutique',
   'Doctorat',
-];  
+];
 
 List<String> activitySectors = [
   'Activités juridiques et comptables',

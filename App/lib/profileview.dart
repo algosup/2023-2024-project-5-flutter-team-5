@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 // Pages
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/matchpage.dart';
@@ -54,7 +54,8 @@ class ViewProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themes = Themes();
-    return Container( // Background (black/white)
+    return Container(
+      // Background (black/white)
       width: MediaQuery.of(context).size.width,
       decoration: ShapeDecoration(
         color: themes.currentTheme.colorScheme.primary,
@@ -64,27 +65,29 @@ class ViewProfile extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Positioned( // Background (blue)
-        left: MediaQuery.of(context).size.width / 2 - 529.5,
-        top: 182,
-        child: Container(
-          width: 1059,
-          height: 814,
-          decoration: ShapeDecoration(
-            color: themes.currentTheme.colorScheme.primaryContainer,
-            shape: OvalBorder(),
-            shadows: [
-          BoxShadow(
-            color: themes.currentTheme.colorScheme.error,
-            blurRadius: 1,
-            offset: const Offset(0, 4),
-            spreadRadius: 10,
-          )
-            ],
+          Positioned(
+            // Background (blue)
+            left: MediaQuery.of(context).size.width / 2 - 529.5,
+            top: 182,
+            child: Container(
+              width: 1059,
+              height: 814,
+              decoration: ShapeDecoration(
+                color: themes.currentTheme.colorScheme.primaryContainer,
+                shape: OvalBorder(),
+                shadows: [
+                  BoxShadow(
+                    color: themes.currentTheme.colorScheme.error,
+                    blurRadius: 1,
+                    offset: const Offset(0, 4),
+                    spreadRadius: 10,
+                  )
+                ],
+              ),
+            ),
           ),
-        ),
-          ),
-          Positioned( // Profile picture
+          Positioned(
+            // Profile picture
             left: MediaQuery.of(context).size.width / 2 - 74.5,
             top: 147,
             child: Container(
@@ -104,7 +107,8 @@ class ViewProfile extends StatelessWidget {
               ),
             ),
           ),
-          Positioned( //name text
+          Positioned(
+            //name text
             left: MediaQuery.of(context).size.width / 2 - (268 / 2),
             top: 316,
             child: SizedBox(
@@ -123,40 +127,41 @@ class ViewProfile extends StatelessWidget {
               ),
             ),
           ),
-            Positioned( // Edit Profile
-              left: 260,
-              top: 152,
-              child: GestureDetector(
-                key: buttonEditProfile_Profile,
+          Positioned(
+            // Edit Profile
+            left: 260,
+            top: 152,
+            child: GestureDetector(
+              key: buttonEditProfile_Profile,
               onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => EditProfilPage(),
-                  ),
+                MaterialPageRoute(
+                  builder: (context) => EditProfilPage(),
                 ),
+              ),
               child: Container(
                 width: 35,
                 height: 35,
                 decoration: const ShapeDecoration(
-                color: Color.fromARGB(255, 204, 204, 204),
-                shape: OvalBorder(),
-                shadows: [
-                  BoxShadow(
-                  color: Color.fromARGB(61, 89, 89, 89),
-                  blurRadius: 1,
-                  offset: Offset(0, 4),
-                  spreadRadius: 0,
-                  )
-                ],
+                  color: Color.fromARGB(255, 204, 204, 204),
+                  shape: OvalBorder(),
+                  shadows: [
+                    BoxShadow(
+                      color: Color.fromARGB(61, 89, 89, 89),
+                      blurRadius: 1,
+                      offset: Offset(0, 4),
+                      spreadRadius: 0,
+                    )
+                  ],
                 ),
                 child: Image.asset(
                   filterQuality: FilterQuality.medium,
-                'assets/edit_pen.png',
-                width: 15,
-                height: 15,
+                  'assets/edit_pen.png',
+                  width: 15,
+                  height: 15,
                 ),
               ),
-              ),
             ),
+          ),
         ],
       ),
     );
@@ -178,15 +183,15 @@ class TopAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16),
-              child: Image.asset(
-                  filterQuality: FilterQuality.medium,
-                themes.currentTheme.handshake,
-                width: 80,
-                height: 80,
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Image.asset(
+              filterQuality: FilterQuality.medium,
+              themes.currentTheme.handshake,
+              width: 80,
+              height: 80,
             ),
+          ),
           Row(
             children: [
               GestureDetector(
@@ -199,7 +204,7 @@ class TopAppBar extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                  filterQuality: FilterQuality.medium,
+                    filterQuality: FilterQuality.medium,
                     themes.currentTheme.bell,
                     width: 40,
                     height: 40,
@@ -209,16 +214,17 @@ class TopAppBar extends StatelessWidget {
               ),
               GestureDetector(
                 key: button_settings_profile,
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsPage())),
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingsPage())),
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40),
                   child: Image.asset(
-                  filterQuality: FilterQuality.medium,
+                    filterQuality: FilterQuality.medium,
                     themes.currentTheme.settings,
                     width: 45,
                     height: 45,
                     fit: BoxFit.cover,
-                ),
+                  ),
                 ),
               ),
             ],
@@ -239,33 +245,68 @@ class ScrollableBoxWidget extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              text: 'BlaBla',
+              field: const ["Email", "Ville"],
+              values: const [
+                ["Pierre.Martin@mail.com"],
+                ["Tours"]
+              ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              text: 'BlouBlou',
+              field: const ["Competence", "Personalité"],
+              values: const [
+                [
+                  "esprit critique",
+                  "responsabilité",
+                  "négociation",
+                  "initiative"
+                ],
+                ["Innovateur"],
+              ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              text: 'BliBli',
+              field: const ["Diplome(s)"],
+              values: const [
+                ['Baccalauréat général', 'Licence'],
+              ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              text: 'BluBlu',
+              field: const [
+                "Secteur(s) d'activité recherché",
+                "Type de contrats recherchés",
+              ],
+              values: const [
+                [
+                  'Énergie',
+                  'Industries',
+                  'Logistique et transport',
+                  'Automobile'
+                ],
+                ["CDI", "CDD"],
+              ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: const EdgeInsets.only(right: 15, left: 15),
             child: BoxWidget(
-              text: 'Never gonna give you up, \nNever gonna let you down, \nNever gonna run around and desert you, \nNever gonna make you cry, \nNever gonna say goodbye, \nNever gonna tell a lie and hurt you',
+              field: const ["Categorie d'entreprise recherchée"],
+              values: const [
+                [
+                  'Grande entreprise',
+                  'Entreprise de taille intermédiaire',
+                  'Petite et moyenne entreprise',
+                ]
+              ],
             ),
           ),
         ],
@@ -274,20 +315,22 @@ class ScrollableBoxWidget extends StatelessWidget {
   }
 }
 
-
 class BoxWidget extends StatelessWidget {
-  final String text;
+  List<String> field;
+  List<List<String>> values;
   final Themes themes = Themes();
 
-  BoxWidget({required this.text});
+  FieldsAndValue fieldsAndValue = FieldsAndValue();
+
+  BoxWidget({required this.field, required this.values});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          width: 294,
-          height: 221,
+          width: 320,
+          height: 220,
           decoration: ShapeDecoration(
             color: themes.currentTheme.colorScheme.secondary,
             shape: RoundedRectangleBorder(
@@ -303,20 +346,68 @@ class BoxWidget extends StatelessWidget {
               )
             ],
           ),
-          child: Center( // Wrap the text widget with Center
-            child: Text(
-              text,
-              style: TextStyle(
-                color: themes.currentTheme.colorScheme.onSecondary,
-                fontSize: 13,
-                fontFamily: 'Inter',
-                fontWeight: FontWeight.w400,
-                height: 1.5,
-              ),
-            ),
-          ),
+          child: Center(
+              // Wrap the text widget with Center
+              child: Column(
+            children: [
+              ...values.asMap().entries.map((entry) =>
+                  fieldsAndValue.getField(field[entry.key], values[entry.key])),
+            ],
+          )),
         ),
       ],
+    );
+  }
+}
+
+class FieldsAndValue {
+  final Themes themes = Themes();
+
+  getField(String field, List<String> values) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      margin: const EdgeInsets.only(bottom: 20),
+      child: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(bottom: 4),
+            padding:
+                const EdgeInsets.only(left: 4, right: 4, top: 0.5, bottom: 0.5),
+            decoration: BoxDecoration(
+              color: themes.currentTheme.colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+            child: Text(
+              "$field:",
+              style: TextStyle(
+                  color: themes.currentTheme.colorScheme.onPrimary,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+          Wrap(
+            spacing: 8.0,
+            runSpacing: 4.0,
+            children: [
+              ...values.asMap().entries.map(
+                    (str) => Container(
+                      padding: const EdgeInsets.only(
+                          left: 4, right: 4, top: 0.5, bottom: 0.5),
+                      decoration: BoxDecoration(
+                        color: themes.currentTheme.colorScheme.primary,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Text(
+                        str.value,
+                        style: TextStyle(
+                          color: themes.currentTheme.colorScheme.onPrimary,
+                        ),
+                      ),
+                    ),
+                  ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
