@@ -251,41 +251,45 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
     );
   }
 
-Widget _buildSalaryRangeTile() {
-  return _buildTile(
-    context: context,
-    title: 'Échelle de salaire',
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: Text(
-            '€${_salaryRange.start.round()} - €${_salaryRange.end.round()}',
+ Widget _buildSalaryRangeTile() {
+    return _buildTile(
+      context: context,
+      title: 'Échelle de salaire',
+      child: Row(
+        children: [
+          Text(
+            '€${_salaryRange.start.round()}',
             style: TextStyle(
               color: themes.currentTheme.colorScheme.onPrimary,
             ),
           ),
-        ),
-        RangeSlider(
-          values: _salaryRange,
-          min: 0,
-          max: 10000,
-          divisions: 100,
-          labels: RangeLabels(
-            '€${_salaryRange.start.round()}',
-            '€${_salaryRange.end.round()}',
+          Expanded(
+            child: RangeSlider(
+              values: _salaryRange,
+              min: 0,
+              max: 10000,
+              divisions: 100,
+              labels: RangeLabels(
+                '€${_salaryRange.start.round()}',
+                '€${_salaryRange.end.round()}',
+              ),
+              onChanged: (values) {
+                setState(() {
+                  _salaryRange = values;
+                });
+              },
+            ),
           ),
-          onChanged: (values) {
-            setState(() {
-              _salaryRange = values;
-            });
-          },
-        ),
-      ],
-    ),
-  );
-}
+          Text(
+            '€${_salaryRange.end.round()}',
+            style: TextStyle(
+              color: themes.currentTheme.colorScheme.onPrimary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _buildTile({
     required BuildContext context,
