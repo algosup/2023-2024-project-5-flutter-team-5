@@ -279,6 +279,7 @@ class _EditProfilPageState extends State<EditProfilPage> {
     );
   }
 
+  // ignore: unused_element
   Widget _buildSalaryRangeTile() {
     return _buildTile(
       context: context,
