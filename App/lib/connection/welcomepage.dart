@@ -38,7 +38,7 @@ class WelcomePage extends StatelessWidget {
                 begin: Alignment.center,
                 end: Alignment.topCenter,
                 colors: [
-                  const Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
+                  Color.fromARGB(255, 255, 255, 255).withOpacity(0.95),
                   Colors.transparent,
                 ],
               ),
@@ -77,14 +77,14 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: 250.0,
-                        height: 40.0,
+                        height: 45.0,
                         child: ElevatedButton(
                           onPressed: () => Navigator.of(context).push(SigninPage(0)),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
                             foregroundColor: Colors.black,
                             shadowColor: Color.fromARGB(255, 0, 0, 0),
-                            elevation: 5,
+                            elevation: 2,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),  
                           ),
                           child: const Text('Créer un compte', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
@@ -105,7 +105,7 @@ class WelcomePage extends StatelessWidget {
                           ),
                           child: const Text(
                             'Se connecter',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 104, 104, 104)),
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 72, 72, 72)),
                           ),
                         ),
                       ),
