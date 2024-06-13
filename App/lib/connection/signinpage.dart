@@ -12,12 +12,15 @@ class SigninPage extends MaterialPageRoute {
               extendBodyBehindAppBar: true,
               appBar: AppBar(
                 title: const Text('Inscription'),
-                backgroundColor: Color.fromARGB(0, 73, 7, 255)
+                backgroundColor: const Color.fromARGB(0, 73, 7, 255),
               ),
               body: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Color.fromARGB(255, 252, 255, 46), Color.fromARGB(255, 216, 59, 255)],
+                    colors: [
+                      Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 255, 255, 255)
+                    ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
@@ -25,7 +28,7 @@ class SigninPage extends MaterialPageRoute {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextFormFieldSignin(),
+                    const TextFormFieldSignin(),
                     const SizedBox(height: 24.0),
                     Buttonsignin(),
                   ],
@@ -51,6 +54,7 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
   String? _username;
   String? _email;
   String? _password;
+  String? _phoneNumber;
 
   String? _validateName(String? value) {
     if (value?.isEmpty ?? false) {
@@ -59,6 +63,17 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
     final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
     if (!nameExp.hasMatch(value!)) {
       return 'Veuillez entrer que des lettres et des chiffres.';
+    }
+    return null;
+  }
+
+  String? _validatePhoneNumber(String? value) {
+    if (value?.isEmpty ?? false) {
+      return 'Un numéro de téléphone est requis.';
+    }
+    final RegExp phoneExp = RegExp(r'^\d+$');
+    if (!phoneExp.hasMatch(value!)) {
+      return 'Veuillez entrer un numéro de téléphone valide.';
     }
     return null;
   }
@@ -79,13 +94,13 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
             decoration: const InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
-              ), 
+              ),
               filled: true,
               icon: Icon(Icons.person),
               labelText: 'Nom d\'utilisateur *',
             ),
             onSaved: (String? value) {
-              this._username = value;
+              _username = value;
               print('Nom=$_username');
             },
             validator: _validateName,
@@ -96,7 +111,7 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
             decoration: const InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
-              ), 
+              ),
               filled: true,
               icon: Icon(Icons.email),
               hintText: 'Votre adresse e-mail',
@@ -104,9 +119,27 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
             ),
             keyboardType: TextInputType.emailAddress,
             onSaved: (String? value) {
-              this._email = value;
+              _email = value;
               print('email=$_email');
             },
+          ),
+          const SizedBox(height: 24.0),
+          // "PhoneNumber" form.
+          TextFormField(
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+              ),
+              filled: true,
+              icon: Icon(Icons.phone),
+              labelText: 'Numéro de téléphone *',
+            ),
+            keyboardType: TextInputType.phone,
+            onSaved: (String? value) {
+              _phoneNumber = value;
+              print('Téléphone=$_phoneNumber');
+            },
+            validator: _validatePhoneNumber,
           ),
           const SizedBox(height: 24.0),
           // "Password" form.
@@ -116,7 +149,7 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
             labelText: 'Mot de passe *',
             onFieldSubmitted: (String value) {
               setState(() {
-                this._password = value;
+                _password = value;
               });
             },
           ),
@@ -126,9 +159,9 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
             decoration: const InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
-              ), 
+              ),
               filled: true,
-                icon: Icon(Icons.check_box_outline_blank, color: Colors.transparent),
+              icon: Icon(Icons.check_box_outline_blank, color: Colors.transparent),
               labelText: 'Confirmer le mot de passe *',
             ),
             obscureText: true,
@@ -142,16 +175,18 @@ class _TextFormFieldSigninState extends State<TextFormFieldSignin> {
 // Sign In Button (with verification)
 class Buttonsignin extends StatelessWidget {
   Buttonsignin({Key? key});
-    String? _username;
-    String? _email;
-    String? _password;
+  String? _username;
+  String? _email;
+  String? _password;
+  String? _phoneNumber;
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        if (_username != null && _email != null && _password != null) {
+        if (_username != null && _email != null && _password != null && _phoneNumber != null) {
           Fluttertoast.showToast(
-            msg: 'Connexion en cours...',
+            msg: 'Inscription en cours...',
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.BOTTOM,
             timeInSecForIosWeb: 1,

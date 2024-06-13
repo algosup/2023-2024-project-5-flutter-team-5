@@ -15,30 +15,30 @@ class WelcomePage extends StatelessWidget {
         children: [
           // Background image with blur
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/background_welcomepage.png'),
-                fit: BoxFit.cover, // Cover ensures the image covers the entire container
-                alignment: Alignment.center,
-              ),
-            ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
-              child: Container(
-                color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+                fit: BoxFit.contain, // Cover ensures the image covers the entire container
+                alignment: Alignment.topCenter,
               ),
             ),
             width: double.infinity, // Ensure the container takes up the entire width of the screen
-            height: double.infinity, // Ensure the container takes up the entire height of the screen
+            height: double.infinity,
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
+              child: Container(
+                color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.1),
+              ),
+            ), // Ensure the container takes up the entire height of the screen
           ),
           // Gradient overlay at the bottom
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
+                begin: Alignment.center,
                 end: Alignment.topCenter,
                 colors: [
-                  const Color.fromARGB(255, 255, 255, 255).withOpacity(0.7),
+                  const Color.fromARGB(255, 255, 255, 255).withOpacity(0.9),
                   Colors.transparent,
                 ],
               ),
@@ -49,8 +49,25 @@ class WelcomePage extends StatelessWidget {
           // Centered content
           Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(height: 100.0),
+                const Text(
+                  'Bienvenue sur',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ),
+                const Text(
+                  'Adopte 1 Candidat',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ),
+                const Spacer(),
                 Container(
                   width: 500,
                   height: 300,
@@ -66,7 +83,7 @@ class WelcomePage extends StatelessWidget {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             foregroundColor: Colors.black,
-                            shadowColor: Colors.transparent,
+                            shadowColor: Color.fromARGB(255, 0, 0, 0),
                             elevation: 5,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),  
                           ),
@@ -88,7 +105,7 @@ class WelcomePage extends StatelessWidget {
                           ),
                           child: const Text(
                             'Se connecter',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 35, 35, 35)),
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 104, 104, 104)),
                           ),
                         ),
                       ),
