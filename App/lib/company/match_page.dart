@@ -1,18 +1,25 @@
 import 'dart:async';
-import 'package:adopte_un_candidat/company/app_bar.dart';
-import 'package:adopte_un_candidat/company/filter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 // Pages
 import 'package:adopte_un_candidat/useful.dart';
 import 'package:adopte_un_candidat/notification_page.dart';
+import 'package:adopte_un_candidat/company/app_bar.dart';
+import 'package:adopte_un_candidat/company/filter_page.dart';
 
 class Profile {
-  final String name;
+  final String skills;
   final String location;
+  final String? diplomas;
+  final String? personality;
 
-  Profile({required this.name, required this.location});
+  Profile({
+    required this.skills, 
+    required this.location,
+    this.diplomas,
+    this.personality,
+    });
 }
 
 class ExampleCard extends StatelessWidget {
@@ -61,29 +68,93 @@ class ExampleCard extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ListTile(
-                title: Text(
-                  profile.name,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      _buildInfoBox(
+                        'Skills',
+                        profile.skills,
+                        gradient
+                      ),
+                      const SizedBox(height: 10),
+                      _buildInfoBox(
+                        'Location',
+                        profile.location,
+                        gradient
+                      ),
+                      if (profile.diplomas != null) ...[
+                        const SizedBox(height: 10),
+                        _buildInfoBox(
+                          'Diplomas',
+                          profile.diplomas!,
+                          gradient
+                        ),
+                      ],
+                      if (profile.personality != null) ...[
+                        const SizedBox(height: 10),
+                        _buildInfoBox(
+                          'Personality',
+                          profile.personality!,
+                          gradient
+                        ),
+                      ],
+                    ],
                   ),
                 ),
-                subtitle: Text(
-                  'Ville : ${profile.location}',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildInfoBox(String title, String content, LinearGradient gradient) {
+    final List<String> titleLines = title.split('\n');
+    final List<String> contentLines = content.split('\n');
+
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+              gradient: gradient,
+            ),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 5),
+          for (String line in contentLines)
+            Text(
+              line,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -100,10 +171,10 @@ class MatchingPage extends State<MPage> {
   final GlobalKey cardSwiperHome = GlobalKey();
   final CardSwiperController controller = CardSwiperController();
   final List<Profile> candidates = [
-    Profile(name: 'créativité\nrésilience\naudace\n', location: 'Vierzon'),
-    Profile(name: 'leadership\nautonomie\npersévérence\n', location: 'Paris'),
-    Profile(name: 'créativité\ninitiative\nleadership\n', location: 'Le Mans'),
-    Profile(name: 'autonomie\naudace\nleadership\n', location: 'Tours'),
+    Profile(skills: '-créativité\n-résilience\n-audace\n', location: 'Vierzon', diplomas: 'Baccalauréat général', personality: 'Innovateur - ENTP'),
+    Profile(skills: '-leadership\n-autonomie\n-persévérence\n', location: 'Paris', diplomas: 'Master\nBaccalauréat technologique', personality: 'Commandant - ENTJ'),
+    Profile(skills: '-créativité\n-initiative\n-leadership\n', location: 'Le Mans', diplomas: 'Certificat d\'aptitude professionnelle (CAP)', personality: 'Architecte - INTJ'),
+    Profile(skills: '-autonomie\n-audace\n-leadership\n', location: 'Tours', personality: 'Inspirateur - ENFP'),
   ];
 
   late final List<Widget> cards;
@@ -130,7 +201,7 @@ class MatchingPage extends State<MPage> {
       backgroundColor: themes.currentTheme.colorScheme.primary,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
-        child: TopAppBar1(),
+        child: TopAppBar(),
       ),
       body: Column(
         children: [
@@ -306,11 +377,11 @@ class MatchingPage extends State<MPage> {
   }
 }
 
-class TopAppBar1 extends StatelessWidget {
+class TopAppBar extends StatelessWidget {
   final Themes themes = Themes();
   final GlobalKey buttonNotificationHome = GlobalKey();
   final GlobalKey buttonFilterHome = GlobalKey();
-  TopAppBar1({super.key});
+  TopAppBar({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(

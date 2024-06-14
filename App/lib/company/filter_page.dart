@@ -243,7 +243,7 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
         children: [
           const Spacer(),
           SizedBox(
-            width: 200,
+            width: 150,
             child: Slider(
               value: _radius,
               min: 0,

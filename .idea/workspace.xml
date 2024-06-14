@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58db6b41-77f6-45ab-8628-de87eb9d2b68" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/App/assets/backarrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/assets/cross.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/App/assets/heart.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/exercise.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/render.experimental.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/assets/filter.png" beforeDir="false" afterPath="$PROJECT_DIR$/App/assets/filter.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/lib/homepage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/App/lib/homepage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/lib/matchpage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/App/lib/matchpage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/lib/useful.dart" beforeDir="false" afterPath="$PROJECT_DIR$/App/lib/useful.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/App/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/App/pubspec.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="58db6b41-77f6-45ab-8628-de87eb9d2b68" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
