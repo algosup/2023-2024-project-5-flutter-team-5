@@ -2,37 +2,40 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-//pages
-import '../useful.dart';
+// pages
 import '../job_seeker/match_page.dart';
 
-class LoginPage extends MaterialPageRoute {
+class LoginPage extends MaterialPageRoute<void> {
   LoginPage(int id)
       : super(
           builder: (BuildContext context) {
             return Scaffold(
               extendBodyBehindAppBar: true,
               appBar: AppBar(
-                  title: const Text('Connexion'),
-                  backgroundColor: const Color.fromARGB(0, 73, 7, 255)),
+                title: const Text(
+                  'Connexion',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: const Color.fromARGB(0, 73, 7, 255),
+              ),
               body: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color.fromARGB(255, 243, 33, 236),
-                      Color.fromARGB(255, 2, 187, 255)
+                      Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 255, 255, 255)
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                 ),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFormFieldLogin(),
-                    SizedBox(height: 24.0),
-                    ButtonLogin(),
-                  ],
+                child: const Center(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      child: LoginForm(),
+                    ),
+                  ),
                 ),
               ),
             );
@@ -40,44 +43,84 @@ class LoginPage extends MaterialPageRoute {
         );
 }
 
-// TextFormFieldLogin State
-class TextFormFieldLogin extends StatefulWidget {
-  const TextFormFieldLogin({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
   @override
-  State<StatefulWidget> createState() => _TextFormFieldLogin();
+  // ignore: library_private_types_in_public_api
+  _LoginFormState createState() => _LoginFormState();
 }
 
-class _TextFormFieldLogin extends State<TextFormFieldLogin> {
+class _LoginFormState extends State<LoginForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormFieldState<String>> _passwordFieldKey =
       GlobalKey<FormFieldState<String>>();
 
   String? _username;
-  //String? _email;
   String? _password;
 
+  // Hardcoded credentials
+  final String _correctUsername = "AdminTeam5";
+  final String _correctPassword = "Admin5";
+
   String? _validateName(String? value) {
-    if (value?.isEmpty ?? false) {
+    if (value?.isEmpty ?? true) {
       return 'Un nom d\'utilisateur est requis.';
     }
-    final RegExp nameExp = RegExp(r'^[A-Za-z ]+$');
+    final RegExp nameExp = RegExp(r'^[A-Za-z0-9]+$');
     if (!nameExp.hasMatch(value!)) {
       return 'Veuillez entrer que des lettres et des chiffres.';
     }
     return null;
   }
 
-  // Login In Form
+  void _login() {
+    if (_formKey.currentState?.validate() ?? false) {
+      _formKey.currentState?.save();
+      if (_username == _correctUsername && _password == _correctPassword) {
+        Fluttertoast.showToast(
+          msg: 'Connexion en cours...',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MPage()));
+      } else {
+        Fluttertoast.showToast(
+          msg: 'Nom d\'utilisateur ou mot de passe incorrect.',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      }
+    } else {
+      Fluttertoast.showToast(
+        msg: 'Veuillez remplir tous les champs correctement.',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    return Form(
+      key: _formKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const SizedBox(height: 24.0),
-          // "UserName" form.
           TextFormField(
             textCapitalization: TextCapitalization.words,
             decoration: const InputDecoration(
@@ -90,73 +133,38 @@ class _TextFormFieldLogin extends State<TextFormFieldLogin> {
             ),
             onSaved: (String? value) {
               _username = value;
-              if (kDebugMode) {
-                print('Nom=$_username');
-              }
             },
             validator: _validateName,
           ),
           const SizedBox(height: 24.0),
-          // "Password" form.
-          PasswordField(
-            fieldKey: _passwordFieldKey,
-            labelText: 'Mot de passe',
-            onFieldSubmitted: (String value) {
-              setState(() {
-                _password = value;
-                if (kDebugMode) {
-                  print('Nom=$_password');
-                }
-              });
+          TextFormField(
+            key: _passwordFieldKey,
+            obscureText: true,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+              ),
+              filled: true,
+              icon: Icon(Icons.lock),
+              labelText: 'Mot de passe',
+            ),
+            onSaved: (String? value) {
+              _password = value;
             },
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Un mot de passe est requis.';
+              }
+              return null;
+            },
+          ),
+          const SizedBox(height: 24.0),
+          ElevatedButton(
+            onPressed: _login,
+            child: const Text('Se connecter'),
           ),
         ],
       ),
-    );
-  }
-}
-
-class ButtonLogin extends StatefulWidget {
-  const ButtonLogin({super.key});
-
-  @override
-  State<ButtonLogin> createState() => _ButtonLoginState();
-}
-
-class _ButtonLoginState extends State<ButtonLogin> {
-  String? _username;
-  //String? _email;
-  String? _password;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        if (_username != null && _password != null) {
-          Fluttertoast.showToast(
-            msg: 'Connexion en cours...',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.grey,
-            textColor: Colors.white,
-            fontSize: 16.0,
-          );
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const MPage()));
-        } else {
-          Fluttertoast.showToast(
-            msg: 'Veuillez remplir tous les champs correctement.',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            timeInSecForIosWeb: 1,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0,
-          );
-        }
-      },
-      child: const Text('Se connecter'),
     );
   }
 }

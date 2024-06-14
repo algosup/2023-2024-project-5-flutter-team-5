@@ -73,7 +73,7 @@ class ViewProfile extends StatelessWidget {
           Positioned(
             // Background (blue)
             left: MediaQuery.of(context).size.width / 2 - 529.5,
-            top: 182,
+            top: 182+60,
             child: Container(
               width: 1059,
               height: 814,
@@ -94,7 +94,7 @@ class ViewProfile extends StatelessWidget {
           Positioned(
             // Profile picture
             left: MediaQuery.of(context).size.width / 2 - 74.5,
-            top: 147,
+            top: 147+60,
             child: Container(
               width: 149,
               height: 149,
@@ -115,7 +115,7 @@ class ViewProfile extends StatelessWidget {
           Positioned(
             //name text
             left: MediaQuery.of(context).size.width / 2 - (268 / 2),
-            top: 100,
+            top: 120+20,
             child: SizedBox(
               width: 268,
               height: 45,
@@ -135,7 +135,7 @@ class ViewProfile extends StatelessWidget {
           Positioned(
             // Edit Profile
             left: 260,
-            top: 152,
+            top: 152+60,
             child: GestureDetector(
               key: buttonEditProfileProfile,
               onTap: () => Navigator.of(context).push(
