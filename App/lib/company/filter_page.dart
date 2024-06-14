@@ -19,6 +19,8 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
   final List<String> _selectedContractTypes = [];
   final List<String> _selectedDiplomas = [];
   final List<String> _selectedPersonality = [];
+  
+  RangeValues _salaryRange = const RangeValues(0, 10000);
 
   Themes themes = Themes();
 
@@ -74,6 +76,12 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
             tiles: [
               _buildCityTile(),
               _buildRadiusTile(),
+            ],
+          ),
+          _buildSection(
+            title:'Échelle de salaire',
+            tiles: [
+              _buildSalaryRangeTile(),
             ],
           ),
           _buildSection(
@@ -268,6 +276,55 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
     );
   }
 
+    Widget _buildSalaryRangeTile() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0), 
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: RangeSlider(
+                  values: _salaryRange,
+                  min: 0,
+                  max: 10000,
+                  divisions: 100,
+                  labels: RangeLabels(
+                    '€${_salaryRange.start.round()}',
+                    '€${_salaryRange.end.round()}',
+                  ),
+                  onChanged: (values) {
+                    setState(() {
+                      _salaryRange = values;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '€${_salaryRange.start.round()}',
+                style: TextStyle(
+                  color: themes.currentTheme.colorScheme.onPrimary,
+                ),
+              ),
+              Text(
+                '€${_salaryRange.end.round()}',
+                style: TextStyle(
+                  color: themes.currentTheme.colorScheme.onPrimary,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildTile({
     required BuildContext context,
     required String title,
@@ -349,3 +406,5 @@ class HalfDividerWidget extends StatelessWidget {
     );
   }
 }
+
+
