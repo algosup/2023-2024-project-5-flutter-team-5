@@ -61,7 +61,7 @@ class _LoginFormState extends State<LoginForm> {
 
   // Hardcoded credentials
   final String _correctUsername = "AdminTeam5";
-  final String _correctPassword = "VivaLaVida18";
+  final String _correctPassword = "Admin5";
 
   String? _validateName(String? value) {
     if (value?.isEmpty ?? true) {
