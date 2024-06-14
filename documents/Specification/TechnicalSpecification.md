@@ -29,7 +29,6 @@
     - [*Formatting*](#formatting)
 - [Technical Architecture](#technical-architecture)
   - [Technology Used](#technology-used)
-    - [Tested Platforms](#tested-platforms)
     - [Software](#software)
     - [Real Device Used](#real-device-used)
       - [For Android :](#for-android-)
@@ -43,6 +42,28 @@
     - [**Direct Message (DM) list**](#direct-message-dm-list)
     - [**Direct message**](#direct-message)
     - [**Filter**](#filter)
+    - [**Settings**](#settings)
+- [Graphical Convention](#graphical-convention)
+  - [Font](#font)
+  - [Light \& Dark mode](#light--dark-mode)
+  - [Testing](#testing)
+- [Widget](#widget)
+  - [Fields](#fields)
+    - [Text field](#text-field)
+    - [Localization field](#localization-field)
+    - [Tag field](#tag-field)
+    - [Select field](#select-field)
+  - [Buttons](#buttons)
+    - [Text buttons](#text-buttons)
+    - [Icon buttons](#icon-buttons)
+    - [Big buttons](#big-buttons)
+    - [Multiple-choice radio buttons](#multiple-choice-radio-buttons)
+    - [Navbar](#navbar)
+  - [Cards](#cards)
+    - [Swipe card](#swipe-card)
+    - [Chat card](#chat-card)
+  - [Lists](#lists)
+    - [Clickable list](#clickable-list)
 - [Glossary](#glossary)
 
 </details>
@@ -101,7 +122,7 @@ all folders and files should be named in *UpperCamelCase*.
 - Images should be in an ./*Image* subfolder from where they are called.
 - Technical, Functional and Management documents should be in their folder in a ./*Documents* folder.
 - The code should be in an ./*Src* folder from the root.
-- Folders and Files of the folder ./*Src* need to be in *lowercase_with_underscores* to be sensitive with the language Dart.
+- Folders and Files of the folder ./*Src* need to be in *lowercase_with_underscores* to be read by Flutter.
 
 ## GitHub
 
@@ -150,12 +171,6 @@ You can follow this link to have more information about the documentation : [Doc
 # Technical Architecture
 
 ## Technology Used
-
-### Tested Platforms
-
-- Pixel 8 pro **version** : vanilla ice cream.
-- Huawei ELE L29 **version** : EMUI 12.0.0.
-- Iphone 13 **version** : IOS 17.5.1.
 
 ### Software
 
@@ -213,7 +228,7 @@ While you can debug and test your code on a virtual device, it is often better t
 
 #### For PC :
 
-To debug and run your flutter code on PC is more easier than on phones, your OS is already a device.
+To debug and run your flutter code on PC is easier than on phones, your OS is already a device.
 
 ![DesktopDevice](./Image/DestopDevice.png)
 
@@ -255,6 +270,7 @@ You can see 2 old versions and the version we have selected for the project.
 
 ![Flow chart of the login page](/Documents/Specification/Image/FlowChartLoginPage.png)
 
+
 ### **Profile**
 
 **Description** : This page is dedicated to watch your profile and see what is visible by job-seekers or companies, you can modify your profile if you need or have access to the settings of the app.
@@ -282,11 +298,11 @@ You can see 2 old versions and the version we have selected for the project.
 
 **Flow chart** :
 
-![Flow chart profile page]()
+![Flow chart profile page](/Documents/Specification/Image/FlowChartProfilePage.png)
 
 ### **Main**
 
-**Description** : This page is dedicated to swipe companies or job-seekers. You can like and dislike their and go back in your last proposition to change your choice if it was a mistake. You can filter your choices, to have proposition more precise in what you search. You can go to the profile page and DM list page.
+**Description** : This page is dedicated to swipe companies or job-seekers. You can like and dislike them and go back to your last proposition to change your choice if it was a mistake. You can filter your choices, to have more precise proposition in what you search. You can go to the profile page and DM list page.
 
 **The main page allows users to** :
 
@@ -311,7 +327,7 @@ You can see 2 old versions and the version we have selected for the project.
 
 **Flow chart** :
 
-![Flow chart main page]()
+![Flow chart main page](/Documents/Specification/Image/FlowChartMainPage.png)
 
 ### **Direct Message (DM) list**
 
@@ -337,7 +353,7 @@ You can see 2 old versions and the version we have selected for the project.
 
 **Flow chart** :
 
-![Flow chart DM list page]()
+![Flow chart DM list page](/Documents/Specification/Image/FlowChartDMListPage.png)
 
 ### **Direct message**
 
@@ -360,7 +376,7 @@ You can see 2 old versions and the version we have selected for the project.
 
 **Flow chart** :
 
-![Flow chart DM page]()
+![Flow chart DM page](/Documents/Specification/Image/FlowChartDMPage.png)
 
 ### **Filter**
 
@@ -368,7 +384,339 @@ You can see 2 old versions and the version we have selected for the project.
 
 **The filter page allows users to** :
 
-- 
+**For job-seekers** :
+
+- Button with tag to choose a job offer.
+- Button with tag to choose a type of contract.
+- Localization (city and radius).
+- A salary range.
+- Type of company.
+
+**For company** :
+
+- Button with tag to choose soft skills.
+- Button with expected experience.
+- Button toggle to see people with personal project.
+- Button with tag to add diplomas.
+- Localization (city and radius).
+- Button to choose the type of personality.
+
+**The filter page contains the following elements (Job-seeker side)** :
+
+| Field/Element         | Description                                   | Type   | Rights    | Behavior                                               |
+| --------------------- | --------------------------------------------- | ------ | --------- | ------------------------------------------------------ |
+| Job offer             | Button to choose a job offer.                 | Button | Clickable | Opens a menu to select a job offer.                    |
+| Contract type         | Button to choose a type of contract.          | Button | Clickable | Opens a menu to select a contract type.                |
+| Localization          | Input to set city and radius.                 | Input  | Editable  | Allows user to input desired city and radius.          |
+| Salary scale          | Slider to set a salary range.                 | Slider | Editable  | Allows user to set a desired salary range.             |
+| Company type          | Button to choose the type of company.         | Button | Clickable | Opens a menu to select the type of company.            |
+| Apply filter button   | Button to apply the new filters.              | Button | Clickable | Applies the selected filters and returns to main page. |
+| Back button           | Button to return to the main page.            | Button | Clickable | Redirects back to the main page.                       |
+
+**The filter page contains the following elements (Company side)** :
+
+| Field/Element         | Description                                      | Type   | Rights    | Behavior                                               |
+| --------------------- | ------------------------------------------------ | ------ | --------- | ------------------------------------------------------ |
+| Soft skills           | Button to choose soft skills.                    | Button | Clickable | Opens a menu to select soft skills.                    |
+| Experience levels     | Button to choose different levels of experience. | Button | Clickable | Opens a menu to select experience levels.              |
+| Personal projects     | Button to see people with personal projects.     | Button | Clickable | Button to activate or deactivate this filter.          |
+| Diplomas              | Button to add different diplomas.                | Button | Clickable | Opens a menu to add diplomas.                          |
+| Localization          | Input to set city and radius.                    | Input  | Editable  | Allows user to input desired city and radius.          |
+| Personality type      | Button to choose the type of personality.        | Button | Clickable | Opens a menu to select personality type.               |
+| Apply filter button   | Button to apply the new filters.                 | Button | Clickable | Applies the selected filters and returns to main page. |
+| Back button           | Button to return to the main page.               | Button | Clickable | Redirects back to the main page.                       |
+
+**Flow chart (job-seeker side)** :
+
+![Flow chart filter page (job-seeker side)](/Documents/Specification/Image/FlowChartFilterPageJobSeekerSide.png)
+
+**Flow chart (Company side)** :
+
+![Flow chart filter page (Company side)](/Documents/Specification/Image/FlowChartFilterPageCompanySide.png)
+
+### **Settings**
+
+**Description** : This page allows users to manage their account settings, switch the theme in light mode or dark mode, and configure privacy options.
+
+**The settings page allows users to** :
+
+- Change the theme of the app.
+- Update account.
+- Manage privacy settings.
+- Configure notification preferences.
+- Access help and support.
+- Log out of the account.
+
+**The settings page contains the following elements** :
+
+| Field/Element               | Description                                       | Type    | Rights    | Behavior                                                      |
+| --------------------------- | ------------------------------------------------- | ------- | --------- | ------------------------------------------------------------- |
+| Light and dark mode         | Section to switch the theme.                      | Switch  | Editable  | Allows users to switch between light and dark mode.           |
+| Update account              | Section to update the account.                    | Section | Editable  | Allows users to update their account.                         |
+| Privacy Settings            | Section to manage privacy options.                | Section | Editable  | Allows users to configure who can see their profile, etc.     |
+| Notification Preferences    | Section to configure notifications.               | Section | Editable  | Allows users to set preferences for email, SMS, app alerts.   |
+| Help and Support            | Button to access help and support.                | Button  | Clickable | Redirects to help and support page.                           |
+| Log Out                     | Button to log out of the account.                 | Button  | Clickable | Logs the user out and redirects to the login page.            |
+| Apply changes button        | Button to save changes made in settings.          | Button  | Clickable | Applies and saves all changes made on the settings page.      |
+| Back button                 | Button to return to the previous page.            | Button  | Clickable | Redirects back to the previous page.                          |
+
+**Flow chart** :
+
+![Flow chart settings page](/Documents/Specification/Image/FlowChartSettingPage.png)
+
+# Graphical Convention
+
+## Font
+
+The font we have decided to use is Inter, we have a convention to use the good size between 12, 20, 32 and 40.
+Firstly the size 40 was used only for the name of a company in the swipe card and the font is in bold.
+Secondly the size 32 was used only for the name of the application when you want to login or sign up, same of the first one the font is in bold.
+Thirdly the size 20 is the common title the most used in the app, it's in bold too.
+To finish the size 12 it's common text when the font is in regular, when the font is in bold it's a subtitle.
+
+**Just below picture of the font whit our convention (40, 20 and 12)** :
+
+<img alt="Screen font size 1" src="Image/FontSize1.png" width="400px"></img>
+
+**Picture of the page login / sign up with the title in size 32** :
+
+<img alt="Screen page login sign up" src="Image/LoginSignUpPage.png" width="400px"></img>
+
+<!-- Normal text size is 12, (if we have only one word and is important like Settings in the topbar he need to be in bold.),
+(only one things in Black is the name fo a company in the DM list.)
+Title 1 size is 40
+Title 2 size is 32
+Title 3 is 20 -->
+
+## Light & Dark mode
+
+We decided to add the possibility to switch between a light and a dark mode to improve the readability of the app.
+Just under is the Class of Themes with the color we have decided with the mock up.
+
+```dart
+class Themes {
+  bool isLight;
+
+  Themes({this.isLight = false});
+
+// color scheme
+// light mode
+  static final light = _ThemeWithImages(
+    colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: Colors.white, // background color
+      onPrimary: Colors.black, // text & icon color
+      primaryContainer: Color(0xFF1FBAF7), // container color (ex.profile view)
+      onPrimaryContainer: Colors.black, // container text color
+      secondary: Colors.white, // other elements color
+      onSecondary: Color(0xFFC4C4C4), // box color
+      error: Color.fromARGB(70, 31, 186, 247), // shadow color
+      onError: Color.fromARGB(255, 230, 230, 230), // profile picture
+      surface: Colors.white,
+      onSurface: Color.fromARGB(255, 200, 200, 200),
+    ),
+    user: 'assets/user_light.png',
+    settings: 'assets/settings_light.png',
+    message: 'assets/message_light.png',
+    handshake: 'assets/handshake_light.png',
+    filter: 'assets/filter_light.png',
+    bell: 'assets/bell_light.png',
+    home: 'assets/home_light.png',
+  );
+
+// dark mode
+  static final dark = _ThemeWithImages(
+    colorScheme: const ColorScheme(
+      brightness: Brightness.dark,
+      primary: Color(0xFF161C23), // background color
+      onPrimary: Colors.white, // text & icon color
+      primaryContainer: Color(0xFF044082), // container color (ex.profile view)
+      onPrimaryContainer: Color(0xFFAEAEAE), // container text color
+      secondary: Color(0xFF363B44), // other elements color
+      onSecondary: Color(0xFF363B44), // box color
+      error: Color.fromARGB(255, 3, 50, 100), // shadow color
+      onError: Color(0x3F000000), // profile picture
+      surface: Color(0xFF21262F),
+      onSurface: Color.fromARGB(255, 55, 55, 55), // selected Page
+    ),
+    user: 'assets/user_dark.png',
+    settings: 'assets/settings_dark.png',
+    message: 'assets/message_dark.png',
+    handshake: 'assets/handshake_dark.png',
+    filter: 'assets/filter_dark.png',
+    bell: 'assets/bell_dark.png',
+    home: 'assets/home_dark.png',
+  );
+
+  _ThemeWithImages get currentTheme => isLight ? light : dark;
+
+  void toggleTheme() {
+    // to toggle between light and dark mode
+    isLight = !isLight;
+  }
+}
+
+```
+
+The first part make the light mode, and the second make the dark mode. After the void toggleTheme allow the change between themes.
+
+After we have the button that allow the switch between us.
+Code of the button :
+
+## Testing
+
+To help the tests of the QA we have added some keys in our code, on interactive elements, for example (the convention of keys is : objectName_Place) :
+
+```dart
+  final GlobalKey cardSwiper_Home = GlobalKey();
+  final GlobalKey buttonCross_Home = GlobalKey();
+  final GlobalKey buttonUndo_Home = GlobalKey();
+```
+
+for example if  want to use the key cardSwiper_Home we declare the key at the top of the class and we call the key when we start the code of the cardSwiper.
+
+```dart
+
+class MPage extends StatefulWidget {
+  MPage({Key? key}) : super(key: key);
+
+  @override
+  State<MPage> createState() => MatchingPage();
+}
+
+class MatchingPage extends State<MPage> {
+  // example of profile
+  final GlobalKey cardSwiper_Home = GlobalKey();
+...
+      body: Column(
+        children: [
+          Flexible(
+            child: Stack(
+              children: [
+                CardSwiper(
+                  // card swiper parameters
+                  key: cardSwiper_Home,
+
+...
+  }
+```
+
+# Widget
+
+## Fields
+
+### Text field
+
+**Description** : A text field is a user interface element that allows users to input and edit text.
+It is commonly used in forms, applications, and websites for tasks such as entering names, addresses, passwords, or any other textual data.
+
+**Example visual** :
+
+### Localization field
+
+**Description** : A localization text field is a user interface element that allows users to input geographical location data, such as addresses, coordinates, or place names.
+
+**Example visual** :
+
+<img alt="Example of localization field" src="Image/LocalizationField.png" width="400px"></img>
+
+### Tag field
+
+**Description** : A tag field is a user interface element that allows users to input and manage tags or keywords.
+These tags help categorize and organize content, making it easier to search and filter information.
+
+### Select field
+
+**Description** : A select field is a user interface element that allows users to choose one or more options from a predefined list.
+It is commonly used in forms and applications for tasks such as selecting a country, category, or other standardized options.
+This element often appears as a dropdown menu or a list of checkboxes.
+
+**Example of visual** :
+
+<img alt="Example of select field" src="Image/SelectField1.png" width="400px"></img>
+
+<img alt="Example of select field 2" src="Image/SelectField2.png" width="400px"></img>
+
+## Buttons
+
+### Text buttons
+
+<img alt="Example of text field" src="Image/TextButtons.png" width="400px"></img>
+
+**Description** : Text buttons are user interface elements that display text to indicate an action or command. When clicked, they perform a specific function, such as submitting a form, saving changes, or navigating to another page.
+
+**Example of visual** :
+
+### Icon buttons
+
+**Description** : Icon buttons are user interface elements that use icons instead of text to indicate an action or command.
+When clicked, they perform specific functions, such as refreshing a page, deleting an item, or sharing content.
+Icon buttons are commonly used in applications and websites to provide a visually intuitive way for users to interact with the interface.
+
+**Example of visual** :
+
+<img alt="Example of icon buttons" src="Image/IconButtons.png" width="400px"></img>
+
+### Big buttons
+
+**Description** : Big buttons are user interface elements that are larger in size compared to standard buttons.
+They are designed to be easily noticeable and clickable, often used to emphasize important actions or commands such as "Submit," "Buy Now," or "Sign Up."
+Big buttons enhance accessibility and user experience, especially on touchscreens and mobile devices.
+
+**Example of visual** :
+
+<img alt="Example of big buttons" src="Image/BigButtons.png" width="400px"></img>
+
+### Multiple-choice radio buttons
+
+**Description** : Multiple-choice radio buttons are user interface elements that allow users to select multiple options from a set of choices, but each option is presented as a radio button.
+Unlike traditional radio buttons that only allow single selection, multiple-choice radio buttons permit multiple selections, meaning that several buttons can be activated simultaneously.
+
+**Example of visual** :
+
+<img alt="Example of a multiple-choice radio buttons" src="Image/RadioButtons.png" width="400px"></img>
+
+### Navbar
+
+**Description** : A navbar, short for navigation bar, is a user interface element typically located at the top of a webpage or application screen.
+It contains links or buttons that allow users to navigate to different sections or pages within the website or application.
+The navbar often includes elements such as a logo, menu items, search bar, and other navigation controls, providing users with easy access to essential features and content.
+
+**Example of visual** :
+
+<img alt="Example of navbar" src="Image/Navbar.png" width="400px"></img>
+
+## Cards
+
+### Swipe card
+
+**Description** : A swipe card, also known as a swipeable card or card stack, is a user interface component commonly used in mobile applications.
+It presents information or content in a card-like format that users can swipe horizontally or vertically to navigate through a series of cards.
+Each card typically contains a distinct piece of information, such as an image, text, or interactive elements.
+Swipe cards are popular for presenting content in a visually appealing and interactive manner, often used in features like image galleries, news feeds, or product showcases.
+
+**Example of visual** :
+
+<img alt="Example of swipe card" src="Image/SwipeCard.png" width="400px"></img>
+
+### Chat card
+
+**Description** : A "chat card" typically refers to a user interface element in messaging applications.
+It represents a single message within a conversation thread.
+Chat cards commonly include details such as the sender's name or avatar, the message content, and a timestamp.
+They may also feature additional options for actions like replying, forwarding, or deleting messages.
+
+**Example of visual** :
+
+<img alt="example of chat card" src="Image/ChatBox.png" width="400px"></img>
+
+## Lists
+
+### Clickable list
+
+**Description** : A clickable list is a user interface component presenting a collection of items, each of which can be interacted with through clicks.
+It serves to exhibit a selection of items that users can choose from.
+Additionally, this list widget enables users to delete items and should possess scroll functionality to accommodate displaying all items within a confined space.
 
 # Glossary
 
