@@ -17,7 +17,7 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
   final List<String> _selectedActivitySectors = [];
   final List<String> _selectedCompanyCategories = [];
   final List<String> _selectedContractTypes = [];
-  RangeValues _salaryRange = const RangeValues(0, 10000);
+  RangeValues _salaryRange = const RangeValues(700, 2500);
   Themes themes = Themes();
 
   @override
@@ -74,7 +74,12 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
               _buildRadiusTile(),
             ],
           ),
-          _buildSalaryRangeTile(),
+          _buildSection(
+            title:'Échelle de salaire',
+            tiles: [
+              _buildSalaryRangeTile(),
+            ],
+          ),
           _buildSection(
             title: 'Filtres avancés',
             tiles: [
@@ -256,39 +261,48 @@ class _SkillsFilterPageState extends State<SkillsFilterPage> {
   }
 
   Widget _buildSalaryRangeTile() {
-    return _buildTile(
-      context: context,
-      title: 'Échelle de salaire',
-      child: Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0), 
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '€${_salaryRange.start.round()}',
-            style: TextStyle(
-              color: themes.currentTheme.colorScheme.onPrimary,
-            ),
-          ),
-          Expanded(
-            child: RangeSlider(
-              values: _salaryRange,
-              min: 0,
-              max: 10000,
-              divisions: 100,
-              labels: RangeLabels(
-                '€${_salaryRange.start.round()}',
-                '€${_salaryRange.end.round()}',
+          Row(
+            children: [
+              Expanded(
+                child: RangeSlider(
+                  values: _salaryRange,
+                  min: 0,
+                  max: 10000,
+                  divisions: 100,
+                  labels: RangeLabels(
+                    '€${_salaryRange.start.round()}',
+                    '€${_salaryRange.end.round()}',
+                  ),
+                  onChanged: (values) {
+                    setState(() {
+                      _salaryRange = values;
+                    });
+                  },
+                ),
               ),
-              onChanged: (values) {
-                setState(() {
-                  _salaryRange = values;
-                });
-              },
-            ),
+            ],
           ),
-          Text(
-            '€${_salaryRange.end.round()}',
-            style: TextStyle(
-              color: themes.currentTheme.colorScheme.onPrimary,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '€${_salaryRange.start.round()}',
+                style: TextStyle(
+                  color: themes.currentTheme.colorScheme.onPrimary,
+                ),
+              ),
+              Text(
+                '€${_salaryRange.end.round()}',
+                style: TextStyle(
+                  color: themes.currentTheme.colorScheme.onPrimary,
+                ),
+              ),
+            ],
           ),
         ],
       ),
