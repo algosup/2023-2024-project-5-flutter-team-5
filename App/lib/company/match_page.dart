@@ -114,7 +114,7 @@ class ExampleCard extends StatelessWidget {
   }
 
   Widget _buildInfoBox(String title, String content, LinearGradient gradient) {
-    final List<String> titleLines = title.split('\n');
+    title.split('\n');
     final List<String> contentLines = content.split('\n');
 
     return Container(

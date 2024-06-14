@@ -12,8 +12,10 @@ import 'filter_page.dart';
 class Profile {
   final String name;
   final String location;
+  final String job;
+  final String salary;
 
-  Profile({required this.name, required this.location});
+  Profile({required this.name, required this.location, required this.job, required this.salary});
 }
 
 class ExampleCard extends StatelessWidget {
@@ -62,29 +64,89 @@ class ExampleCard extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ListTile(
-                title: Text(
-                  profile.name,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      _buildInfoBox(
+                        'Entreprise',
+                        profile.name,
+                        gradient
+                      ),
+                      const SizedBox(height: 10),
+                      _buildInfoBox(
+                        'Localisation',
+                        profile.location,
+                        gradient
+                      ),
+                      const SizedBox(height: 10),
+                      _buildInfoBox(
+                        'Emploi proposé',
+                        profile.job,
+                        gradient
+                      ),
+                      const SizedBox(height: 10),
+                      _buildInfoBox(
+                        'Salaire proposé',
+                        profile.salary,
+                        gradient
+                      ),
+                    ],
                   ),
                 ),
-                subtitle: Text(
-                  'Ville : ${profile.location}',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildInfoBox(String title, String content, LinearGradient gradient) {
+    title.split('\n');
+    final List<String> contentLines = content.split('\n');
+
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+              gradient: gradient,
+            ),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 5),
+          for (String line in contentLines)
+            Text(
+              line,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
+            ),
+        ],
       ),
     );
   }
@@ -101,10 +163,10 @@ class MatchingPage extends State<MPage> {
   final GlobalKey cardSwiperHome = GlobalKey();
   final CardSwiperController controller = CardSwiperController();
   final List<Profile> candidates = [
-    Profile(name: 'Mac-Donald', location: 'Vierzon'),
-    Profile(name: 'Skill-Issue®', location: 'Paris'),
-    Profile(name: 'Rick-Roller', location: 'Never-Gonna'),
-    Profile(name: 'Ledger', location: 'Moscow'),
+    Profile(name: 'Mac-Donald', location: 'Vierzon', job: 'Serveur', salary: '1400 - 1600'),
+    Profile(name: 'Skill-Issue®', location: 'Paris', job: 'Developpeur', salary: '1600 - 1900'),
+    Profile(name: 'Rick-Roller', location: 'Dijon', job: 'Securité', salary: '3000 - 3500'),
+    Profile(name: 'Ledger', location: 'Moscow', job: 'Chef de projet', salary: '2400 - 2700'),
   ];
 
   late final List<Widget> cards;
