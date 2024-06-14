@@ -181,23 +181,29 @@ class _SigninFormState extends State<SigninForm> {
                 const SizedBox(height: 24.0),
                 // Checkboxes for Candidate and Enterprise
                 CheckboxListTile(
-                  title: const Text("Candidat"),
-                  value: _isCandidate,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      _isCandidate = value ?? false;
-                    });
-                  },
-                ),
-                CheckboxListTile(
-                  title: const Text("Entreprise"),
-                  value: _isEnterprise,
-                  onChanged: (bool? value) {
-                    setState(() {
-                      _isEnterprise = value ?? false;
-                    });
-                  },
-                ),
+                title: const Text("Candidat"),
+                value: _isCandidate,
+                onChanged: (bool? value) {
+                  setState(() {
+                    _isCandidate = value ?? false;
+                    if (_isCandidate) { // Si _isCandidate est vrai, décochez _isEnterprise
+                      _isEnterprise = false;
+                    }
+                  });
+                },
+              ),
+              CheckboxListTile(
+                title: const Text("Entreprise"),
+                value: _isEnterprise,
+                onChanged: (bool? value) {
+                  setState(() {
+                    _isEnterprise = value ?? false;
+                    if (_isEnterprise) { // Si _isEnterprise est vrai, décochez _isCandidate
+                      _isCandidate = false;
+                    }
+                  });
+                },
+              ),
                 const SizedBox(height: 24.0),
               ],
             ),
