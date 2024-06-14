@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:adopte_un_candidat/profileview.dart';
-import 'package:adopte_un_candidat/message.dart';
-import 'package:adopte_un_candidat/matchpage.dart';
-
 
 // Password Field
 class PasswordField extends StatefulWidget {
   const PasswordField({
+    super.key,
     this.fieldKey,
     this.hintText,
     this.labelText,
@@ -25,7 +22,7 @@ class PasswordField extends StatefulWidget {
   final ValueChanged<String>? onFieldSubmitted;
 
   @override
-  _PasswordFieldState createState() => _PasswordFieldState();
+  State<PasswordField> createState() => _PasswordFieldState();
 }
 
 // PasswordField State
@@ -74,7 +71,7 @@ class _PasswordFieldState extends State<PasswordField> {
 }
 
 // Theme parameters
-class _ThemeWithImages {
+class ThemeWithImages {
   final ColorScheme colorScheme;
   final String user;
   final String settings;
@@ -84,8 +81,8 @@ class _ThemeWithImages {
   final String bell;
   final String home;
 
-  _ThemeWithImages({
-    required this.colorScheme, 
+  ThemeWithImages({
+    required this.colorScheme,
     required this.user,
     required this.settings,
     required this.message,
@@ -96,26 +93,27 @@ class _ThemeWithImages {
   });
 }
 
-class Themes {
+class Themes extends ChangeNotifier {
   bool isLight;
 
   Themes({this.isLight = false});
 
 // color scheme
 // light mode
-  static final light = _ThemeWithImages(
-    colorScheme:  const ColorScheme(
-    brightness: Brightness.light,
-    primary: Colors.white, // background color
-    onPrimary: Colors.black, // text & icon color
-    primaryContainer: Color(0xFF1FBAF7), // container color (ex.profile view)
-    onPrimaryContainer: Colors.black, // container text color
-    secondary: Colors.white, // other elements color
-    onSecondary: Color(0xFFC4C4C4), // box color
-    error: Color.fromARGB(70, 31, 186, 247), // shadow color
-    onError: Color.fromARGB(255, 230, 230, 230), // profile picture
-    surface: Colors.white,
-    onSurface: Color.fromARGB(255, 200, 200, 200),
+  static final light = ThemeWithImages(
+    colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: Colors.white, // background color
+      onPrimary: Colors.black, // text & icon color
+      primaryContainer: Color(0xFF1FBAF7), // container color (ex.profile view)
+      onPrimaryContainer: Colors.black, // container text color
+      secondary: Color.fromARGB(255, 227, 227, 227), // other elements color
+      onSecondary: Color(0xFFC4C4C4), // box color
+      error: Color.fromARGB(70, 31, 186, 247), // shadow color
+      onError: Color.fromARGB(255, 230, 230, 230), // profile picture
+      surface: Colors.white,
+      onSurface: Color.fromARGB(255, 200, 200, 200),
+      secondaryContainer: Color.fromARGB(255, 237, 237, 237),
     ),
     user: 'assets/user_light.png',
     settings: 'assets/settings_light.png',
@@ -127,19 +125,20 @@ class Themes {
   );
 
 // dark mode
-  static final dark = _ThemeWithImages(
+  static final dark = ThemeWithImages(
     colorScheme: const ColorScheme(
-    brightness: Brightness.dark,
-    primary: Color(0xFF161C23), // background color
-    onPrimary: Colors.white, // text & icon color
-    primaryContainer: Color(0xFF044082), // container color (ex.profile view)
-    onPrimaryContainer: Color(0xFFAEAEAE), // container text color
-    secondary: Color(0xFF363B44), // other elements color
-    onSecondary: Color(0xFF363B44), // box color 
-    error: Color.fromARGB(255, 3, 50, 100), // shadow color
-    onError: Color(0x3F000000), // profile picture
-    surface: Color(0xFF21262F),
-    onSurface: Color.fromARGB(255, 55, 55, 55), // selected Page
+      brightness: Brightness.dark,
+      primary: Color(0xFF161C23), // background color
+      onPrimary: Colors.white, // text & icon color
+      primaryContainer: Color(0xFF044082), // container color (ex.profile view)
+      onPrimaryContainer: Color(0xFFAEAEAE), // container text color
+      secondary: Color(0xFF363B44), // other elements color
+      onSecondary: Color(0xFF363B44), // box color
+      error: Color.fromARGB(255, 3, 50, 100), // shadow color
+      onError: Color(0x3F000000), // profile picture
+      surface: Color(0xFF21262F),
+      onSurface: Color.fromARGB(255, 55, 55, 55), // selected Page
+      secondaryContainer: Color(0xFF161C23),
     ),
     user: 'assets/user_dark.png',
     settings: 'assets/settings_dark.png',
@@ -150,101 +149,10 @@ class Themes {
     home: 'assets/home_dark.png',
   );
 
-  _ThemeWithImages get currentTheme => isLight ? light : dark;
+  ThemeWithImages get currentTheme => isLight ? light : dark;
 
-void toggleTheme() { // to toggle between light and dark mode
-  isLight = !isLight;
-}
-}
-
-// App Bar
-class BotAppBar extends StatelessWidget {
-  final Themes themes = Themes();
-  final int currentPage;
-  final GlobalKey button_profile_home = GlobalKey();
-  final GlobalKey button_message_home = GlobalKey();
-  final GlobalKey button_home_home = GlobalKey();
-  BotAppBar({Key? key, required this.currentPage}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        color: themes.currentTheme.colorScheme.primary,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          GestureDetector(  // profile button
-            key: button_profile_home, 
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileView()));
-            },
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: BoxDecoration(
-                color: currentPage == 2 ? themes.currentTheme.colorScheme.onSurface : Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.user,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(  // message button
-            key: button_message_home,
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MessagePage()));
-            },
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: BoxDecoration(
-                color: currentPage == 1 ? themes.currentTheme.colorScheme.onSurface : Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.message,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-          GestureDetector(  // home button
-            key: button_home_home,
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => MPage()));
-            },
-            child: Container(
-              width: 80,
-              height: 80, 
-              decoration: BoxDecoration(
-                color: currentPage == 0 ? themes.currentTheme.colorScheme.onSurface : Colors.transparent,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Image.asset(
-                  themes.currentTheme.home,
-                  width: 45,
-                  height: 45,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+  void toggleTheme() {
+    // to toggle between light and dark mode
+    isLight = !isLight;
   }
 }

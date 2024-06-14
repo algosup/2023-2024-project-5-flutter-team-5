@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 // Pages
-import 'package:adopte_un_candidat/connection/welcomepage.dart';
+import 'package:adopte_un_candidat/connection/welcome_page.dart';
 import 'package:adopte_un_candidat/useful.dart';
-import 'package:adopte_un_candidat/profileview.dart';
-import 'package:adopte_un_candidat/message.dart';
-import 'package:adopte_un_candidat/matchpage.dart';
 
 // Main function
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Themes(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 // app class
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -31,15 +34,9 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         body: IndexedStack(
           index: currentPage,
-          children: [
+          children: const [
             WelcomePage(),
-            MPage(),
-            MessagePage(),
-            ProfileView(),            
           ],
-        ),
-        bottomNavigationBar: currentPage == 0 ? null : BotAppBar(
-          currentPage: currentPage,
         ),
       ),
     );

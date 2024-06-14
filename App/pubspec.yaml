@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   fluttertoast: ^8.2.5
   flutter_card_swiper: ^7.0.1
+  provider: ^5.0.0
+  multi_select_flutter: ^4.1.3
+  logging: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +83,7 @@ flutter:
   - assets/heart.png
   - assets/cross.png
   - assets/backarrow.png
+  - assets/background_welcomepage.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
