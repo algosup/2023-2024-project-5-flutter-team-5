@@ -1,5 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 //pages
@@ -13,14 +17,19 @@ class LoginPage extends MaterialPageRoute {
             return Scaffold(
               extendBodyBehindAppBar: true,
               appBar: AppBar(
-                  title: const Text('Connexion'),
+                  title: const Text(
+                    'Connexion',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                      ),
+                    ),
                   backgroundColor: const Color.fromARGB(0, 73, 7, 255)),
               body: Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color.fromARGB(255, 243, 33, 236),
-                      Color.fromARGB(255, 2, 187, 255)
+                      Color.fromARGB(255, 255, 255, 255),
+                      Color.fromARGB(255, 255, 255, 255)
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
