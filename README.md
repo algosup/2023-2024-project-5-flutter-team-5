@@ -47,8 +47,8 @@ The key points of the Adopte Un Candidat concept are as follows:
 ## Installation 🛠️
 
 ### Prerequisites
-- [Flutter](https://flutter.dev/) >= 3.22.0
-- [Dart](https://dart.dev/) >= 3.4.0
+- [Flutter](https://flutter.dev/) version 3.22.0
+- [Dart](https://dart.dev/) version 3.4.0
 
 ### Steps
 1. Clone the repository:
@@ -70,7 +70,6 @@ To start the application, run:
 ```bash
 flutter run
 ```
-
 Ensure that you have a connected device or an emulator running.
 
 ## Configuration ⚙️
@@ -86,6 +85,40 @@ API_KEY=your_api_key
 3. Commit your changes (git commit -m 'Add some feature').
 4. Push to the branch (git push origin feature-branch).
 5. Open a pull request.
+
+## Tested devices
+
+**PC** : 2020 Lenovo ThinkBook 14-IIL - 20SL.
+- CPU : Intel Core i7-1065G7
+- RAM : 16Gb DDR4
+- GPU : Intel Iris Plus Graphics G7
+- screen : 1920x1080~60Hz
+- OS : Windows 11 Pro
+
+**Android** : 2019 Samsung Galaxy A50
+
+- CPU : Exynos 9610
+- RAM : 4Gb
+- GPU : Mali-G72 MP3
+- screen : 1080x2340~60Hz
+- OS : Android 11
+
+**iPhone** : 2021 Apple Iphone 13 Pro
+
+- CPU : Apple A15 Bionic
+- RAM : 6Gb
+- GPU : Apple GPU
+- screen : 11170x2532~120Hz
+- OS : iOS 17.5.1
+
+## Test application
+
+On the main page, below the sign in, sign up buttons, two other buttons is a devoloper buttons for the company and job seeker. 
+
+```
+company button => (company(dev))
+job seeker button => (job_seeker(dev))
+```
 
 ## License 📝
 
